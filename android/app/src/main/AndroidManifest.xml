@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="co.yellowtoast.PetsNextDoor">
+    package="co.yellowtoast.pets_next_door_flutter">
    <application
         android:label="${appName}"
         android:name="${applicationName}"

@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "374077406173",
+    "project_id": "petsnextdoor-prod",
+    "storage_bucket": "petsnextdoor-prod.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:374077406173:android:52e855ccde449ee6e2d434",
+        "android_client_info": {
+          "package_name": "co.yellowtoast.pets_next_door_flutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "374077406173-qi1j2erpmqfjm75tflj656u54p0d5a5s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfoGNPGEa-TXBzs9uA3BvwGViv5r6ChRA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "374077406173-qi1j2erpmqfjm75tflj656u54p0d5a5s.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "374077406173-b8k0i5p1juqki6hds2qpqlgk8pmg7bq9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "co.yellowtoast.PetsNextDoor-prod"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:374077406173:android:559973593ec98fc5e2d434",
+        "android_client_info": {
+          "package_name": "co.yellowtoast.pets_next_door_flutter.prod"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "374077406173-qi1j2erpmqfjm75tflj656u54p0d5a5s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfoGNPGEa-TXBzs9uA3BvwGViv5r6ChRA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "374077406173-qi1j2erpmqfjm75tflj656u54p0d5a5s.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "374077406173-b8k0i5p1juqki6hds2qpqlgk8pmg7bq9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "co.yellowtoast.PetsNextDoor-prod"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

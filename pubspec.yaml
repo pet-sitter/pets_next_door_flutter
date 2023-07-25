@@ -49,6 +49,7 @@ flutter:
   assets:
   - assets/imgs/
   - assets/svgs/
+  - assets/svgs/login/
   uses-material-design: true
   generate: true
 

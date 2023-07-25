@@ -6,6 +6,6 @@ import 'package:pets_next_door_flutter/flavors.dart';
 Future<void> main() async {
   F.appFlavor = Flavor.production;
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(options: F.firebaseOptions);
+  await Firebase.initializeApp(name: F.name, options: F.firebaseOptions);
   runApp(const App());
 }

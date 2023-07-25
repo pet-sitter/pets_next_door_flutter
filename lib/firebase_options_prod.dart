@@ -48,17 +48,17 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions web = FirebaseOptions(
     apiKey: 'AIzaSyDZykZOj7VD-tWfwQy02mEMtN6gv9sYCo0',
-    appId: '1:374077406173:web:cccdfbda72af87a9e2d434',
+    appId: '1:374077406173:web:6c398b93d4644b94e2d434',
     messagingSenderId: '374077406173',
     projectId: 'petsnextdoor-prod',
     authDomain: 'petsnextdoor-prod.firebaseapp.com',
     storageBucket: 'petsnextdoor-prod.appspot.com',
-    measurementId: 'G-34HVCJPKN2',
+    measurementId: 'G-EDLWSREXVH',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyCfoGNPGEa-TXBzs9uA3BvwGViv5r6ChRA',
-    appId: '1:374077406173:android:8ad5b62821f56727e2d434',
+    appId: '1:374077406173:android:559973593ec98fc5e2d434',
     messagingSenderId: '374077406173',
     projectId: 'petsnextdoor-prod',
     storageBucket: 'petsnextdoor-prod.appspot.com',
@@ -66,11 +66,11 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyDevBxk0RukHBFjWO3YYJ_o2hxvjxIaVKQ',
-    appId: '1:374077406173:ios:48d8ba6cf72ce22ee2d434',
+    appId: '1:374077406173:ios:18a102d793f26831e2d434',
     messagingSenderId: '374077406173',
     projectId: 'petsnextdoor-prod',
     storageBucket: 'petsnextdoor-prod.appspot.com',
-    iosClientId: '374077406173-r5h18ttf1jfs6l8fnvagldi5ouvjlc3c.apps.googleusercontent.com',
-    iosBundleId: 'co.yellowtoast.PetsNextDoor.prod',
+    iosClientId: '374077406173-f4995d6pokvn8l8vumft92iqt66m7in7.apps.googleusercontent.com',
+    iosBundleId: 'co.yellowtoast.pets-next-door-flutter.prod',
   );
 }
