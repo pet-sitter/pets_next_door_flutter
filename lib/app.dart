@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pets_next_door_flutter/features/authentication/presentation/login/login_view.dart';
+import 'package:pets_next_door_flutter/src/features/authentication/presentation/login/login_view.dart';
 
 class App extends StatelessWidget {
   const App({super.key});

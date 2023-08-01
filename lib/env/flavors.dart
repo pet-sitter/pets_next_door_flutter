@@ -1,6 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
-import 'package:pets_next_door_flutter/firebase_options_dev.dart' as dev;
-import 'package:pets_next_door_flutter/firebase_options_prod.dart' as prod;
+import 'package:pets_next_door_flutter/env/firebase_options_dev.dart' as dev;
+import 'package:pets_next_door_flutter/env/firebase_options_prod.dart' as prod;
 
 enum Flavor {
   development,
@@ -31,6 +31,17 @@ class F {
         return prod.DefaultFirebaseOptions.currentPlatform;
       default:
         return prod.DefaultFirebaseOptions.currentPlatform;
+    }
+  }
+
+  static String get apiUrl {
+    switch (appFlavor) {
+      case Flavor.development:
+        return 'https://pets-next-door-api-dev.onrender.com/';
+      case Flavor.production:
+        return 'https://pets-next-door-api-dev.onrender.com/';
+      default:
+        return 'https://pets-next-door-api-dev.onrender.com/';
     }
   }
 }
