@@ -9,7 +9,7 @@ part of 'registration_info.dart';
 _$_RegistrationInfo _$$_RegistrationInfoFromJson(Map<String, dynamic> json) =>
     _$_RegistrationInfo(
       email: json['email'] as String,
-      providerType: $enumDecode(_$ProviderTypeEnumMap, json['providerType']),
+      providerType: $enumDecode(_$SnsProviderTypeEnumMap, json['providerType']),
       firebaseUid: json['firebaseUid'] as String,
       fullname: json['fullname'] as String,
       nickname: json['nickname'] as String,
@@ -18,14 +18,14 @@ _$_RegistrationInfo _$$_RegistrationInfoFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$_RegistrationInfoToJson(_$_RegistrationInfo instance) =>
     <String, dynamic>{
       'email': instance.email,
-      'providerType': _$ProviderTypeEnumMap[instance.providerType]!,
+      'providerType': _$SnsProviderTypeEnumMap[instance.providerType]!,
       'firebaseUid': instance.firebaseUid,
       'fullname': instance.fullname,
       'nickname': instance.nickname,
     };
 
-const _$ProviderTypeEnumMap = {
-  ProviderType.kakao: 'kakao',
-  ProviderType.google: 'google',
-  ProviderType.apple: 'apple',
+const _$SnsProviderTypeEnumMap = {
+  SnsProviderType.kakao: 'kakao',
+  SnsProviderType.google: 'google',
+  SnsProviderType.apple: 'apple',
 };

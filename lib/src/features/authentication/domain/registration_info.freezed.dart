@@ -21,7 +21,7 @@ RegistrationInfo _$RegistrationInfoFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$RegistrationInfo {
   String get email => throw _privateConstructorUsedError;
-  ProviderType get providerType => throw _privateConstructorUsedError;
+  SnsProviderType get providerType => throw _privateConstructorUsedError;
   String get firebaseUid => throw _privateConstructorUsedError;
   String get fullname => throw _privateConstructorUsedError;
   String get nickname => throw _privateConstructorUsedError;
@@ -40,7 +40,7 @@ abstract class $RegistrationInfoCopyWith<$Res> {
   @useResult
   $Res call(
       {String email,
-      ProviderType providerType,
+      SnsProviderType providerType,
       String firebaseUid,
       String fullname,
       String nickname});
@@ -73,7 +73,7 @@ class _$RegistrationInfoCopyWithImpl<$Res, $Val extends RegistrationInfo>
       providerType: null == providerType
           ? _value.providerType
           : providerType // ignore: cast_nullable_to_non_nullable
-              as ProviderType,
+              as SnsProviderType,
       firebaseUid: null == firebaseUid
           ? _value.firebaseUid
           : firebaseUid // ignore: cast_nullable_to_non_nullable
@@ -100,7 +100,7 @@ abstract class _$$_RegistrationInfoCopyWith<$Res>
   @useResult
   $Res call(
       {String email,
-      ProviderType providerType,
+      SnsProviderType providerType,
       String firebaseUid,
       String fullname,
       String nickname});
@@ -131,7 +131,7 @@ class __$$_RegistrationInfoCopyWithImpl<$Res>
       providerType: null == providerType
           ? _value.providerType
           : providerType // ignore: cast_nullable_to_non_nullable
-              as ProviderType,
+              as SnsProviderType,
       firebaseUid: null == firebaseUid
           ? _value.firebaseUid
           : firebaseUid // ignore: cast_nullable_to_non_nullable
@@ -164,7 +164,7 @@ class _$_RegistrationInfo implements _RegistrationInfo {
   @override
   final String email;
   @override
-  final ProviderType providerType;
+  final SnsProviderType providerType;
   @override
   final String firebaseUid;
   @override
@@ -215,7 +215,7 @@ class _$_RegistrationInfo implements _RegistrationInfo {
 abstract class _RegistrationInfo implements RegistrationInfo {
   factory _RegistrationInfo(
       {required final String email,
-      required final ProviderType providerType,
+      required final SnsProviderType providerType,
       required final String firebaseUid,
       required final String fullname,
       required final String nickname}) = _$_RegistrationInfo;
@@ -226,7 +226,7 @@ abstract class _RegistrationInfo implements RegistrationInfo {
   @override
   String get email;
   @override
-  ProviderType get providerType;
+  SnsProviderType get providerType;
   @override
   String get firebaseUid;
   @override
