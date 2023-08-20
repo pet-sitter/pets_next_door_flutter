@@ -1,15 +1,32 @@
 import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:get_it/get_it.dart';
 import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart';
 import 'package:pets_next_door_flutter/src/constants/enums.dart';
 import 'package:pets_next_door_flutter/src/features/authentication/data/service/local_auth_service.dart';
 import 'package:pets_next_door_flutter/src/features/authentication/data/service/sns_auth_service.dart';
 import 'package:pets_next_door_flutter/src/features/authentication/domain/auth_status.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 typedef Succeed = bool;
 
 abstract class AuthRepository {
+  AuthRepository({
+    required SnsAuthService snsAuthService,
+    required FirebaseAuth firebaseAuthService,
+    required LocalAuthService localAuthService,
+  })  : _snsAuthService = snsAuthService,
+        _localAuthService = localAuthService,
+        _firebaseAuthService = firebaseAuthService,
+        super();
+
+  final SnsAuthService _snsAuthService;
+
+  final LocalAuthService _localAuthService;
+
+  final FirebaseAuth _firebaseAuthService;
+
   /// 의존성 주입된 SnsAuthService를 사용하여 sns 로그인하는 함수
   /// firebase로그인 후 firebase의 UserCredential을 리턴함
   Future<UserCredential> signIn({
@@ -33,10 +50,13 @@ class AuthRepositoryImpl implements AuthRepository {
         _firebaseAuthService = firebaseAuthService,
         super();
 
+  @override
   final SnsAuthService _snsAuthService;
 
+  @override
   final LocalAuthService _localAuthService;
 
+  @override
   final FirebaseAuth _firebaseAuthService;
 
   @override
@@ -91,11 +111,33 @@ class AuthRepositoryImpl implements AuthRepository {
     return true;
   }
 
-  Future<UserCredential> _signInWithCredential(OAuthCredential authCredential) {
-    return _firebaseAuthService.signInWithCredential(authCredential);
+  Future<UserCredential> _signInWithCredential(
+    AuthCredential authCredential,
+  ) async {
+    final credential =
+        await _firebaseAuthService.signInWithCredential(authCredential);
+
+    return credential;
   }
 
   Future<UserCredential> _signInWithToken(OAuthToken authToken) {
     return _firebaseAuthService.signInWithCustomToken(authToken.accessToken);
   }
 }
+
+final authRepositoryProvider = Provider.autoDispose
+    .family<AuthRepository, SnsAuthService>((ref, snsAuthService) {
+  return AuthRepositoryImpl(
+    firebaseAuthService: ref.watch(firebaseAuthProvider),
+    localAuthService: ref.watch(localAuthServiceProvider),
+    snsAuthService: snsAuthService,
+  );
+});
+
+final firebaseAuthProvider = Provider<FirebaseAuth>((ref) {
+  return FirebaseAuth.instance;
+});
+
+final localAuthServiceProvider = Provider<LocalAuthService>((ref) {
+  return LocalAuthServiceImpl();
+});
