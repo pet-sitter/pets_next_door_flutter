@@ -34,7 +34,7 @@
               "client_id": "374077406173-b8k0i5p1juqki6hds2qpqlgk8pmg7bq9.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "co.yellowtoast.PetsNextDoor-prod"
+                "bundle_id": "co.yellowtoast.pets-next-door-flutter.prod"
               }
             }
           ]
@@ -70,7 +70,7 @@
               "client_id": "374077406173-b8k0i5p1juqki6hds2qpqlgk8pmg7bq9.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "co.yellowtoast.PetsNextDoor-prod"
+                "bundle_id": "co.yellowtoast.pets-next-door-flutter.prod"
               }
             }
           ]
