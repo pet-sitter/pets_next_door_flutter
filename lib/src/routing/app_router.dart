@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pets_next_door_flutter/src/features/authentication/presentation/login/login_view.dart';
 import 'package:pets_next_door_flutter/src/features/authentication/presentation/signup/phone_auth_view.dart';
+import 'package:pets_next_door_flutter/src/features/home/presentation/home_view.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'app_router.g.dart';
@@ -12,6 +13,7 @@ final _rootNavigatorKey = GlobalKey<NavigatorState>();
 enum AppRoute {
   login,
   phoneAuth,
+  home,
 }
 
 @riverpod
@@ -24,7 +26,6 @@ GoRouter goRouter(GoRouterRef ref) {
     redirect: (context, state) {
       return null;
     },
-
     routes: [
       GoRoute(
         path: '/login',
@@ -40,7 +41,13 @@ GoRouter goRouter(GoRouterRef ref) {
           child: PhoneAuthView(),
         ),
       ),
+      GoRoute(
+        path: '/home',
+        name: AppRoute.home.name,
+        pageBuilder: (context, state) => const NoTransitionPage(
+          child: HomeView(),
+        ),
+      ),
     ],
-    //errorBuilder: (context, state) => const NotFoundScreen(),
   );
 }
