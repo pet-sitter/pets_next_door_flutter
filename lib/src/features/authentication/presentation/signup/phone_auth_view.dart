@@ -39,20 +39,21 @@ class PhoneAuthView extends StatelessWidget {
                       ),
                       Positioned(
                         child: Container(
+                          constraints:
+                              BoxConstraints(maxWidth: 70, maxHeight: 32),
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 12,
+                          ),
                           alignment: Alignment.center,
                           decoration: BoxDecoration(
                             color: Colors.black,
                             borderRadius: BorderRadius.circular(100),
                           ),
-                          width: 65,
-                          height: 32,
                           child: Text(
                             '인증하기',
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 13,
-                            ),
+                                color: Colors.white, fontSize: 13, height: 1),
                           ),
                         ),
                       )
