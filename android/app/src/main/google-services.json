@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "424678055013",
+    "project_id": "petsnextdoor-prod-1a02e",
+    "storage_bucket": "petsnextdoor-prod-1a02e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:424678055013:android:3285f962ae911d3f647a8c",
+        "android_client_info": {
+          "package_name": "co.yellowtoast.pets_next_door_flutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "424678055013-4njhs99q1d314rtevq875gjojn8o1tni.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCHNSTUZhblGy9DLfHQ723iOaMHacVIVR8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "424678055013-4njhs99q1d314rtevq875gjojn8o1tni.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "424678055013-lqikhot4d87ifooit42092ukp8uo1e4g.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "co.yellowtoast.pets-next-door-flutter"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

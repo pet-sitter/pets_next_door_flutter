@@ -34,7 +34,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.374077406173-sqgoum4490q8leeee8r7kri7vnmigith</string>
+				<string>${GOOGLE_SCHEME}</string>
 			</array>
 		</dict>
 	</array>

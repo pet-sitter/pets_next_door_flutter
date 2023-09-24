@@ -88,11 +88,6 @@ android {
             applicationIdSuffix ""
             manifestPlaceholders = [appName: "Pets Next Door Flutter"]
         }
-        staging {
-            dimension "default"
-            applicationIdSuffix ".stg"
-            manifestPlaceholders = [appName: "[STG] Pets Next Door Flutter"]
-        }
         development {
             dimension "default"
             applicationIdSuffix ".dev"

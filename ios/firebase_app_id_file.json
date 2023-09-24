@@ -1,7 +1,7 @@
 {
   "file_generated_by": "FlutterFire CLI",
   "purpose": "FirebaseAppID & ProjectID for this Firebase app in this directory",
-  "GOOGLE_APP_ID": "1:374077406173:ios:18a102d793f26831e2d434",
-  "FIREBASE_PROJECT_ID": "petsnextdoor-prod",
-  "GCM_SENDER_ID": "374077406173"
+  "GOOGLE_APP_ID": "1:231574029969:ios:d2d957b73209d7fa406130",
+  "FIREBASE_PROJECT_ID": "petsnextdoor-788a0",
+  "GCM_SENDER_ID": "231574029969"
 }

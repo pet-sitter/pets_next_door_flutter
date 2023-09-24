@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>231574029969-6g4o5a6ec3o3n073i57b225m1ibh6107.apps.googleusercontent.com</string>
+	<string>424678055013-lqikhot4d87ifooit42092ukp8uo1e4g.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.231574029969-6g4o5a6ec3o3n073i57b225m1ibh6107</string>
+	<string>com.googleusercontent.apps.424678055013-lqikhot4d87ifooit42092ukp8uo1e4g</string>
 	<key>API_KEY</key>
-	<string>AIzaSyCrvg5hkQ9uz1Zk_zbUZKHMgLDohT8n1p0</string>
+	<string>AIzaSyCVckw9EYmZDS0hLEzv56zi7XuCeSG3GRE</string>
 	<key>GCM_SENDER_ID</key>
-	<string>231574029969</string>
+	<string>424678055013</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>co.yellowtoast.pets-next-door-flutter.dev</string>
+	<string>co.yellowtoast.pets-next-door-flutter</string>
 	<key>PROJECT_ID</key>
-	<string>petsnextdoor-788a0</string>
+	<string>petsnextdoor-prod-1a02e</string>
 	<key>STORAGE_BUCKET</key>
-	<string>petsnextdoor-788a0.appspot.com</string>
+	<string>petsnextdoor-prod-1a02e.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:231574029969:ios:d2d957b73209d7fa406130</string>
+	<string>1:424678055013:ios:68a3249e63edf50d647a8c</string>
 </dict>
 </plist>

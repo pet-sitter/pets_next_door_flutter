@@ -47,30 +47,30 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyDZykZOj7VD-tWfwQy02mEMtN6gv9sYCo0',
-    appId: '1:374077406173:web:6c398b93d4644b94e2d434',
-    messagingSenderId: '374077406173',
-    projectId: 'petsnextdoor-prod',
-    authDomain: 'petsnextdoor-prod.firebaseapp.com',
-    storageBucket: 'petsnextdoor-prod.appspot.com',
-    measurementId: 'G-EDLWSREXVH',
+    apiKey: 'AIzaSyAWQrnTiWCZKGemXCkALEQC89KsO84m1Zk',
+    appId: '1:424678055013:web:7e8c5512cb8cd0a7647a8c',
+    messagingSenderId: '424678055013',
+    projectId: 'petsnextdoor-prod-1a02e',
+    authDomain: 'petsnextdoor-prod-1a02e.firebaseapp.com',
+    storageBucket: 'petsnextdoor-prod-1a02e.appspot.com',
+    measurementId: 'G-CSZQQNM57H',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCfoGNPGEa-TXBzs9uA3BvwGViv5r6ChRA',
-    appId: '1:374077406173:android:559973593ec98fc5e2d434',
-    messagingSenderId: '374077406173',
-    projectId: 'petsnextdoor-prod',
-    storageBucket: 'petsnextdoor-prod.appspot.com',
+    apiKey: 'AIzaSyCHNSTUZhblGy9DLfHQ723iOaMHacVIVR8',
+    appId: '1:424678055013:android:3285f962ae911d3f647a8c',
+    messagingSenderId: '424678055013',
+    projectId: 'petsnextdoor-prod-1a02e',
+    storageBucket: 'petsnextdoor-prod-1a02e.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyDevBxk0RukHBFjWO3YYJ_o2hxvjxIaVKQ',
-    appId: '1:374077406173:ios:18a102d793f26831e2d434',
-    messagingSenderId: '374077406173',
-    projectId: 'petsnextdoor-prod',
-    storageBucket: 'petsnextdoor-prod.appspot.com',
-    iosClientId: '374077406173-f4995d6pokvn8l8vumft92iqt66m7in7.apps.googleusercontent.com',
-    iosBundleId: 'co.yellowtoast.pets-next-door-flutter.prod',
+    apiKey: 'AIzaSyCVckw9EYmZDS0hLEzv56zi7XuCeSG3GRE',
+    appId: '1:424678055013:ios:68a3249e63edf50d647a8c',
+    messagingSenderId: '424678055013',
+    projectId: 'petsnextdoor-prod-1a02e',
+    storageBucket: 'petsnextdoor-prod-1a02e.appspot.com',
+    iosClientId: '424678055013-lqikhot4d87ifooit42092ukp8uo1e4g.apps.googleusercontent.com',
+    iosBundleId: 'co.yellowtoast.pets-next-door-flutter',
   );
 }
