@@ -1,6 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:pets_next_door_flutter/src/constants/svgs.dart';
 import 'package:pets_next_door_flutter/src/localization/string_hardcoded.dart';
 
 // Stateful navigation based on:
@@ -59,27 +61,40 @@ class ScaffoldWithBottomNavBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: body,
-      bottomNavigationBar: NavigationBar(
-        selectedIndex: currentIndex,
-        destinations: [
-          // products
-          NavigationDestination(
-            icon: const Icon(Icons.work_outline),
-            selectedIcon: const Icon(Icons.work),
-            label: 'Jobs'.hardcoded,
-          ),
-          NavigationDestination(
-            icon: const Icon(Icons.view_headline_outlined),
-            selectedIcon: const Icon(Icons.view_headline),
-            label: 'Entries'.hardcoded,
-          ),
-          NavigationDestination(
-            icon: const Icon(Icons.person_outline),
-            selectedIcon: const Icon(Icons.person),
-            label: 'Account'.hardcoded,
-          ),
-        ],
-        onDestinationSelected: onDestinationSelected,
+      bottomNavigationBar: SizedBox(
+        height: 60,
+        child: BottomNavigationBar(
+          elevation: 10,
+          type: BottomNavigationBarType.fixed,
+          showSelectedLabels: false,
+          showUnselectedLabels: false,
+          selectedItemColor: Colors.amber,
+          unselectedItemColor: Colors.blueGrey.shade100,
+          currentIndex: currentIndex,
+          items: [
+            // products
+
+            BottomNavigationBarItem(
+              icon: SvgPicture.asset(
+                Svgs.home,
+                height: 32,
+              ),
+              activeIcon: SvgPicture.asset(
+                Svgs.home,
+                height: 32,
+                color: Color(0xffFF8B00),
+              ),
+              label: '',
+            ),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.view_headline_outlined), label: ''),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.view_headline_outlined), label: ''),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.view_headline_outlined), label: ''),
+          ],
+          onTap: onDestinationSelected,
+        ),
       ),
     );
   }

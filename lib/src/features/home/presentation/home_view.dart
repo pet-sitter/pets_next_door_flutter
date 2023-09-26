@@ -1,40 +1,52 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:pets_next_door_flutter/src/constants/app_sizes.dart';
+import 'package:pets_next_door_flutter/src/routing/app_router.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Column(
-          children: [
-            Text('용답동'),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24),
-              child: Row(
-                children: [
-                  DropdownMenu(
-                    initialSelection: 0,
-                    inputDecorationTheme: InputDecorationTheme(
-                        constraints: BoxConstraints(maxWidth: 100),
-                        border: InputBorder.none,
-                        contentPadding: EdgeInsets.all(0)),
-                    dropdownMenuEntries: [
-                      DropdownMenuEntry(
-                        value: 0,
-                        label: 'asdf',
-                      )
-                    ],
-                  ),
-                ],
+    return SafeArea(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 24, top: 8),
+                child: Text('용답동'),
               ),
+            ],
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24),
+            child: Row(
+              children: [
+                DropdownMenu(
+                  initialSelection: 0,
+                  inputDecorationTheme: InputDecorationTheme(
+                      constraints: BoxConstraints(maxWidth: 100),
+                      border: InputBorder.none,
+                      contentPadding: EdgeInsets.all(0)),
+                  dropdownMenuEntries: [
+                    DropdownMenuEntry(
+                      value: 0,
+                      label: 'asdf',
+                    )
+                  ],
+                ),
+              ],
             ),
-            Expanded(
-              child: ListView.separated(
-                  shrinkWrap: true,
-                  itemBuilder: (context, index) => Padding(
+          ),
+          Expanded(
+            child: ListView.separated(
+                shrinkWrap: true,
+                itemBuilder: (context, index) => GestureDetector(
+                      onTap: () => context.goNamed(AppRoute.login.name),
+                      child: Padding(
                         padding: EdgeInsets.symmetric(horizontal: 24),
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -67,11 +79,11 @@ class HomeView extends StatelessWidget {
                           ],
                         ),
                       ),
-                  separatorBuilder: (context, index) => Divider(),
-                  itemCount: 10),
-            )
-          ],
-        ),
+                    ),
+                separatorBuilder: (context, index) => Divider(),
+                itemCount: 10),
+          )
+        ],
       ),
     );
   }
