@@ -25,7 +25,13 @@ class PhoneAuthViewController extends _$PhoneAuthViewController {
 
   void _startAuthCodeTimer() {
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-      authCodeTimeLeft -= Duration(seconds: _timer.tick);
+      if (authCodeTimeLeft == Duration.zero) {
+        _resetAuthCodeTimer();
+      } else {
+        authCodeTimeLeft -= Duration(seconds: _timer.tick);
+      }
+
+      ref.notifyListeners();
     });
   }
 
@@ -34,3 +40,7 @@ class PhoneAuthViewController extends _$PhoneAuthViewController {
     _timer.cancel();
   }
 }
+
+final nextButtonStateProvider = Provider((ref) {
+  return null;
+});
