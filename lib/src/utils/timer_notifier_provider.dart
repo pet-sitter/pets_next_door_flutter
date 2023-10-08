@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final timerProvider = StateNotifierProvider<TimerNotifier, TimerModel>(
+final timerNotifierProvider = StateNotifierProvider<TimerNotifier, TimerModel>(
   (ref) => TimerNotifier(),
 );
 
@@ -13,8 +13,9 @@ class TimerNotifier extends StateNotifier<TimerModel> {
   static const Duration _initialDuration =
       Duration(seconds: _initialDurationInSeconds);
   static final _initialState = TimerModel(
-    _durationString(_initialDurationInSeconds),
-    _initialDuration,
+    timeLeftString: _durationString(_initialDurationInSeconds),
+    timeLeft: _initialDuration,
+    isTimerTicking: false,
   );
 
   final Ticker _ticker = Ticker();
@@ -49,21 +50,24 @@ class TimerNotifier extends StateNotifier<TimerModel> {
     _tickerSubscription =
         _ticker.tick(ticks: _initialDurationInSeconds).listen((duration) {
       state = TimerModel(
-        _durationString(duration),
-        Duration(seconds: duration),
+        timeLeftString: _durationString(duration),
+        timeLeft: Duration(seconds: duration),
+        isTimerTicking: true,
       );
     });
 
     _tickerSubscription?.onDone(() {
       state = TimerModel(
-        state.timeLeftString,
-        state.timeLeft,
+        timeLeftString: state.timeLeftString,
+        timeLeft: state.timeLeft,
+        isTimerTicking: false,
       );
     });
 
     state = TimerModel(
-      _durationString(_initialDurationInSeconds),
-      _initialDuration,
+      timeLeftString: _durationString(_initialDurationInSeconds),
+      timeLeft: _initialDuration,
+      isTimerTicking: true,
     );
   }
 }
@@ -78,15 +82,12 @@ class Ticker {
 }
 
 class TimerModel {
-  const TimerModel(this.timeLeftString, this.timeLeft);
+  const TimerModel({
+    required this.timeLeftString,
+    required this.timeLeft,
+    required this.isTimerTicking,
+  });
   final String timeLeftString;
   final Duration timeLeft;
-  // final ButtonState buttonState;
+  final bool isTimerTicking;
 }
-
-// enum ButtonState {
-//   initial,
-//   started,
-//   paused,
-//   finished,
-// }
