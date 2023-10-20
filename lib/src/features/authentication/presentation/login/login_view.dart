@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:pets_next_door_flutter/src/constants/app_sizes.dart';
 import 'package:pets_next_door_flutter/src/constants/enums.dart';
 import 'package:pets_next_door_flutter/src/constants/strings.dart';
 import 'package:pets_next_door_flutter/src/constants/svgs.dart';
 import 'package:pets_next_door_flutter/src/features/authentication/presentation/login/login_view_controller.dart';
 import 'package:pets_next_door_flutter/src/features/authentication/presentation/login/widgets/sns_button_widget.dart';
+import 'package:pets_next_door_flutter/src/routing/app_router.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({super.key});
@@ -17,7 +19,7 @@ class LoginView extends StatelessWidget {
       body: Consumer(
         builder: (BuildContext context, WidgetRef ref, Widget? child) {
           final loginViewController =
-              ref.read(loginViewControllerProvider.notifier);
+              ref.watch(loginViewControllerProvider.notifier);
           return SafeArea(
             child: Column(
               children: [
@@ -42,7 +44,13 @@ class LoginView extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           SnsButtonWidget(
-                            onTap: loginViewController.signIn,
+                            onTap: (provider) async {
+                              final authStatus =
+                                  await loginViewController.signIn(provider);
+                              if (context.mounted) {
+                                context.pushNamed(AppRoute.phoneAuth.name);
+                              }
+                            },
                             snsType: SnsProviderType.google,
                           ),
                           gapW24,
@@ -52,7 +60,8 @@ class LoginView extends StatelessWidget {
                           ),
                           gapW24,
                           SnsButtonWidget(
-                            onTap: loginViewController.signIn,
+                            onTap: (value) =>
+                                context.goNamed(AppRoute.breedSearch.name),
                             snsType: SnsProviderType.apple,
                           ),
                         ],

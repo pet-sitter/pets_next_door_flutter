@@ -1,13 +1,15 @@
+import 'package:dio/dio.dart';
+
 /// Uri builder class for the OpenWeatherMap API
-class AuthAPI {
-  AuthAPI(this._apiBaseUrl);
+class PNDAuthAPI {
+  PNDAuthAPI(this._apiBaseUrl);
   final String _apiBaseUrl;
 
   static const String _apiPath = '/auth/';
 
-  Uri weather(String city) => _buildUri(
+  Uri authCode(String phoneNum) => _buildUri(
         endpoint: 'weather',
-        parametersBuilder: () => cityQueryParameters(city),
+        parametersBuilder: () => authCodeQueryParameters(phoneNum),
       );
 
   Uri _buildUri({
@@ -22,8 +24,5 @@ class AuthAPI {
     );
   }
 
-  Map<String, dynamic> cityQueryParameters(String city) => {
-        'q': city,
-        'units': 'metric',
-      };
+  Map<String, dynamic> authCodeQueryParameters(String phoneNum) => {};
 }

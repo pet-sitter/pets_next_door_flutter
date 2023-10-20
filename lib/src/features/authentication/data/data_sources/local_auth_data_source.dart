@@ -1,9 +1,9 @@
 import 'package:pets_next_door_flutter/src/features/authentication/domain/auth_status.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'local_auth_service.g.dart';
+part 'local_auth_data_source.g.dart';
 
-abstract class LocalAuthService {
+abstract class LocalAuthDataSource {
   Future<void> updateAuthStatus({required AuthStatus authStatus});
 
   Future<AuthStatus> getCurrentAuthStatus();
@@ -11,7 +11,7 @@ abstract class LocalAuthService {
   Future<void> clearAuthStatus();
 }
 
-class LocalAuthServiceImpl implements LocalAuthService {
+class LocalAuthServiceImpl implements LocalAuthDataSource {
   @override
   Future<void> clearAuthStatus() {
     // TODO: implement clearAuthStatus
@@ -25,13 +25,12 @@ class LocalAuthServiceImpl implements LocalAuthService {
   }
 
   @override
-  Future<void> updateAuthStatus({required AuthStatus authStatus}) {
-    // TODO: implement updateAuthStatus
-    throw UnimplementedError();
+  Future<void> updateAuthStatus({required AuthStatus authStatus}) async {
+    return;
   }
 }
 
 @Riverpod(keepAlive: true)
-LocalAuthService localAuthService(LocalAuthServiceRef ref) {
+LocalAuthDataSource localAuthService(LocalAuthServiceRef ref) {
   return LocalAuthServiceImpl();
 }

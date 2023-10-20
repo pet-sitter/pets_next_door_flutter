@@ -1,11 +1,11 @@
 import 'dart:async';
 
+import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:get_it/get_it.dart';
 import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart';
 import 'package:pets_next_door_flutter/src/constants/enums.dart';
-import 'package:pets_next_door_flutter/src/features/authentication/data/service/local_auth_service.dart';
-import 'package:pets_next_door_flutter/src/features/authentication/data/service/sns_auth_service.dart';
+import 'package:pets_next_door_flutter/src/features/authentication/data/data_sources/local_auth_data_source.dart';
+import 'package:pets_next_door_flutter/src/features/authentication/data/data_sources/sns_auth_data_source.dart';
 import 'package:pets_next_door_flutter/src/features/authentication/domain/auth_status.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -13,23 +13,20 @@ typedef Succeed = bool;
 
 abstract class AuthRepository {
   AuthRepository({
-    required SnsAuthService snsAuthService,
-    required FirebaseAuth firebaseAuthService,
-    required LocalAuthService localAuthService,
-  })  : _snsAuthService = snsAuthService,
-        _localAuthService = localAuthService,
-        _firebaseAuthService = firebaseAuthService,
-        super();
+    required this.snsAuthDataSource,
+    required this.firebaseAuthDataSource,
+    required this.localAuthDataSource,
+  }) : super();
 
-  final SnsAuthService _snsAuthService;
+  final SnsAuthDataSource snsAuthDataSource;
 
-  final LocalAuthService _localAuthService;
+  final LocalAuthDataSource localAuthDataSource;
 
-  final FirebaseAuth _firebaseAuthService;
+  final FirebaseAuth firebaseAuthDataSource;
 
   /// 의존성 주입된 SnsAuthService를 사용하여 sns 로그인하는 함수
   /// firebase로그인 후 firebase의 UserCredential을 리턴함
-  Future<UserCredential> signIn({
+  Future<AuthStatus> signIn({
     required SnsProviderType snsProviderType,
   });
 
@@ -42,33 +39,34 @@ abstract class AuthRepository {
 
 class AuthRepositoryImpl implements AuthRepository {
   AuthRepositoryImpl({
-    required SnsAuthService snsAuthService,
-    required FirebaseAuth firebaseAuthService,
-    required LocalAuthService localAuthService,
-  })  : _snsAuthService = snsAuthService,
-        _localAuthService = localAuthService,
-        _firebaseAuthService = firebaseAuthService,
-        super();
+    required this.snsAuthDataSource,
+    required this.firebaseAuthDataSource,
+    required this.localAuthDataSource,
+  }) : super();
 
   @override
-  final SnsAuthService _snsAuthService;
+  final SnsAuthDataSource snsAuthDataSource;
 
   @override
-  final LocalAuthService _localAuthService;
+  final LocalAuthDataSource localAuthDataSource;
 
   @override
-  final FirebaseAuth _firebaseAuthService;
+  final FirebaseAuth firebaseAuthDataSource;
 
   @override
-  Future<UserCredential> signIn({
+  Future<AuthStatus> signIn({
     required SnsProviderType snsProviderType,
   }) async {
-    final oAuthInfo = await _snsAuthService.snsLogin();
+    final oAuthInfo = await snsAuthDataSource.snsLogin();
 
     final userCredential = await oAuthInfo.when(
       credential: (credential) async => _signInWithCredential(credential),
       token: (token) async => _signInWithToken(token),
     );
+
+    // TODO: 여기서 credential을 통해 가져온 정보를 통해서 로컬에 저장된 authStatus가 어떤지 판단해야 함
+
+    // getAuthStatus();
 
     unawaited(
       _updateAuthStatus(
@@ -78,12 +76,12 @@ class AuthRepositoryImpl implements AuthRepository {
       ),
     );
 
-    return userCredential;
+    return AuthStatus.loggedIn(providerType: snsProviderType);
   }
 
   @override
   Future<AuthStatus> getAuthStatus() async {
-    return _localAuthService.getCurrentAuthStatus();
+    return localAuthDataSource.getCurrentAuthStatus();
   }
 
   @override
@@ -97,7 +95,7 @@ class AuthRepositoryImpl implements AuthRepository {
 
     if (currentLoginProviderType == null) return false;
 
-    return _firebaseAuthService.signOut().then(
+    return firebaseAuthDataSource.signOut().then(
           (_) => _updateAuthStatus(
             authStatus: AuthStatus.loggedOut(
               latestLogInProviderType: currentLoginProviderType,
@@ -107,7 +105,7 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   Future<Succeed> _updateAuthStatus({required AuthStatus authStatus}) async {
-    await _localAuthService.updateAuthStatus(authStatus: authStatus);
+    await localAuthDataSource.updateAuthStatus(authStatus: authStatus);
     return true;
   }
 
@@ -115,22 +113,22 @@ class AuthRepositoryImpl implements AuthRepository {
     AuthCredential authCredential,
   ) async {
     final credential =
-        await _firebaseAuthService.signInWithCredential(authCredential);
+        await firebaseAuthDataSource.signInWithCredential(authCredential);
 
     return credential;
   }
 
   Future<UserCredential> _signInWithToken(OAuthToken authToken) {
-    return _firebaseAuthService.signInWithCustomToken(authToken.accessToken);
+    return firebaseAuthDataSource.signInWithCustomToken(authToken.accessToken);
   }
 }
 
 final authRepositoryProvider = Provider.autoDispose
-    .family<AuthRepository, SnsAuthService>((ref, snsAuthService) {
+    .family<AuthRepository, SnsAuthDataSource>((ref, snsAuthService) {
   return AuthRepositoryImpl(
-    firebaseAuthService: ref.watch(firebaseAuthProvider),
-    localAuthService: ref.watch(localAuthServiceProvider),
-    snsAuthService: snsAuthService,
+    firebaseAuthDataSource: ref.watch(firebaseAuthProvider),
+    localAuthDataSource: ref.watch(localAuthServiceProvider),
+    snsAuthDataSource: snsAuthService,
   );
 });
 
@@ -138,6 +136,6 @@ final firebaseAuthProvider = Provider<FirebaseAuth>((ref) {
   return FirebaseAuth.instance;
 });
 
-final localAuthServiceProvider = Provider<LocalAuthService>((ref) {
+final localAuthServiceProvider = Provider<LocalAuthDataSource>((ref) {
   return LocalAuthServiceImpl();
 });

@@ -16,8 +16,8 @@ class PNDPetAPI {
       _buildUri(
         endpoint: 'breeds',
         parametersBuilder: () => {
-          'page': page,
-          'size': size,
+          'page': page.toString(),
+          'size': size.toString(),
           'pet_type': petType,
         },
       );

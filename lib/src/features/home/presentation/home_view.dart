@@ -73,6 +73,14 @@ class HomeView extends StatelessWidget {
                                     '23.03.21 ~ 23.03.28',
                                     softWrap: false,
                                   ),
+                                  Text(
+                                    '용답동',
+                                    softWrap: false,
+                                  ),
+                                  Text(
+                                    '시급 9000원',
+                                    softWrap: false,
+                                  ),
                                 ],
                               ),
                             )

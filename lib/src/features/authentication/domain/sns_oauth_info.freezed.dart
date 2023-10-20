@@ -18,19 +18,19 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$SnsOAuthInfo {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(AuthCredential authCredential) credential,
+    required TResult Function(OAuthCredential authCredential) credential,
     required TResult Function(OAuthToken authToken) token,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(AuthCredential authCredential)? credential,
+    TResult? Function(OAuthCredential authCredential)? credential,
     TResult? Function(OAuthToken authToken)? token,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(AuthCredential authCredential)? credential,
+    TResult Function(OAuthCredential authCredential)? credential,
     TResult Function(OAuthToken authToken)? token,
     required TResult orElse(),
   }) =>
@@ -80,7 +80,7 @@ abstract class _$$SnsOAuthInfoCredentialCopyWith<$Res> {
           $Res Function(_$SnsOAuthInfoCredential) then) =
       __$$SnsOAuthInfoCredentialCopyWithImpl<$Res>;
   @useResult
-  $Res call({AuthCredential authCredential});
+  $Res call({OAuthCredential authCredential});
 }
 
 /// @nodoc
@@ -100,7 +100,7 @@ class __$$SnsOAuthInfoCredentialCopyWithImpl<$Res>
       authCredential: null == authCredential
           ? _value.authCredential
           : authCredential // ignore: cast_nullable_to_non_nullable
-              as AuthCredential,
+              as OAuthCredential,
     ));
   }
 }
@@ -111,7 +111,7 @@ class _$SnsOAuthInfoCredential implements SnsOAuthInfoCredential {
   _$SnsOAuthInfoCredential({required this.authCredential});
 
   @override
-  final AuthCredential authCredential;
+  final OAuthCredential authCredential;
 
   @override
   String toString() {
@@ -140,7 +140,7 @@ class _$SnsOAuthInfoCredential implements SnsOAuthInfoCredential {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(AuthCredential authCredential) credential,
+    required TResult Function(OAuthCredential authCredential) credential,
     required TResult Function(OAuthToken authToken) token,
   }) {
     return credential(authCredential);
@@ -149,7 +149,7 @@ class _$SnsOAuthInfoCredential implements SnsOAuthInfoCredential {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(AuthCredential authCredential)? credential,
+    TResult? Function(OAuthCredential authCredential)? credential,
     TResult? Function(OAuthToken authToken)? token,
   }) {
     return credential?.call(authCredential);
@@ -158,7 +158,7 @@ class _$SnsOAuthInfoCredential implements SnsOAuthInfoCredential {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(AuthCredential authCredential)? credential,
+    TResult Function(OAuthCredential authCredential)? credential,
     TResult Function(OAuthToken authToken)? token,
     required TResult orElse(),
   }) {
@@ -202,10 +202,10 @@ class _$SnsOAuthInfoCredential implements SnsOAuthInfoCredential {
 
 abstract class SnsOAuthInfoCredential implements SnsOAuthInfo {
   factory SnsOAuthInfoCredential(
-          {required final AuthCredential authCredential}) =
+          {required final OAuthCredential authCredential}) =
       _$SnsOAuthInfoCredential;
 
-  AuthCredential get authCredential;
+  OAuthCredential get authCredential;
   @JsonKey(ignore: true)
   _$$SnsOAuthInfoCredentialCopyWith<_$SnsOAuthInfoCredential> get copyWith =>
       throw _privateConstructorUsedError;
@@ -276,7 +276,7 @@ class _$SnsOAuthInfoToken implements SnsOAuthInfoToken {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(AuthCredential authCredential) credential,
+    required TResult Function(OAuthCredential authCredential) credential,
     required TResult Function(OAuthToken authToken) token,
   }) {
     return token(authToken);
@@ -285,7 +285,7 @@ class _$SnsOAuthInfoToken implements SnsOAuthInfoToken {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(AuthCredential authCredential)? credential,
+    TResult? Function(OAuthCredential authCredential)? credential,
     TResult? Function(OAuthToken authToken)? token,
   }) {
     return token?.call(authToken);
@@ -294,7 +294,7 @@ class _$SnsOAuthInfoToken implements SnsOAuthInfoToken {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(AuthCredential authCredential)? credential,
+    TResult Function(OAuthCredential authCredential)? credential,
     TResult Function(OAuthToken authToken)? token,
     required TResult orElse(),
   }) {

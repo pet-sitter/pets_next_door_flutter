@@ -1,44 +1,23 @@
 import 'dart:async';
 
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:pets_next_door_flutter/src/utils/timer_notifier_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'phone_auth_view_controller.g.dart';
 
 @riverpod
 class PhoneAuthViewController extends _$PhoneAuthViewController {
-  static const Duration _authCodeTime = Duration(minutes: 3);
-
-  Duration authCodeTimeLeft = _authCodeTime;
-
-  late Timer _timer;
-
   @override
   FutureOr<void> build() {
     // ok to leave this empty if the return type is FutureOr<void>
   }
 
   Future<void> sendAuthCode() async {
-    _startAuthCodeTimer();
+    ref.watch(timerNotifierProvider.notifier).start();
   }
 
   Future<void> verifyAuthCode(String int) async {}
-
-  void _startAuthCodeTimer() {
-    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-      if (authCodeTimeLeft == Duration.zero) {
-        _resetAuthCodeTimer();
-      } else {
-        authCodeTimeLeft -= Duration(seconds: _timer.tick);
-      }
-
-      ref.notifyListeners();
-    });
-  }
-
-  void _resetAuthCodeTimer() {
-    authCodeTimeLeft = _authCodeTime;
-    _timer.cancel();
-  }
 }
 
 final nextButtonStateProvider = Provider((ref) {

@@ -9,8 +9,9 @@ class PaginationResponse<T> {
   });
 
   PaginationResponse.fromJson(
-      Map<String, dynamic> json, T Function(dynamic) fromJson)
-      : page = json['page'] as int,
+    Map<String, dynamic> json,
+    T Function(dynamic) fromJson,
+  )   : page = json['page'] as int,
         size = json['size'] as int,
         items = (json['items'] as List<dynamic>)
             .map((e) => fromJson.call(e))

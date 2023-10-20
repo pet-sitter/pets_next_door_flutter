@@ -7,7 +7,16 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 typedef Valid = bool;
 
-abstract class SnsAuthService {
+final kakaoAuthServiceProvider =
+    Provider<SnsAuthDataSource>((ref) => KakaoAuthDataSource());
+
+final googleAuthServiceProvider =
+    Provider<SnsAuthDataSource>((ref) => GoogleAuthDataSource());
+
+final appleAuthServiceProvider =
+    Provider<SnsAuthDataSource>((ref) => AppleAuthDataSource());
+
+abstract class SnsAuthDataSource {
   /// 플랫폼 별로 sns로그인을 한 뒤 OAuth정보를 리턴하는 함수
   Future<SnsOAuthInfo> snsLogin();
 
@@ -15,7 +24,7 @@ abstract class SnsAuthService {
   Future<Valid> validateLoginStatus();
 }
 
-class KakaoAuthService implements SnsAuthService {
+class KakaoAuthDataSource implements SnsAuthDataSource {
   @override
   Future<SnsOAuthInfo> snsLogin() async {
     final oAuthToken = await _signInWithKakao();
@@ -66,7 +75,7 @@ class KakaoAuthService implements SnsAuthService {
   }
 }
 
-class GoogleAuthService implements SnsAuthService {
+class GoogleAuthDataSource implements SnsAuthDataSource {
   @override
   Future<SnsOAuthInfo> snsLogin() async {
     final oAuthCredential = await _signInWithGoogle();
@@ -76,7 +85,7 @@ class GoogleAuthService implements SnsAuthService {
     return SnsOAuthInfo.credential(authCredential: oAuthCredential);
   }
 
-  Future<AuthCredential> _signInWithGoogle() async {
+  Future<OAuthCredential> _signInWithGoogle() async {
     final googleSignIn = GoogleSignIn();
     final isSignedIn = await googleSignIn.isSignedIn();
     final GoogleSignInAuthentication? googleAuth;
@@ -107,7 +116,7 @@ class GoogleAuthService implements SnsAuthService {
   }
 }
 
-class AppleAuthService implements SnsAuthService {
+class AppleAuthDataSource implements SnsAuthDataSource {
   @override
   snsLogin() {
     // TODO: implement snsLogin
@@ -120,10 +129,3 @@ class AppleAuthService implements SnsAuthService {
     throw UnimplementedError();
   }
 }
-
-final kakaoAuthServiceProvider =
-    Provider<SnsAuthService>((ref) => KakaoAuthService());
-final googleAuthServiceProvider =
-    Provider<SnsAuthService>((ref) => GoogleAuthService());
-final appleAuthServiceProvider =
-    Provider<SnsAuthService>((ref) => AppleAuthService());

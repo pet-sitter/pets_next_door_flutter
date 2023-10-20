@@ -9,7 +9,7 @@ part 'sns_oauth_info.freezed.dart';
 /// - [SnsOAuthInfo.token] : sns로그인 후 OAuthToken을 발급받았을 경우 생성되는 클래스
 @freezed
 sealed class SnsOAuthInfo with _$SnsOAuthInfo {
-  factory SnsOAuthInfo.credential({required AuthCredential authCredential}) =
+  factory SnsOAuthInfo.credential({required OAuthCredential authCredential}) =
       SnsOAuthInfoCredential;
 
   factory SnsOAuthInfo.token({required OAuthToken authToken}) =

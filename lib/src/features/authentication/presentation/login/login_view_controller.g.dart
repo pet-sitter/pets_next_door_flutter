@@ -7,7 +7,7 @@ part of 'login_view_controller.dart';
 // **************************************************************************
 
 String _$loginViewControllerHash() =>
-    r'd58989d08918c06e40bf54dcc46f57eeb382945c';
+    r'b5aacc27b0cf06fb0389651905ae45d1d86c6af1';
 
 /// See also [LoginViewController].
 @ProviderFor(LoginViewController)

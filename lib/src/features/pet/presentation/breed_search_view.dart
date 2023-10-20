@@ -11,9 +11,16 @@ class BreedSearchView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final petType = PetType.cat;
     return Scaffold(
       body: Column(
         children: [
+          Row(
+            children: [
+              TextButton(onPressed: () {}, child: Text('고양이')),
+              TextButton(onPressed: () {}, child: Text('강아지'))
+            ],
+          ),
           Expanded(
             child: RefreshIndicator(
               onRefresh: () {
@@ -44,7 +51,7 @@ class BreedSearchView extends ConsumerWidget {
                       paginationRequest: BreedsPaginationRequest(
                         page: page,
                         size: size,
-                        petType: PetType.cat,
+                        petType: petType,
                       ),
                     ),
                   );

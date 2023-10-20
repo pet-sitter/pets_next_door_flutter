@@ -7,7 +7,7 @@ part of 'phone_auth_view_controller.dart';
 // **************************************************************************
 
 String _$phoneAuthViewControllerHash() =>
-    r'56ba1e6d995d0b26cd450942733b6d0a3762b409';
+    r'93c850f20cfd09f6362a32e091eee463643775b5';
 
 /// See also [PhoneAuthViewController].
 @ProviderFor(PhoneAuthViewController)
