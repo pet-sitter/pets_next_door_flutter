@@ -18,53 +18,40 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AuthStatus {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() newUser,
-    required TResult Function(SnsProviderType latestLogInProviderType)
-        loggedOut,
-    required TResult Function(SnsProviderType providerType) signUpInProgress,
-    required TResult Function(SnsProviderType providerType) loggedIn,
+    required TResult Function(SnsOAuthInfo snsOAuthInfo) newUser,
+    required TResult Function(UserCredential firebaseUserCredential)
+        existingUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? newUser,
-    TResult? Function(SnsProviderType latestLogInProviderType)? loggedOut,
-    TResult? Function(SnsProviderType providerType)? signUpInProgress,
-    TResult? Function(SnsProviderType providerType)? loggedIn,
+    TResult? Function(SnsOAuthInfo snsOAuthInfo)? newUser,
+    TResult? Function(UserCredential firebaseUserCredential)? existingUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? newUser,
-    TResult Function(SnsProviderType latestLogInProviderType)? loggedOut,
-    TResult Function(SnsProviderType providerType)? signUpInProgress,
-    TResult Function(SnsProviderType providerType)? loggedIn,
+    TResult Function(SnsOAuthInfo snsOAuthInfo)? newUser,
+    TResult Function(UserCredential firebaseUserCredential)? existingUser,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(AuthStatusNewUser value) newUser,
-    required TResult Function(AuthStatusLoggedOut value) loggedOut,
-    required TResult Function(AuthStatusSignUpInProgress value)
-        signUpInProgress,
-    required TResult Function(AuthStatusLoggedIn value) loggedIn,
+    required TResult Function(AuthStatusExistingUser value) existingUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(AuthStatusNewUser value)? newUser,
-    TResult? Function(AuthStatusLoggedOut value)? loggedOut,
-    TResult? Function(AuthStatusSignUpInProgress value)? signUpInProgress,
-    TResult? Function(AuthStatusLoggedIn value)? loggedIn,
+    TResult? Function(AuthStatusExistingUser value)? existingUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AuthStatusNewUser value)? newUser,
-    TResult Function(AuthStatusLoggedOut value)? loggedOut,
-    TResult Function(AuthStatusSignUpInProgress value)? signUpInProgress,
-    TResult Function(AuthStatusLoggedIn value)? loggedIn,
+    TResult Function(AuthStatusExistingUser value)? existingUser,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -93,6 +80,10 @@ abstract class _$$AuthStatusNewUserCopyWith<$Res> {
   factory _$$AuthStatusNewUserCopyWith(
           _$AuthStatusNewUser value, $Res Function(_$AuthStatusNewUser) then) =
       __$$AuthStatusNewUserCopyWithImpl<$Res>;
+  @useResult
+  $Res call({SnsOAuthInfo snsOAuthInfo});
+
+  $SnsOAuthInfoCopyWith<$Res> get snsOAuthInfo;
 }
 
 /// @nodoc
@@ -102,61 +93,88 @@ class __$$AuthStatusNewUserCopyWithImpl<$Res>
   __$$AuthStatusNewUserCopyWithImpl(
       _$AuthStatusNewUser _value, $Res Function(_$AuthStatusNewUser) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? snsOAuthInfo = null,
+  }) {
+    return _then(_$AuthStatusNewUser(
+      snsOAuthInfo: null == snsOAuthInfo
+          ? _value.snsOAuthInfo
+          : snsOAuthInfo // ignore: cast_nullable_to_non_nullable
+              as SnsOAuthInfo,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $SnsOAuthInfoCopyWith<$Res> get snsOAuthInfo {
+    return $SnsOAuthInfoCopyWith<$Res>(_value.snsOAuthInfo, (value) {
+      return _then(_value.copyWith(snsOAuthInfo: value));
+    });
+  }
 }
 
 /// @nodoc
 
 class _$AuthStatusNewUser implements AuthStatusNewUser {
-  _$AuthStatusNewUser();
+  _$AuthStatusNewUser({required this.snsOAuthInfo});
+
+  @override
+  final SnsOAuthInfo snsOAuthInfo;
 
   @override
   String toString() {
-    return 'AuthStatus.newUser()';
+    return 'AuthStatus.newUser(snsOAuthInfo: $snsOAuthInfo)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$AuthStatusNewUser);
+        (other.runtimeType == runtimeType &&
+            other is _$AuthStatusNewUser &&
+            (identical(other.snsOAuthInfo, snsOAuthInfo) ||
+                other.snsOAuthInfo == snsOAuthInfo));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, snsOAuthInfo);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AuthStatusNewUserCopyWith<_$AuthStatusNewUser> get copyWith =>
+      __$$AuthStatusNewUserCopyWithImpl<_$AuthStatusNewUser>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() newUser,
-    required TResult Function(SnsProviderType latestLogInProviderType)
-        loggedOut,
-    required TResult Function(SnsProviderType providerType) signUpInProgress,
-    required TResult Function(SnsProviderType providerType) loggedIn,
+    required TResult Function(SnsOAuthInfo snsOAuthInfo) newUser,
+    required TResult Function(UserCredential firebaseUserCredential)
+        existingUser,
   }) {
-    return newUser();
+    return newUser(snsOAuthInfo);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? newUser,
-    TResult? Function(SnsProviderType latestLogInProviderType)? loggedOut,
-    TResult? Function(SnsProviderType providerType)? signUpInProgress,
-    TResult? Function(SnsProviderType providerType)? loggedIn,
+    TResult? Function(SnsOAuthInfo snsOAuthInfo)? newUser,
+    TResult? Function(UserCredential firebaseUserCredential)? existingUser,
   }) {
-    return newUser?.call();
+    return newUser?.call(snsOAuthInfo);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? newUser,
-    TResult Function(SnsProviderType latestLogInProviderType)? loggedOut,
-    TResult Function(SnsProviderType providerType)? signUpInProgress,
-    TResult Function(SnsProviderType providerType)? loggedIn,
+    TResult Function(SnsOAuthInfo snsOAuthInfo)? newUser,
+    TResult Function(UserCredential firebaseUserCredential)? existingUser,
     required TResult orElse(),
   }) {
     if (newUser != null) {
-      return newUser();
+      return newUser(snsOAuthInfo);
     }
     return orElse();
   }
@@ -165,10 +183,7 @@ class _$AuthStatusNewUser implements AuthStatusNewUser {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(AuthStatusNewUser value) newUser,
-    required TResult Function(AuthStatusLoggedOut value) loggedOut,
-    required TResult Function(AuthStatusSignUpInProgress value)
-        signUpInProgress,
-    required TResult Function(AuthStatusLoggedIn value) loggedIn,
+    required TResult Function(AuthStatusExistingUser value) existingUser,
   }) {
     return newUser(this);
   }
@@ -177,9 +192,7 @@ class _$AuthStatusNewUser implements AuthStatusNewUser {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(AuthStatusNewUser value)? newUser,
-    TResult? Function(AuthStatusLoggedOut value)? loggedOut,
-    TResult? Function(AuthStatusSignUpInProgress value)? signUpInProgress,
-    TResult? Function(AuthStatusLoggedIn value)? loggedIn,
+    TResult? Function(AuthStatusExistingUser value)? existingUser,
   }) {
     return newUser?.call(this);
   }
@@ -188,9 +201,7 @@ class _$AuthStatusNewUser implements AuthStatusNewUser {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AuthStatusNewUser value)? newUser,
-    TResult Function(AuthStatusLoggedOut value)? loggedOut,
-    TResult Function(AuthStatusSignUpInProgress value)? signUpInProgress,
-    TResult Function(AuthStatusLoggedIn value)? loggedIn,
+    TResult Function(AuthStatusExistingUser value)? existingUser,
     required TResult orElse(),
   }) {
     if (newUser != null) {
@@ -201,411 +212,106 @@ class _$AuthStatusNewUser implements AuthStatusNewUser {
 }
 
 abstract class AuthStatusNewUser implements AuthStatus {
-  factory AuthStatusNewUser() = _$AuthStatusNewUser;
-}
+  factory AuthStatusNewUser({required final SnsOAuthInfo snsOAuthInfo}) =
+      _$AuthStatusNewUser;
 
-/// @nodoc
-abstract class _$$AuthStatusLoggedOutCopyWith<$Res> {
-  factory _$$AuthStatusLoggedOutCopyWith(_$AuthStatusLoggedOut value,
-          $Res Function(_$AuthStatusLoggedOut) then) =
-      __$$AuthStatusLoggedOutCopyWithImpl<$Res>;
-  @useResult
-  $Res call({SnsProviderType latestLogInProviderType});
-}
-
-/// @nodoc
-class __$$AuthStatusLoggedOutCopyWithImpl<$Res>
-    extends _$AuthStatusCopyWithImpl<$Res, _$AuthStatusLoggedOut>
-    implements _$$AuthStatusLoggedOutCopyWith<$Res> {
-  __$$AuthStatusLoggedOutCopyWithImpl(
-      _$AuthStatusLoggedOut _value, $Res Function(_$AuthStatusLoggedOut) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? latestLogInProviderType = null,
-  }) {
-    return _then(_$AuthStatusLoggedOut(
-      latestLogInProviderType: null == latestLogInProviderType
-          ? _value.latestLogInProviderType
-          : latestLogInProviderType // ignore: cast_nullable_to_non_nullable
-              as SnsProviderType,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$AuthStatusLoggedOut implements AuthStatusLoggedOut {
-  _$AuthStatusLoggedOut({required this.latestLogInProviderType});
-
-  @override
-  final SnsProviderType latestLogInProviderType;
-
-  @override
-  String toString() {
-    return 'AuthStatus.loggedOut(latestLogInProviderType: $latestLogInProviderType)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$AuthStatusLoggedOut &&
-            (identical(
-                    other.latestLogInProviderType, latestLogInProviderType) ||
-                other.latestLogInProviderType == latestLogInProviderType));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, latestLogInProviderType);
-
+  SnsOAuthInfo get snsOAuthInfo;
   @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$AuthStatusLoggedOutCopyWith<_$AuthStatusLoggedOut> get copyWith =>
-      __$$AuthStatusLoggedOutCopyWithImpl<_$AuthStatusLoggedOut>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() newUser,
-    required TResult Function(SnsProviderType latestLogInProviderType)
-        loggedOut,
-    required TResult Function(SnsProviderType providerType) signUpInProgress,
-    required TResult Function(SnsProviderType providerType) loggedIn,
-  }) {
-    return loggedOut(latestLogInProviderType);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? newUser,
-    TResult? Function(SnsProviderType latestLogInProviderType)? loggedOut,
-    TResult? Function(SnsProviderType providerType)? signUpInProgress,
-    TResult? Function(SnsProviderType providerType)? loggedIn,
-  }) {
-    return loggedOut?.call(latestLogInProviderType);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? newUser,
-    TResult Function(SnsProviderType latestLogInProviderType)? loggedOut,
-    TResult Function(SnsProviderType providerType)? signUpInProgress,
-    TResult Function(SnsProviderType providerType)? loggedIn,
-    required TResult orElse(),
-  }) {
-    if (loggedOut != null) {
-      return loggedOut(latestLogInProviderType);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(AuthStatusNewUser value) newUser,
-    required TResult Function(AuthStatusLoggedOut value) loggedOut,
-    required TResult Function(AuthStatusSignUpInProgress value)
-        signUpInProgress,
-    required TResult Function(AuthStatusLoggedIn value) loggedIn,
-  }) {
-    return loggedOut(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(AuthStatusNewUser value)? newUser,
-    TResult? Function(AuthStatusLoggedOut value)? loggedOut,
-    TResult? Function(AuthStatusSignUpInProgress value)? signUpInProgress,
-    TResult? Function(AuthStatusLoggedIn value)? loggedIn,
-  }) {
-    return loggedOut?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(AuthStatusNewUser value)? newUser,
-    TResult Function(AuthStatusLoggedOut value)? loggedOut,
-    TResult Function(AuthStatusSignUpInProgress value)? signUpInProgress,
-    TResult Function(AuthStatusLoggedIn value)? loggedIn,
-    required TResult orElse(),
-  }) {
-    if (loggedOut != null) {
-      return loggedOut(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class AuthStatusLoggedOut implements AuthStatus {
-  factory AuthStatusLoggedOut(
-          {required final SnsProviderType latestLogInProviderType}) =
-      _$AuthStatusLoggedOut;
-
-  SnsProviderType get latestLogInProviderType;
-  @JsonKey(ignore: true)
-  _$$AuthStatusLoggedOutCopyWith<_$AuthStatusLoggedOut> get copyWith =>
+  _$$AuthStatusNewUserCopyWith<_$AuthStatusNewUser> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$AuthStatusSignUpInProgressCopyWith<$Res> {
-  factory _$$AuthStatusSignUpInProgressCopyWith(
-          _$AuthStatusSignUpInProgress value,
-          $Res Function(_$AuthStatusSignUpInProgress) then) =
-      __$$AuthStatusSignUpInProgressCopyWithImpl<$Res>;
+abstract class _$$AuthStatusExistingUserCopyWith<$Res> {
+  factory _$$AuthStatusExistingUserCopyWith(_$AuthStatusExistingUser value,
+          $Res Function(_$AuthStatusExistingUser) then) =
+      __$$AuthStatusExistingUserCopyWithImpl<$Res>;
   @useResult
-  $Res call({SnsProviderType providerType});
+  $Res call({UserCredential firebaseUserCredential});
 }
 
 /// @nodoc
-class __$$AuthStatusSignUpInProgressCopyWithImpl<$Res>
-    extends _$AuthStatusCopyWithImpl<$Res, _$AuthStatusSignUpInProgress>
-    implements _$$AuthStatusSignUpInProgressCopyWith<$Res> {
-  __$$AuthStatusSignUpInProgressCopyWithImpl(
-      _$AuthStatusSignUpInProgress _value,
-      $Res Function(_$AuthStatusSignUpInProgress) _then)
+class __$$AuthStatusExistingUserCopyWithImpl<$Res>
+    extends _$AuthStatusCopyWithImpl<$Res, _$AuthStatusExistingUser>
+    implements _$$AuthStatusExistingUserCopyWith<$Res> {
+  __$$AuthStatusExistingUserCopyWithImpl(_$AuthStatusExistingUser _value,
+      $Res Function(_$AuthStatusExistingUser) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? providerType = null,
+    Object? firebaseUserCredential = null,
   }) {
-    return _then(_$AuthStatusSignUpInProgress(
-      providerType: null == providerType
-          ? _value.providerType
-          : providerType // ignore: cast_nullable_to_non_nullable
-              as SnsProviderType,
+    return _then(_$AuthStatusExistingUser(
+      firebaseUserCredential: null == firebaseUserCredential
+          ? _value.firebaseUserCredential
+          : firebaseUserCredential // ignore: cast_nullable_to_non_nullable
+              as UserCredential,
     ));
   }
 }
 
 /// @nodoc
 
-class _$AuthStatusSignUpInProgress implements AuthStatusSignUpInProgress {
-  _$AuthStatusSignUpInProgress({required this.providerType});
+class _$AuthStatusExistingUser implements AuthStatusExistingUser {
+  _$AuthStatusExistingUser({required this.firebaseUserCredential});
 
   @override
-  final SnsProviderType providerType;
+  final UserCredential firebaseUserCredential;
 
   @override
   String toString() {
-    return 'AuthStatus.signUpInProgress(providerType: $providerType)';
+    return 'AuthStatus.existingUser(firebaseUserCredential: $firebaseUserCredential)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AuthStatusSignUpInProgress &&
-            (identical(other.providerType, providerType) ||
-                other.providerType == providerType));
+            other is _$AuthStatusExistingUser &&
+            (identical(other.firebaseUserCredential, firebaseUserCredential) ||
+                other.firebaseUserCredential == firebaseUserCredential));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, providerType);
+  int get hashCode => Object.hash(runtimeType, firebaseUserCredential);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$AuthStatusSignUpInProgressCopyWith<_$AuthStatusSignUpInProgress>
-      get copyWith => __$$AuthStatusSignUpInProgressCopyWithImpl<
-          _$AuthStatusSignUpInProgress>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() newUser,
-    required TResult Function(SnsProviderType latestLogInProviderType)
-        loggedOut,
-    required TResult Function(SnsProviderType providerType) signUpInProgress,
-    required TResult Function(SnsProviderType providerType) loggedIn,
-  }) {
-    return signUpInProgress(providerType);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? newUser,
-    TResult? Function(SnsProviderType latestLogInProviderType)? loggedOut,
-    TResult? Function(SnsProviderType providerType)? signUpInProgress,
-    TResult? Function(SnsProviderType providerType)? loggedIn,
-  }) {
-    return signUpInProgress?.call(providerType);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? newUser,
-    TResult Function(SnsProviderType latestLogInProviderType)? loggedOut,
-    TResult Function(SnsProviderType providerType)? signUpInProgress,
-    TResult Function(SnsProviderType providerType)? loggedIn,
-    required TResult orElse(),
-  }) {
-    if (signUpInProgress != null) {
-      return signUpInProgress(providerType);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(AuthStatusNewUser value) newUser,
-    required TResult Function(AuthStatusLoggedOut value) loggedOut,
-    required TResult Function(AuthStatusSignUpInProgress value)
-        signUpInProgress,
-    required TResult Function(AuthStatusLoggedIn value) loggedIn,
-  }) {
-    return signUpInProgress(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(AuthStatusNewUser value)? newUser,
-    TResult? Function(AuthStatusLoggedOut value)? loggedOut,
-    TResult? Function(AuthStatusSignUpInProgress value)? signUpInProgress,
-    TResult? Function(AuthStatusLoggedIn value)? loggedIn,
-  }) {
-    return signUpInProgress?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(AuthStatusNewUser value)? newUser,
-    TResult Function(AuthStatusLoggedOut value)? loggedOut,
-    TResult Function(AuthStatusSignUpInProgress value)? signUpInProgress,
-    TResult Function(AuthStatusLoggedIn value)? loggedIn,
-    required TResult orElse(),
-  }) {
-    if (signUpInProgress != null) {
-      return signUpInProgress(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class AuthStatusSignUpInProgress implements AuthStatus {
-  factory AuthStatusSignUpInProgress(
-          {required final SnsProviderType providerType}) =
-      _$AuthStatusSignUpInProgress;
-
-  SnsProviderType get providerType;
-  @JsonKey(ignore: true)
-  _$$AuthStatusSignUpInProgressCopyWith<_$AuthStatusSignUpInProgress>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$AuthStatusLoggedInCopyWith<$Res> {
-  factory _$$AuthStatusLoggedInCopyWith(_$AuthStatusLoggedIn value,
-          $Res Function(_$AuthStatusLoggedIn) then) =
-      __$$AuthStatusLoggedInCopyWithImpl<$Res>;
-  @useResult
-  $Res call({SnsProviderType providerType});
-}
-
-/// @nodoc
-class __$$AuthStatusLoggedInCopyWithImpl<$Res>
-    extends _$AuthStatusCopyWithImpl<$Res, _$AuthStatusLoggedIn>
-    implements _$$AuthStatusLoggedInCopyWith<$Res> {
-  __$$AuthStatusLoggedInCopyWithImpl(
-      _$AuthStatusLoggedIn _value, $Res Function(_$AuthStatusLoggedIn) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? providerType = null,
-  }) {
-    return _then(_$AuthStatusLoggedIn(
-      providerType: null == providerType
-          ? _value.providerType
-          : providerType // ignore: cast_nullable_to_non_nullable
-              as SnsProviderType,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$AuthStatusLoggedIn implements AuthStatusLoggedIn {
-  _$AuthStatusLoggedIn({required this.providerType});
-
-  @override
-  final SnsProviderType providerType;
-
-  @override
-  String toString() {
-    return 'AuthStatus.loggedIn(providerType: $providerType)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$AuthStatusLoggedIn &&
-            (identical(other.providerType, providerType) ||
-                other.providerType == providerType));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, providerType);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$AuthStatusLoggedInCopyWith<_$AuthStatusLoggedIn> get copyWith =>
-      __$$AuthStatusLoggedInCopyWithImpl<_$AuthStatusLoggedIn>(
+  _$$AuthStatusExistingUserCopyWith<_$AuthStatusExistingUser> get copyWith =>
+      __$$AuthStatusExistingUserCopyWithImpl<_$AuthStatusExistingUser>(
           this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() newUser,
-    required TResult Function(SnsProviderType latestLogInProviderType)
-        loggedOut,
-    required TResult Function(SnsProviderType providerType) signUpInProgress,
-    required TResult Function(SnsProviderType providerType) loggedIn,
+    required TResult Function(SnsOAuthInfo snsOAuthInfo) newUser,
+    required TResult Function(UserCredential firebaseUserCredential)
+        existingUser,
   }) {
-    return loggedIn(providerType);
+    return existingUser(firebaseUserCredential);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? newUser,
-    TResult? Function(SnsProviderType latestLogInProviderType)? loggedOut,
-    TResult? Function(SnsProviderType providerType)? signUpInProgress,
-    TResult? Function(SnsProviderType providerType)? loggedIn,
+    TResult? Function(SnsOAuthInfo snsOAuthInfo)? newUser,
+    TResult? Function(UserCredential firebaseUserCredential)? existingUser,
   }) {
-    return loggedIn?.call(providerType);
+    return existingUser?.call(firebaseUserCredential);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? newUser,
-    TResult Function(SnsProviderType latestLogInProviderType)? loggedOut,
-    TResult Function(SnsProviderType providerType)? signUpInProgress,
-    TResult Function(SnsProviderType providerType)? loggedIn,
+    TResult Function(SnsOAuthInfo snsOAuthInfo)? newUser,
+    TResult Function(UserCredential firebaseUserCredential)? existingUser,
     required TResult orElse(),
   }) {
-    if (loggedIn != null) {
-      return loggedIn(providerType);
+    if (existingUser != null) {
+      return existingUser(firebaseUserCredential);
     }
     return orElse();
   }
@@ -614,47 +320,41 @@ class _$AuthStatusLoggedIn implements AuthStatusLoggedIn {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(AuthStatusNewUser value) newUser,
-    required TResult Function(AuthStatusLoggedOut value) loggedOut,
-    required TResult Function(AuthStatusSignUpInProgress value)
-        signUpInProgress,
-    required TResult Function(AuthStatusLoggedIn value) loggedIn,
+    required TResult Function(AuthStatusExistingUser value) existingUser,
   }) {
-    return loggedIn(this);
+    return existingUser(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(AuthStatusNewUser value)? newUser,
-    TResult? Function(AuthStatusLoggedOut value)? loggedOut,
-    TResult? Function(AuthStatusSignUpInProgress value)? signUpInProgress,
-    TResult? Function(AuthStatusLoggedIn value)? loggedIn,
+    TResult? Function(AuthStatusExistingUser value)? existingUser,
   }) {
-    return loggedIn?.call(this);
+    return existingUser?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AuthStatusNewUser value)? newUser,
-    TResult Function(AuthStatusLoggedOut value)? loggedOut,
-    TResult Function(AuthStatusSignUpInProgress value)? signUpInProgress,
-    TResult Function(AuthStatusLoggedIn value)? loggedIn,
+    TResult Function(AuthStatusExistingUser value)? existingUser,
     required TResult orElse(),
   }) {
-    if (loggedIn != null) {
-      return loggedIn(this);
+    if (existingUser != null) {
+      return existingUser(this);
     }
     return orElse();
   }
 }
 
-abstract class AuthStatusLoggedIn implements AuthStatus {
-  factory AuthStatusLoggedIn({required final SnsProviderType providerType}) =
-      _$AuthStatusLoggedIn;
+abstract class AuthStatusExistingUser implements AuthStatus {
+  factory AuthStatusExistingUser(
+          {required final UserCredential firebaseUserCredential}) =
+      _$AuthStatusExistingUser;
 
-  SnsProviderType get providerType;
+  UserCredential get firebaseUserCredential;
   @JsonKey(ignore: true)
-  _$$AuthStatusLoggedInCopyWith<_$AuthStatusLoggedIn> get copyWith =>
+  _$$AuthStatusExistingUserCopyWith<_$AuthStatusExistingUser> get copyWith =>
       throw _privateConstructorUsedError;
 }

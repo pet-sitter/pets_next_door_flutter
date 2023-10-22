@@ -2,10 +2,21 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart';
+import 'package:pets_next_door_flutter/src/constants/enums.dart';
 import 'package:pets_next_door_flutter/src/features/authentication/domain/sns_oauth_info.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 typedef Valid = bool;
+
+typedef SignInResultOAuthCredential = ({
+  OAuthCredential oAuthCredential,
+  String email
+});
+
+typedef SignInResultOAuthToken = ({
+  OAuthToken oAuthToken,
+  String email,
+});
 
 final kakaoAuthServiceProvider =
     Provider<SnsAuthDataSource>((ref) => KakaoAuthDataSource());
@@ -27,21 +38,30 @@ abstract class SnsAuthDataSource {
 class KakaoAuthDataSource implements SnsAuthDataSource {
   @override
   Future<SnsOAuthInfo> snsLogin() async {
-    final oAuthToken = await _signInWithKakao();
+    final signInResult = await _signInWithKakao();
 
     // TODO: 여기다가 우리 자체 API 태워서 customToken 가지고 오는 로직 넣어야 함
 
-    return SnsOAuthInfo.token(authToken: oAuthToken!);
+    return SnsOAuthInfo.token(
+      authToken: signInResult!.oAuthToken,
+      email: signInResult.email,
+      providerType: SnsProviderType.kakao,
+    );
   }
 
-  Future<OAuthToken?> _signInWithKakao() async {
+  Future<SignInResultOAuthToken?> _signInWithKakao() async {
 // 카카오 로그인 구현 예제
 
 // 카카오톡 실행 가능 여부 확인
 // 카카오톡 실행이 가능하면 카카오톡으로 로그인, 아니면 카카오계정으로 로그인
     if (await isKakaoTalkInstalled()) {
       try {
-        return await UserApi.instance.loginWithKakaoTalk();
+        final oAuthToken = await UserApi.instance.loginWithKakaoTalk();
+        final userEmail = await UserApi.instance
+            .me()
+            .then((value) => value.kakaoAccount?.email ?? '');
+
+        return (oAuthToken: oAuthToken, email: userEmail);
       } catch (error) {
         // 사용자가 카카오톡 설치 후 디바이스 권한 요청 화면에서 로그인을 취소한 경우,
         // 의도적인 로그인 취소로 보고 카카오계정으로 로그인 시도 없이 로그인 취소로 처리 (예: 뒤로 가기)
@@ -51,7 +71,12 @@ class KakaoAuthDataSource implements SnsAuthDataSource {
 
         // 카카오톡에 연결된 카카오계정이 없는 경우, 카카오계정으로 로그인
         try {
-          return await UserApi.instance.loginWithKakaoAccount();
+          final oAuthToken = await UserApi.instance.loginWithKakaoAccount();
+          final userEmail = await UserApi.instance
+              .me()
+              .then((value) => value.kakaoAccount?.email ?? '');
+
+          return (oAuthToken: oAuthToken, email: userEmail);
         } catch (error) {
           // print('카카오계정으로 로그인 실패 $error');
           return null;
@@ -60,7 +85,12 @@ class KakaoAuthDataSource implements SnsAuthDataSource {
     } else {
       try {
         // print('카카오계정으로 로그인 성공');
-        return await UserApi.instance.loginWithKakaoAccount();
+        final oAuthToken = await UserApi.instance.loginWithKakaoAccount();
+        final userEmail = await UserApi.instance
+            .me()
+            .then((value) => value.kakaoAccount?.email ?? '');
+
+        return (oAuthToken: oAuthToken, email: userEmail);
       } catch (error) {
         // print('카카오계정으로 로그인 실패 $error');
         return null;
@@ -78,34 +108,44 @@ class KakaoAuthDataSource implements SnsAuthDataSource {
 class GoogleAuthDataSource implements SnsAuthDataSource {
   @override
   Future<SnsOAuthInfo> snsLogin() async {
-    final oAuthCredential = await _signInWithGoogle();
+    final signInResult = await _signInWithGoogle();
 
     // Once signed in, return the UserCredential
     // return FirebaseAuth.instance.signInWithCredential(oAuthCredential);
-    return SnsOAuthInfo.credential(authCredential: oAuthCredential);
+    return SnsOAuthInfo.credential(
+      providerType: SnsProviderType.google,
+      authCredential: signInResult.oAuthCredential,
+      email: signInResult.email,
+    );
   }
 
-  Future<OAuthCredential> _signInWithGoogle() async {
+  Future<SignInResultOAuthCredential> _signInWithGoogle() async {
     final googleSignIn = GoogleSignIn();
     final isSignedIn = await googleSignIn.isSignedIn();
     final GoogleSignInAuthentication? googleAuth;
+    final String? userEmail;
 
     if (isSignedIn && googleSignIn.currentUser != null) {
       final currentUser = googleSignIn.currentUser;
 
       googleAuth = await currentUser?.authentication;
+      userEmail = currentUser?.email;
     } else {
       // Trigger the authentication flow
       final googleUser = await googleSignIn.signIn();
 
       // Obtain the auth details from the request
       googleAuth = await googleUser?.authentication;
+      userEmail = googleUser?.email;
     }
 
     // Create a new credential
-    return GoogleAuthProvider.credential(
-      accessToken: googleAuth?.accessToken,
-      idToken: googleAuth?.idToken,
+    return (
+      oAuthCredential: GoogleAuthProvider.credential(
+        accessToken: googleAuth?.accessToken,
+        idToken: googleAuth?.idToken,
+      ),
+      email: userEmail ?? ''
     );
   }
 

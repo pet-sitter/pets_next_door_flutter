@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:kakao_flutter_sdk_auth/kakao_flutter_sdk_auth.dart';
+import 'package:pets_next_door_flutter/src/constants/enums.dart';
 
 part 'sns_oauth_info.freezed.dart';
 
@@ -9,9 +10,15 @@ part 'sns_oauth_info.freezed.dart';
 /// - [SnsOAuthInfo.token] : sns로그인 후 OAuthToken을 발급받았을 경우 생성되는 클래스
 @freezed
 sealed class SnsOAuthInfo with _$SnsOAuthInfo {
-  factory SnsOAuthInfo.credential({required OAuthCredential authCredential}) =
-      SnsOAuthInfoCredential;
+  factory SnsOAuthInfo.credential({
+    required OAuthCredential authCredential,
+    required String email,
+    required SnsProviderType providerType,
+  }) = SnsOAuthInfoCredential;
 
-  factory SnsOAuthInfo.token({required OAuthToken authToken}) =
-      SnsOAuthInfoToken;
+  factory SnsOAuthInfo.token({
+    required OAuthToken authToken,
+    required String email,
+    required SnsProviderType providerType,
+  }) = SnsOAuthInfoToken;
 }

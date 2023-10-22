@@ -1,24 +1,19 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:pets_next_door_flutter/src/constants/enums.dart';
+import 'package:pets_next_door_flutter/src/features/authentication/domain/sns_oauth_info.dart';
 
 part 'auth_status.freezed.dart';
 
 /// 유저의 Auth상태를 담는 클래스
-/// - [AuthStatus.loggedOut] : 로그아웃 한 유저 상태, 마지막으로 로그인 한 sns정보를 가지고 있습니다.
-/// - [AuthStatus.signUpInProgress] : 회원가입 과정 진행중인 유저,
-/// sns로그인은 마쳤지만 자체 db에 회원가입은 되지 않은 상태입니다.
-/// - [AuthStatus.loggedIn] : 로그인 된 유저 상태
+/// 중복 유저 상태를 체크하는 API를 사용한 후 판단 가능
+/// - [AuthStatus.newUser] : 새로운 유저, 회원가입 필요함
+/// - [AuthStatus.existingUser] : 계정이 있는 유저, 로그인 필요함
 @freezed
 sealed class AuthStatus with _$AuthStatus {
-  factory AuthStatus.newUser() = AuthStatusNewUser;
+  factory AuthStatus.newUser({required SnsOAuthInfo snsOAuthInfo}) =
+      AuthStatusNewUser;
 
-  factory AuthStatus.loggedOut({
-    required SnsProviderType latestLogInProviderType,
-  }) = AuthStatusLoggedOut;
-
-  factory AuthStatus.signUpInProgress({required SnsProviderType providerType}) =
-      AuthStatusSignUpInProgress;
-
-  factory AuthStatus.loggedIn({required SnsProviderType providerType}) =
-      AuthStatusLoggedIn;
+  factory AuthStatus.existingUser({
+    required UserCredential firebaseUserCredential,
+  }) = AuthStatusExistingUser;
 }

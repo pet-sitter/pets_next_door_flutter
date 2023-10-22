@@ -1,9 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:pets_next_door_flutter/src/constants/enums.dart';
 import 'package:pets_next_door_flutter/src/features/authentication/data/auth_repository.dart';
-import 'package:pets_next_door_flutter/src/features/authentication/data/data_sources/sns_auth_data_source.dart';
-import 'package:pets_next_door_flutter/src/features/authentication/domain/auth_status.dart';
+import 'package:pets_next_door_flutter/src/features/authentication/domain/sns_oauth_info.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'login_view_controller.g.dart';
@@ -15,23 +12,23 @@ class LoginViewController extends _$LoginViewController {
     // ok to leave this empty if the return type is FutureOr<void>
   }
 
-  Future<void> updateAuthStatus() async {
-    // final currentAuthStatus =
-    //     await ref.read(authRepositoryProvider).getAuthStatus();
+  Future<void> signIn({
+    required SnsProviderType selectedProvider,
+    required void Function(SnsOAuthInfo) onRegisterUser,
+    required void Function() onExistingUser,
+  }) async {
+    final authStatus =
+        await ref.watch(authSignInOrRegisterProvider(selectedProvider).future);
+
+    authStatus.when(
+      newUser: (snsOAuthInfo) {
+        onRegisterUser.call(snsOAuthInfo);
+      },
+      existingUser: (_) => onExistingUser.call(),
+    );
   }
 
-  Future<AuthStatus> signIn(SnsProviderType selectedProvider) async {
-    final authService = switch (selectedProvider) {
-      SnsProviderType.apple => ref.watch(appleAuthServiceProvider),
-      SnsProviderType.google => ref.watch(googleAuthServiceProvider),
-      SnsProviderType.kakao => ref.watch(kakaoAuthServiceProvider),
-    };
-
-    final authRepository = ref.watch(authRepositoryProvider(authService));
-
-    final userCredential =
-        await authRepository.signIn(snsProviderType: selectedProvider);
-
-    return AuthStatus.signUpInProgress(providerType: selectedProvider);
+  _saveLastestProvider(SnsProviderType selectedProvider) {
+    // TODO: 로컬에 마지막으로 선택한 프로바이더 저장하는 로직 구현하기
   }
 }
