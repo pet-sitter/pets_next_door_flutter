@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:pets_next_door_flutter/src/features/authentication/domain/sns_oauth_info.dart';
+import 'package:pets_next_door_flutter/src/features/auth/domain/sns_oauth_info.dart';
 
 part 'auth_status.freezed.dart';
 

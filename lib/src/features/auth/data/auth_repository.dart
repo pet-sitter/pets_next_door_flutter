@@ -3,10 +3,13 @@ import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart';
 import 'package:pets_next_door_flutter/src/constants/enums.dart';
-import 'package:pets_next_door_flutter/src/features/authentication/data/data_sources/local_auth_data_source.dart';
-import 'package:pets_next_door_flutter/src/features/authentication/data/data_sources/sns_auth_data_source.dart';
-import 'package:pets_next_door_flutter/src/features/authentication/domain/auth_status.dart';
-import 'package:pets_next_door_flutter/src/features/authentication/domain/sns_oauth_info.dart';
+import 'package:pets_next_door_flutter/src/features/auth/data/data_sources/local_auth_data_source.dart';
+import 'package:pets_next_door_flutter/src/features/auth/data/data_sources/sns_data_sources/apple_auth_data_source_impl.dart';
+import 'package:pets_next_door_flutter/src/features/auth/data/data_sources/sns_data_sources/google_auth_data_source_impl.dart';
+import 'package:pets_next_door_flutter/src/features/auth/data/data_sources/sns_data_sources/kakao_auth_data_source_impl.dart';
+import 'package:pets_next_door_flutter/src/features/auth/data/data_sources/sns_data_sources/sns_auth_data_source.dart';
+import 'package:pets_next_door_flutter/src/features/auth/domain/auth_status.dart';
+import 'package:pets_next_door_flutter/src/features/auth/domain/sns_oauth_info.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'auth_repository.g.dart';
@@ -85,26 +88,6 @@ class AuthRepositoryImpl implements AuthRepository {
     return localAuthDataSource.getCurrentAuthStatus();
   }
 
-  // @override
-  // Future<Succeed> logout({required AuthStatus authStatus}) async {
-  //   final currentLoginProviderType = authStatus.maybeWhen(
-  //     loggedOut: (latelyLoggedInProviderType) => latelyLoggedInProviderType,
-  //     signUpInProgress: (providerType) => providerType,
-  //     loggedIn: (providerType) => providerType,
-  //     orElse: () => null,
-  //   );
-
-  //   if (currentLoginProviderType == null) return false;
-
-  //   return firebaseAuthDataSource.signOut().then(
-  //         (_) => _updateAuthStatus(
-  //           authStatus: AuthStatus.loggedOut(
-  //             latestLogInProviderType: currentLoginProviderType,
-  //           ),
-  //         ),
-  //       );
-  // }
-
   Future<Succeed> _updateAuthStatus({required AuthStatus authStatus}) async {
     await localAuthDataSource.updateAuthStatus(authStatus: authStatus);
     return true;
@@ -152,7 +135,7 @@ final localAuthServiceProvider = Provider<LocalAuthDataSource>((ref) {
   return LocalAuthServiceImpl();
 });
 
-@riverpod
+@Riverpod(keepAlive: false)
 Future<AuthStatus> authSignInOrRegister(
   AuthSignInOrRegisterRef ref,
   SnsProviderType providerType,

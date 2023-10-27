@@ -1,6 +1,6 @@
 import 'package:pets_next_door_flutter/src/constants/enums.dart';
-import 'package:pets_next_door_flutter/src/features/authentication/data/auth_repository.dart';
-import 'package:pets_next_door_flutter/src/features/authentication/domain/sns_oauth_info.dart';
+import 'package:pets_next_door_flutter/src/features/auth/data/auth_repository.dart';
+import 'package:pets_next_door_flutter/src/features/auth/domain/sns_oauth_info.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'login_view_controller.g.dart';

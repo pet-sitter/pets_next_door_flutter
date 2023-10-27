@@ -7,7 +7,7 @@ part of 'auth_repository.dart';
 // **************************************************************************
 
 String _$authSignInOrRegisterHash() =>
-    r'3b0a6708fcfd650fe5b91e18a88f6e2c0368b89c';
+    r'affe886cb38677d633a1a8cbbbaed4e577ca8679';
 
 /// Copied from Dart SDK
 class _SystemHash {

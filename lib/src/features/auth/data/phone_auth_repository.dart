@@ -1,10 +1,9 @@
-import 'dart:convert';
 import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 import 'package:pets_next_door_flutter/src/api/auth_api.dart';
-import 'package:pets_next_door_flutter/src/features/authentication/data/api_exceptions.dart';
+import 'package:pets_next_door_flutter/src/features/auth/data/api_exceptions.dart';
 import 'package:pets_next_door_flutter/src/utils/dio_provider.dart';
 
 /// Weather Repository using the http client. Calls API methods and parses responses.

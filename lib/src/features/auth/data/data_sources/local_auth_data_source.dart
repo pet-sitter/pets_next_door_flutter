@@ -1,4 +1,4 @@
-import 'package:pets_next_door_flutter/src/features/authentication/domain/auth_status.dart';
+import 'package:pets_next_door_flutter/src/features/auth/domain/auth_status.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'local_auth_data_source.g.dart';

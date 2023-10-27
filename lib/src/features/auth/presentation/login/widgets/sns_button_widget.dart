@@ -20,9 +20,9 @@ class SnsButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final svgAssetUrl = switch (snsType) {
-      SnsProviderType.apple => Svgs.apple,
-      SnsProviderType.google => Svgs.google,
-      SnsProviderType.kakao => Svgs.kakao,
+      SnsProviderType.apple => PNDSvgs.apple,
+      SnsProviderType.google => PNDSvgs.google,
+      SnsProviderType.kakao => PNDSvgs.kakao,
     };
 
     return GestureDetector(
