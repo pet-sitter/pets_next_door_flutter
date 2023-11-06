@@ -1,17 +1,14 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
-import 'package:dio/dio.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'package:dio/dio.dart';
 import 'package:pets_next_door_flutter/src/api/pet_api.dart';
 import 'package:pets_next_door_flutter/src/constants/enums.dart';
-import 'package:pets_next_door_flutter/src/features/authentication/data/api_exceptions.dart';
+import 'package:pets_next_door_flutter/src/features/auth/data/api_exceptions.dart';
 import 'package:pets_next_door_flutter/src/features/pet/domain/breed.dart';
 import 'package:pets_next_door_flutter/src/features/pet/domain/breed_pagination_request.dart';
-import 'package:pets_next_door_flutter/src/features/pet/domain/breeds_pagination_response.dart';
 import 'package:pets_next_door_flutter/src/features/pet/domain/pagination_response.dart';
-import 'package:pets_next_door_flutter/src/features/pet/domain/pet.dart';
 import 'package:pets_next_door_flutter/src/utils/dio_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 

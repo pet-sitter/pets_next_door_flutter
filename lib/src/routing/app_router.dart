@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:pets_next_door_flutter/src/features/auth/presentation/sign_in/login_view.dart';
+import 'package:pets_next_door_flutter/src/features/auth/presentation/signup/phone_auth_view.dart';
 import 'package:pets_next_door_flutter/src/features/chat/chat_view.dart';
 import 'package:pets_next_door_flutter/src/features/gather/gather_view.dart';
-import 'package:pets_next_door_flutter/src/features/authentication/presentation/login/login_view.dart';
-import 'package:pets_next_door_flutter/src/features/authentication/presentation/signup/phone_auth_view.dart';
+import 'package:pets_next_door_flutter/src/features/home/presentation/home_view.dart';
 import 'package:pets_next_door_flutter/src/features/pet/presentation/breed_search_view.dart';
+import 'package:pets_next_door_flutter/src/features/pet/presentation/register_pet_page.dart';
+import 'package:pets_next_door_flutter/src/features/user/domain/user_profile_view_state.dart';
 import 'package:pets_next_door_flutter/src/features/user/presentation/user_profile_view.dart';
 import 'package:pets_next_door_flutter/src/features/user/presentation/user_view.dart';
-import 'package:pets_next_door_flutter/src/features/home/presentation/home_view.dart';
 import 'package:pets_next_door_flutter/src/routing/scaffold_with_nested_navigation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -29,6 +31,7 @@ enum AppRoute {
   user,
   profile,
   breedSearch,
+  registerPet,
 }
 
 @riverpod
@@ -64,7 +67,9 @@ GoRouter goRouter(GoRouterRef ref) {
         name: AppRoute.profile.name,
         pageBuilder: (context, state) => MaterialPage(
           key: state.pageKey,
-          child: UserProfileView(),
+          child: UserProfileView(
+            profileViewState: state.extra! as UserProfileViewState,
+          ),
         ),
       ),
 
@@ -76,6 +81,24 @@ GoRouter goRouter(GoRouterRef ref) {
           child: const BreedSearchView(),
         ),
       ),
+
+      GoRoute(
+        path: '/${AppRoute.registerPet.name}',
+        name: AppRoute.registerPet.name,
+        pageBuilder: (context, state) => MaterialPage(
+          key: state.pageKey,
+          child: const RegisterPetPage(),
+        ),
+      ),
+
+      // GoRoute(
+      //   path: '/${AppRoute.registerPetDetail.name}',
+      //   name: AppRoute.registerPetDetail.name,
+      //   pageBuilder: (context, state) => MaterialPage(
+      //     key: state.pageKey,
+      //     child: const RegisterPetInitialView(),
+      //   ),
+      // ),
 
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) {

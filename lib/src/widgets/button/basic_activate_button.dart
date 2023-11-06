@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class PNDBasicActivateButton extends StatelessWidget {
   const PNDBasicActivateButton({
@@ -22,7 +21,9 @@ class PNDBasicActivateButton extends StatelessWidget {
       child: Container(
         alignment: Alignment.center,
         margin: const EdgeInsets.only(bottom: 20),
-        color: isActive ? Colors.black : Colors.grey,
+        decoration: BoxDecoration(
+            color: isActive ? Colors.black : Color(0xffD1D1D1),
+            borderRadius: BorderRadius.circular(4)),
         width: double.infinity,
         height: 50,
         child: Text(

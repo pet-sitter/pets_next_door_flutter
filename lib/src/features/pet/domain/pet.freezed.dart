@@ -20,12 +20,12 @@ Pet _$PetFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Pet {
-  PetType get petType => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
-  bool get neutered => throw _privateConstructorUsedError;
-  String get breed => throw _privateConstructorUsedError;
-  DateTime get birthDate => throw _privateConstructorUsedError;
-  double get weight => throw _privateConstructorUsedError;
+  PetType? get petType => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
+  bool? get neutered => throw _privateConstructorUsedError;
+  String? get breed => throw _privateConstructorUsedError;
+  DateTime? get birthDate => throw _privateConstructorUsedError;
+  double? get weight => throw _privateConstructorUsedError;
   String? get profileImgUrl => throw _privateConstructorUsedError;
   String? get extraInfo => throw _privateConstructorUsedError;
 
@@ -40,12 +40,12 @@ abstract class $PetCopyWith<$Res> {
       _$PetCopyWithImpl<$Res, Pet>;
   @useResult
   $Res call(
-      {PetType petType,
-      String name,
-      bool neutered,
-      String breed,
-      DateTime birthDate,
-      double weight,
+      {PetType? petType,
+      String? name,
+      bool? neutered,
+      String? breed,
+      DateTime? birthDate,
+      double? weight,
       String? profileImgUrl,
       String? extraInfo});
 }
@@ -62,40 +62,40 @@ class _$PetCopyWithImpl<$Res, $Val extends Pet> implements $PetCopyWith<$Res> {
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? petType = null,
-    Object? name = null,
-    Object? neutered = null,
-    Object? breed = null,
-    Object? birthDate = null,
-    Object? weight = null,
+    Object? petType = freezed,
+    Object? name = freezed,
+    Object? neutered = freezed,
+    Object? breed = freezed,
+    Object? birthDate = freezed,
+    Object? weight = freezed,
     Object? profileImgUrl = freezed,
     Object? extraInfo = freezed,
   }) {
     return _then(_value.copyWith(
-      petType: null == petType
+      petType: freezed == petType
           ? _value.petType
           : petType // ignore: cast_nullable_to_non_nullable
-              as PetType,
-      name: null == name
+              as PetType?,
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      neutered: null == neutered
+              as String?,
+      neutered: freezed == neutered
           ? _value.neutered
           : neutered // ignore: cast_nullable_to_non_nullable
-              as bool,
-      breed: null == breed
+              as bool?,
+      breed: freezed == breed
           ? _value.breed
           : breed // ignore: cast_nullable_to_non_nullable
-              as String,
-      birthDate: null == birthDate
+              as String?,
+      birthDate: freezed == birthDate
           ? _value.birthDate
           : birthDate // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      weight: null == weight
+              as DateTime?,
+      weight: freezed == weight
           ? _value.weight
           : weight // ignore: cast_nullable_to_non_nullable
-              as double,
+              as double?,
       profileImgUrl: freezed == profileImgUrl
           ? _value.profileImgUrl
           : profileImgUrl // ignore: cast_nullable_to_non_nullable
@@ -115,12 +115,12 @@ abstract class _$$_PetCopyWith<$Res> implements $PetCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {PetType petType,
-      String name,
-      bool neutered,
-      String breed,
-      DateTime birthDate,
-      double weight,
+      {PetType? petType,
+      String? name,
+      bool? neutered,
+      String? breed,
+      DateTime? birthDate,
+      double? weight,
       String? profileImgUrl,
       String? extraInfo});
 }
@@ -134,40 +134,40 @@ class __$$_PetCopyWithImpl<$Res> extends _$PetCopyWithImpl<$Res, _$_Pet>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? petType = null,
-    Object? name = null,
-    Object? neutered = null,
-    Object? breed = null,
-    Object? birthDate = null,
-    Object? weight = null,
+    Object? petType = freezed,
+    Object? name = freezed,
+    Object? neutered = freezed,
+    Object? breed = freezed,
+    Object? birthDate = freezed,
+    Object? weight = freezed,
     Object? profileImgUrl = freezed,
     Object? extraInfo = freezed,
   }) {
     return _then(_$_Pet(
-      petType: null == petType
+      petType: freezed == petType
           ? _value.petType
           : petType // ignore: cast_nullable_to_non_nullable
-              as PetType,
-      name: null == name
+              as PetType?,
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      neutered: null == neutered
+              as String?,
+      neutered: freezed == neutered
           ? _value.neutered
           : neutered // ignore: cast_nullable_to_non_nullable
-              as bool,
-      breed: null == breed
+              as bool?,
+      breed: freezed == breed
           ? _value.breed
           : breed // ignore: cast_nullable_to_non_nullable
-              as String,
-      birthDate: null == birthDate
+              as String?,
+      birthDate: freezed == birthDate
           ? _value.birthDate
           : birthDate // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      weight: null == weight
+              as DateTime?,
+      weight: freezed == weight
           ? _value.weight
           : weight // ignore: cast_nullable_to_non_nullable
-              as double,
+              as double?,
       profileImgUrl: freezed == profileImgUrl
           ? _value.profileImgUrl
           : profileImgUrl // ignore: cast_nullable_to_non_nullable
@@ -184,29 +184,29 @@ class __$$_PetCopyWithImpl<$Res> extends _$PetCopyWithImpl<$Res, _$_Pet>
 @JsonSerializable()
 class _$_Pet implements _Pet {
   _$_Pet(
-      {required this.petType,
-      required this.name,
-      required this.neutered,
-      required this.breed,
-      required this.birthDate,
-      required this.weight,
+      {this.petType,
+      this.name,
+      this.neutered,
+      this.breed,
+      this.birthDate,
+      this.weight,
       this.profileImgUrl = '',
       this.extraInfo = ''});
 
   factory _$_Pet.fromJson(Map<String, dynamic> json) => _$$_PetFromJson(json);
 
   @override
-  final PetType petType;
+  final PetType? petType;
   @override
-  final String name;
+  final String? name;
   @override
-  final bool neutered;
+  final bool? neutered;
   @override
-  final String breed;
+  final String? breed;
   @override
-  final DateTime birthDate;
+  final DateTime? birthDate;
   @override
-  final double weight;
+  final double? weight;
   @override
   @JsonKey()
   final String? profileImgUrl;
@@ -259,29 +259,29 @@ class _$_Pet implements _Pet {
 
 abstract class _Pet implements Pet {
   factory _Pet(
-      {required final PetType petType,
-      required final String name,
-      required final bool neutered,
-      required final String breed,
-      required final DateTime birthDate,
-      required final double weight,
+      {final PetType? petType,
+      final String? name,
+      final bool? neutered,
+      final String? breed,
+      final DateTime? birthDate,
+      final double? weight,
       final String? profileImgUrl,
       final String? extraInfo}) = _$_Pet;
 
   factory _Pet.fromJson(Map<String, dynamic> json) = _$_Pet.fromJson;
 
   @override
-  PetType get petType;
+  PetType? get petType;
   @override
-  String get name;
+  String? get name;
   @override
-  bool get neutered;
+  bool? get neutered;
   @override
-  String get breed;
+  String? get breed;
   @override
-  DateTime get birthDate;
+  DateTime? get birthDate;
   @override
-  double get weight;
+  double? get weight;
   @override
   String? get profileImgUrl;
   @override

@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:pets_next_door_flutter/src/features/user/domain/user_nickname_form_state.dart';
+import 'package:pets_next_door_flutter/src/features/user/presentation/layout/text_form_state.dart';
 
 final userNicknameNotifierProvider =
     NotifierProvider<UserNicknameFormNotifier, TextFormState>(
@@ -9,13 +9,13 @@ final userNicknameNotifierProvider =
 class UserNicknameFormNotifier extends Notifier<TextFormState> {
   @override
   TextFormState build() {
-    return const TextFormState.empty('');
+    return const TextFormState.empty();
   }
 
   void validateNickname(String nickname) {
     final nicknameRegExp = RegExp(r'^(?=.*[a-z0-9가-힣])[a-z0-9가-힣]{2,10}$');
     if (nickname.isEmpty) {
-      state = const TextFormState.empty('');
+      state = const TextFormState.empty();
     } else if (nicknameRegExp.hasMatch(nickname)) {
       state = TextFormState.valid(nickname);
     } else {

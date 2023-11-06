@@ -12,6 +12,12 @@ enum SnsProviderType {
         .firstWhere((element) => element.providerId == providerId);
   }
 
+  static List<SnsProviderType> getAndroidProviderList() {
+    return SnsProviderType.values
+        .where((element) => element != SnsProviderType.apple)
+        .toList();
+  }
+
   final String providerId;
 }
 

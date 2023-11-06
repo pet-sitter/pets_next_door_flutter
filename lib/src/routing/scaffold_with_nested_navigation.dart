@@ -76,11 +76,11 @@ class ScaffoldWithBottomNavBar extends StatelessWidget {
 
             BottomNavigationBarItem(
               icon: SvgPicture.asset(
-                Svgs.home,
+                PNDSvgs.home,
                 height: 32,
               ),
               activeIcon: SvgPicture.asset(
-                Svgs.home,
+                PNDSvgs.home,
                 height: 32,
                 color: Color(0xffFF8B00),
               ),

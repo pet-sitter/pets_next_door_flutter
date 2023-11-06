@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'user_nickname_form_state.dart';
+part of 'text_form_state.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -16,24 +16,23 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$TextFormState {
-  String get text => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String text) empty,
+    required TResult Function() empty,
     required TResult Function(String text, String error) error,
     required TResult Function(String text) valid,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String text)? empty,
+    TResult? Function()? empty,
     TResult? Function(String text, String error)? error,
     TResult? Function(String text)? valid,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String text)? empty,
+    TResult Function()? empty,
     TResult Function(String text, String error)? error,
     TResult Function(String text)? valid,
     required TResult orElse(),
@@ -61,10 +60,6 @@ mixin _$TextFormState {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $TextFormStateCopyWith<TextFormState> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -72,8 +67,6 @@ abstract class $TextFormStateCopyWith<$Res> {
   factory $TextFormStateCopyWith(
           TextFormState value, $Res Function(TextFormState) then) =
       _$TextFormStateCopyWithImpl<$Res, TextFormState>;
-  @useResult
-  $Res call({String text});
 }
 
 /// @nodoc
@@ -85,30 +78,13 @@ class _$TextFormStateCopyWithImpl<$Res, $Val extends TextFormState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? text = null,
-  }) {
-    return _then(_value.copyWith(
-      text: null == text
-          ? _value.text
-          : text // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$TextFormStateEmptyCopyWith<$Res>
-    implements $TextFormStateCopyWith<$Res> {
+abstract class _$$TextFormStateEmptyCopyWith<$Res> {
   factory _$$TextFormStateEmptyCopyWith(_$TextFormStateEmpty value,
           $Res Function(_$TextFormStateEmpty) then) =
       __$$TextFormStateEmptyCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String text});
 }
 
 /// @nodoc
@@ -118,82 +94,57 @@ class __$$TextFormStateEmptyCopyWithImpl<$Res>
   __$$TextFormStateEmptyCopyWithImpl(
       _$TextFormStateEmpty _value, $Res Function(_$TextFormStateEmpty) _then)
       : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? text = null,
-  }) {
-    return _then(_$TextFormStateEmpty(
-      null == text
-          ? _value.text
-          : text // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
 }
 
 /// @nodoc
 
 class _$TextFormStateEmpty implements TextFormStateEmpty {
-  const _$TextFormStateEmpty(this.text);
-
-  @override
-  final String text;
+  const _$TextFormStateEmpty();
 
   @override
   String toString() {
-    return 'TextFormState.empty(text: $text)';
+    return 'TextFormState.empty()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$TextFormStateEmpty &&
-            (identical(other.text, text) || other.text == text));
+        (other.runtimeType == runtimeType && other is _$TextFormStateEmpty);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, text);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$TextFormStateEmptyCopyWith<_$TextFormStateEmpty> get copyWith =>
-      __$$TextFormStateEmptyCopyWithImpl<_$TextFormStateEmpty>(
-          this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String text) empty,
+    required TResult Function() empty,
     required TResult Function(String text, String error) error,
     required TResult Function(String text) valid,
   }) {
-    return empty(text);
+    return empty();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String text)? empty,
+    TResult? Function()? empty,
     TResult? Function(String text, String error)? error,
     TResult? Function(String text)? valid,
   }) {
-    return empty?.call(text);
+    return empty?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String text)? empty,
+    TResult Function()? empty,
     TResult Function(String text, String error)? error,
     TResult Function(String text)? valid,
     required TResult orElse(),
   }) {
     if (empty != null) {
-      return empty(text);
+      return empty();
     }
     return orElse();
   }
@@ -234,23 +185,14 @@ class _$TextFormStateEmpty implements TextFormStateEmpty {
 }
 
 abstract class TextFormStateEmpty implements TextFormState {
-  const factory TextFormStateEmpty(final String text) = _$TextFormStateEmpty;
-
-  @override
-  String get text;
-  @override
-  @JsonKey(ignore: true)
-  _$$TextFormStateEmptyCopyWith<_$TextFormStateEmpty> get copyWith =>
-      throw _privateConstructorUsedError;
+  const factory TextFormStateEmpty() = _$TextFormStateEmpty;
 }
 
 /// @nodoc
-abstract class _$$TextFormStateErrorCopyWith<$Res>
-    implements $TextFormStateCopyWith<$Res> {
+abstract class _$$TextFormStateErrorCopyWith<$Res> {
   factory _$$TextFormStateErrorCopyWith(_$TextFormStateError value,
           $Res Function(_$TextFormStateError) then) =
       __$$TextFormStateErrorCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({String text, String error});
 }
@@ -319,7 +261,7 @@ class _$TextFormStateError implements TextFormStateError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String text) empty,
+    required TResult Function() empty,
     required TResult Function(String text, String error) error,
     required TResult Function(String text) valid,
   }) {
@@ -329,7 +271,7 @@ class _$TextFormStateError implements TextFormStateError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String text)? empty,
+    TResult? Function()? empty,
     TResult? Function(String text, String error)? error,
     TResult? Function(String text)? valid,
   }) {
@@ -339,7 +281,7 @@ class _$TextFormStateError implements TextFormStateError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String text)? empty,
+    TResult Function()? empty,
     TResult Function(String text, String error)? error,
     TResult Function(String text)? valid,
     required TResult orElse(),
@@ -389,22 +331,18 @@ abstract class TextFormStateError implements TextFormState {
   const factory TextFormStateError(final String text, final String error) =
       _$TextFormStateError;
 
-  @override
   String get text;
   String get error;
-  @override
   @JsonKey(ignore: true)
   _$$TextFormStateErrorCopyWith<_$TextFormStateError> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$TextFormStateValidCopyWith<$Res>
-    implements $TextFormStateCopyWith<$Res> {
+abstract class _$$TextFormStateValidCopyWith<$Res> {
   factory _$$TextFormStateValidCopyWith(_$TextFormStateValid value,
           $Res Function(_$TextFormStateValid) then) =
       __$$TextFormStateValidCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({String text});
 }
@@ -465,7 +403,7 @@ class _$TextFormStateValid implements TextFormStateValid {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String text) empty,
+    required TResult Function() empty,
     required TResult Function(String text, String error) error,
     required TResult Function(String text) valid,
   }) {
@@ -475,7 +413,7 @@ class _$TextFormStateValid implements TextFormStateValid {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String text)? empty,
+    TResult? Function()? empty,
     TResult? Function(String text, String error)? error,
     TResult? Function(String text)? valid,
   }) {
@@ -485,7 +423,7 @@ class _$TextFormStateValid implements TextFormStateValid {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String text)? empty,
+    TResult Function()? empty,
     TResult Function(String text, String error)? error,
     TResult Function(String text)? valid,
     required TResult orElse(),
@@ -534,9 +472,7 @@ class _$TextFormStateValid implements TextFormStateValid {
 abstract class TextFormStateValid implements TextFormState {
   const factory TextFormStateValid(final String text) = _$TextFormStateValid;
 
-  @override
   String get text;
-  @override
   @JsonKey(ignore: true)
   _$$TextFormStateValidCopyWith<_$TextFormStateValid> get copyWith =>
       throw _privateConstructorUsedError;

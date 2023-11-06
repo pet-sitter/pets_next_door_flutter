@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pets_next_door_flutter/src/constants/app_sizes.dart';
+import 'package:pets_next_door_flutter/src/constants/sizes.dart';
 import 'package:pets_next_door_flutter/src/features/pet/domain/pet.dart';
 
 class PetProfileListTile extends StatelessWidget {
@@ -16,21 +16,21 @@ class PetProfileListTile extends StatelessWidget {
       height: 100,
       width: double.infinity,
       padding: const EdgeInsets.symmetric(
-        vertical: Sizes.p12,
-        horizontal: Sizes.p16,
+        vertical: PNDSizes.p12,
+        horizontal: PNDSizes.p16,
       ),
       decoration: BoxDecoration(
           color: Colors.white,
-          border: Border.all(color: Colors.grey),
+          border: Border.all(color: Color(0xffEBEBEB)),
           borderRadius: BorderRadius.circular(10)),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Container(
-            height: 100 - (Sizes.p12 * 2),
-            width: 100 - (Sizes.p12 * 2),
+            height: 100 - (PNDSizes.p12 * 2),
+            width: 100 - (PNDSizes.p12 * 2),
             decoration: BoxDecoration(
-              color: Colors.amber,
+              color: Color(0xffFFF0DD),
               shape: BoxShape.circle,
             ),
           ),
@@ -41,14 +41,14 @@ class PetProfileListTile extends StatelessWidget {
             children: [
               Expanded(
                   child: Row(
-                children: [Text(pet.name), Icon(Icons.female_rounded)],
+                children: [Text(pet.name ?? ''), Icon(Icons.female_rounded)],
               )),
               Expanded(
                   child: Row(
                 children: [
-                  Text(pet.breed),
+                  Text(pet.breed ?? ''),
                   Text(
-                    pet.birthDate.year.toString(),
+                    (pet.birthDate?.year ?? -1).toString(),
                   )
                 ],
               )),
@@ -56,9 +56,13 @@ class PetProfileListTile extends StatelessWidget {
                   child: Container(
                       padding: EdgeInsets.symmetric(vertical: 2, horizontal: 5),
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
-                          color: Colors.amber),
-                      child: Text('중성화 ${pet.neutered}'))),
+                        borderRadius: BorderRadius.circular(5),
+                        color: Color(0xffFFF0DD),
+                      ),
+                      child: Text(
+                        '중성화 ${pet.neutered}',
+                        style: TextStyle(color: Color(0xffFF8B00)),
+                      ))),
             ],
           )
         ],

@@ -445,6 +445,7 @@
 				FLAVOR_APP_NAME = "Pets Next Door Flutter";
 				GOOGLE_SCHEME = "com.googleusercontent.apps.424678055013-lqikhot4d87ifooit42092ukp8uo1e4g";
 				INFOPLIST_FILE = Runner/Info.plist;
+				KAKAO_APP_SCHEME = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -578,6 +579,7 @@
 				FLAVOR_APP_NAME = "Pets Next Door Flutter";
 				GOOGLE_SCHEME = "com.googleusercontent.apps.424678055013-lqikhot4d87ifooit42092ukp8uo1e4g";
 				INFOPLIST_FILE = Runner/Info.plist;
+				KAKAO_APP_SCHEME = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -603,6 +605,7 @@
 				FLAVOR_APP_NAME = "Pets Next Door Flutter";
 				GOOGLE_SCHEME = "com.googleusercontent.apps.424678055013-lqikhot4d87ifooit42092ukp8uo1e4g";
 				INFOPLIST_FILE = Runner/Info.plist;
+				KAKAO_APP_SCHEME = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -683,6 +686,7 @@
 				FLAVOR_APP_NAME = "[DEV] Pets Next Door Flutter";
 				GOOGLE_SCHEME = "com.googleusercontent.apps.231574029969-6g4o5a6ec3o3n073i57b225m1ibh6107";
 				INFOPLIST_FILE = Runner/Info.plist;
+				KAKAO_APP_SCHEME = kakaoc731277fe79636328bb7e45a3ffa2b57;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -761,6 +765,7 @@
 				FLAVOR_APP_NAME = "[DEV] Pets Next Door Flutter";
 				GOOGLE_SCHEME = "com.googleusercontent.apps.231574029969-6g4o5a6ec3o3n073i57b225m1ibh6107";
 				INFOPLIST_FILE = Runner/Info.plist;
+				KAKAO_APP_SCHEME = kakaoc731277fe79636328bb7e45a3ffa2b57;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -836,6 +841,7 @@
 				FLAVOR_APP_NAME = "[DEV] Pets Next Door Flutter";
 				GOOGLE_SCHEME = "com.googleusercontent.apps.231574029969-6g4o5a6ec3o3n073i57b225m1ibh6107";
 				INFOPLIST_FILE = Runner/Info.plist;
+				KAKAO_APP_SCHEME = kakaoc731277fe79636328bb7e45a3ffa2b57;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -916,6 +922,7 @@
 				FLAVOR_APP_NAME = "[STG] Pets Next Door Flutter";
 				GOOGLE_SCHEME = "com.googleusercontent.apps.424678055013-lqikhot4d87ifooit42092ukp8uo1e4g";
 				INFOPLIST_FILE = Runner/Info.plist;
+				KAKAO_APP_SCHEME = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -994,6 +1001,7 @@
 				FLAVOR_APP_NAME = "[STG] Pets Next Door Flutter";
 				GOOGLE_SCHEME = "com.googleusercontent.apps.424678055013-lqikhot4d87ifooit42092ukp8uo1e4g";
 				INFOPLIST_FILE = Runner/Info.plist;
+				KAKAO_APP_SCHEME = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1069,6 +1077,7 @@
 				FLAVOR_APP_NAME = "[STG] Pets Next Door Flutter";
 				GOOGLE_SCHEME = "com.googleusercontent.apps.424678055013-lqikhot4d87ifooit42092ukp8uo1e4g";
 				INFOPLIST_FILE = Runner/Info.plist;
+				KAKAO_APP_SCHEME = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

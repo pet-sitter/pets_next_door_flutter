@@ -1,4 +1,4 @@
-import 'package:pets_next_door_flutter/src/features/authentication/domain/registration_info.dart';
+import 'package:pets_next_door_flutter/src/features/sign_up/domain/profile_form.dart';
 
 /// Uri builder class for the UserAPI
 class UserAPI {
@@ -7,10 +7,8 @@ class UserAPI {
 
   static const String _apiPath = '/user/';
 
-  Uri register(RegistrationInfo registrationInfo) => _buildUri(
-        endpoint: 'register',
-        parametersBuilder: () => registerationQueryParameters(registrationInfo),
-      );
+  Uri register(ProfileFormRegister registrationInfo) =>
+      _buildUri(endpoint: 'register', parametersBuilder: () => {});
 
   Uri _buildUri({
     required String endpoint,
@@ -24,14 +22,14 @@ class UserAPI {
     );
   }
 
-  Map<String, dynamic> registerationQueryParameters(
-    RegistrationInfo registerationInfo,
-  ) =>
-      {
-        'email': registerationInfo.email,
-        'fbProviderType': registerationInfo.providerType.name,
-        'fbUid': registerationInfo.firebaseUid,
-        'fullname': registerationInfo.fullname,
-        'nickname': registerationInfo.nickname,
-      };
+  // Map<String, dynamic> registerationQueryParameters(
+  //   RegistrationInfo registerationInfo,
+  // ) =>
+  //     {
+  //       'email': registerationInfo.userInfo.email,
+  //       'fbProviderType': registerationInfo.userInfo.providerType.name,
+  //       'fbUid': registerationInfo.firebaseUid,
+  //       'fullname': registerationInfo.fullname,
+  //       'nickname': registerationInfo.nickname,
+  //     };
 }

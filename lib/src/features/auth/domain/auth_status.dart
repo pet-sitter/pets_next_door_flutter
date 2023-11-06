@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:pets_next_door_flutter/src/constants/enums.dart';
 import 'package:pets_next_door_flutter/src/features/auth/domain/sns_oauth_info.dart';
 
 part 'auth_status.freezed.dart';
@@ -10,10 +11,11 @@ part 'auth_status.freezed.dart';
 /// - [AuthStatus.existingUser] : 계정이 있는 유저, 로그인 필요함
 @freezed
 sealed class AuthStatus with _$AuthStatus {
-  factory AuthStatus.newUser({required SnsOAuthInfo snsOAuthInfo}) =
-      AuthStatusNewUser;
+  factory AuthStatus.newUser({
+    required SnsOAuthInfo snsOAuthInfo,
+  }) = AuthStatusNewUser;
 
   factory AuthStatus.existingUser({
-    required UserCredential firebaseUserCredential,
+    required String uid,
   }) = AuthStatusExistingUser;
 }

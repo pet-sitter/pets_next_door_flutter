@@ -11,7 +11,9 @@ class UserProfileImage extends StatelessWidget {
       width: 100,
       height: 100,
       decoration: BoxDecoration(
-          color: Colors.green, borderRadius: BorderRadius.circular(4)),
+        color: Color(0xfff3f3f3),
+        borderRadius: BorderRadius.circular(4),
+      ),
     );
   }
 }

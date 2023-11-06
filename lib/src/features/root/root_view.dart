@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:pets_next_door_flutter/src/constants/app_sizes.dart';
 import 'package:pets_next_door_flutter/src/routing/scaffold_with_nested_navigation.dart';
 
 class RootView extends StatelessWidget {

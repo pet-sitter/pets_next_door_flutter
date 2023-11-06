@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:pets_next_door_flutter/src/constants/app_sizes.dart';
+import 'package:pets_next_door_flutter/src/constants/sizes.dart';
 import 'package:pets_next_door_flutter/src/routing/app_router.dart';
 
 class HomeView extends StatelessWidget {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:pets_next_door_flutter/src/constants/sizes.dart';
 
 class PNDBasicIconButton extends StatelessWidget {
   const PNDBasicIconButton({
@@ -22,18 +22,20 @@ class PNDBasicIconButton extends StatelessWidget {
       child: Container(
         alignment: Alignment.center,
         margin: const EdgeInsets.only(bottom: 20),
-        color: Colors.grey,
+        decoration: BoxDecoration(
+            color: Color(0xffF3F3F3), borderRadius: BorderRadius.circular(4)),
         width: double.infinity,
         height: 50,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             icon ?? const SizedBox.shrink(),
+            if (icon != null) gapW4,
             Text(
               text,
               textAlign: TextAlign.center,
               style: const TextStyle(
-                color: Colors.white,
+                color: Colors.black,
                 fontSize: 17,
               ),
             ),

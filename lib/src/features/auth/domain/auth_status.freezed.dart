@@ -19,20 +19,19 @@ mixin _$AuthStatus {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(SnsOAuthInfo snsOAuthInfo) newUser,
-    required TResult Function(UserCredential firebaseUserCredential)
-        existingUser,
+    required TResult Function(String uid) existingUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(SnsOAuthInfo snsOAuthInfo)? newUser,
-    TResult? Function(UserCredential firebaseUserCredential)? existingUser,
+    TResult? Function(String uid)? existingUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(SnsOAuthInfo snsOAuthInfo)? newUser,
-    TResult Function(UserCredential firebaseUserCredential)? existingUser,
+    TResult Function(String uid)? existingUser,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -151,8 +150,7 @@ class _$AuthStatusNewUser implements AuthStatusNewUser {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(SnsOAuthInfo snsOAuthInfo) newUser,
-    required TResult Function(UserCredential firebaseUserCredential)
-        existingUser,
+    required TResult Function(String uid) existingUser,
   }) {
     return newUser(snsOAuthInfo);
   }
@@ -161,7 +159,7 @@ class _$AuthStatusNewUser implements AuthStatusNewUser {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(SnsOAuthInfo snsOAuthInfo)? newUser,
-    TResult? Function(UserCredential firebaseUserCredential)? existingUser,
+    TResult? Function(String uid)? existingUser,
   }) {
     return newUser?.call(snsOAuthInfo);
   }
@@ -170,7 +168,7 @@ class _$AuthStatusNewUser implements AuthStatusNewUser {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(SnsOAuthInfo snsOAuthInfo)? newUser,
-    TResult Function(UserCredential firebaseUserCredential)? existingUser,
+    TResult Function(String uid)? existingUser,
     required TResult orElse(),
   }) {
     if (newUser != null) {
@@ -227,7 +225,7 @@ abstract class _$$AuthStatusExistingUserCopyWith<$Res> {
           $Res Function(_$AuthStatusExistingUser) then) =
       __$$AuthStatusExistingUserCopyWithImpl<$Res>;
   @useResult
-  $Res call({UserCredential firebaseUserCredential});
+  $Res call({String uid});
 }
 
 /// @nodoc
@@ -241,13 +239,13 @@ class __$$AuthStatusExistingUserCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? firebaseUserCredential = null,
+    Object? uid = null,
   }) {
     return _then(_$AuthStatusExistingUser(
-      firebaseUserCredential: null == firebaseUserCredential
-          ? _value.firebaseUserCredential
-          : firebaseUserCredential // ignore: cast_nullable_to_non_nullable
-              as UserCredential,
+      uid: null == uid
+          ? _value.uid
+          : uid // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -255,14 +253,14 @@ class __$$AuthStatusExistingUserCopyWithImpl<$Res>
 /// @nodoc
 
 class _$AuthStatusExistingUser implements AuthStatusExistingUser {
-  _$AuthStatusExistingUser({required this.firebaseUserCredential});
+  _$AuthStatusExistingUser({required this.uid});
 
   @override
-  final UserCredential firebaseUserCredential;
+  final String uid;
 
   @override
   String toString() {
-    return 'AuthStatus.existingUser(firebaseUserCredential: $firebaseUserCredential)';
+    return 'AuthStatus.existingUser(uid: $uid)';
   }
 
   @override
@@ -270,12 +268,11 @@ class _$AuthStatusExistingUser implements AuthStatusExistingUser {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AuthStatusExistingUser &&
-            (identical(other.firebaseUserCredential, firebaseUserCredential) ||
-                other.firebaseUserCredential == firebaseUserCredential));
+            (identical(other.uid, uid) || other.uid == uid));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, firebaseUserCredential);
+  int get hashCode => Object.hash(runtimeType, uid);
 
   @JsonKey(ignore: true)
   @override
@@ -288,30 +285,29 @@ class _$AuthStatusExistingUser implements AuthStatusExistingUser {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(SnsOAuthInfo snsOAuthInfo) newUser,
-    required TResult Function(UserCredential firebaseUserCredential)
-        existingUser,
+    required TResult Function(String uid) existingUser,
   }) {
-    return existingUser(firebaseUserCredential);
+    return existingUser(uid);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(SnsOAuthInfo snsOAuthInfo)? newUser,
-    TResult? Function(UserCredential firebaseUserCredential)? existingUser,
+    TResult? Function(String uid)? existingUser,
   }) {
-    return existingUser?.call(firebaseUserCredential);
+    return existingUser?.call(uid);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(SnsOAuthInfo snsOAuthInfo)? newUser,
-    TResult Function(UserCredential firebaseUserCredential)? existingUser,
+    TResult Function(String uid)? existingUser,
     required TResult orElse(),
   }) {
     if (existingUser != null) {
-      return existingUser(firebaseUserCredential);
+      return existingUser(uid);
     }
     return orElse();
   }
@@ -349,11 +345,10 @@ class _$AuthStatusExistingUser implements AuthStatusExistingUser {
 }
 
 abstract class AuthStatusExistingUser implements AuthStatus {
-  factory AuthStatusExistingUser(
-          {required final UserCredential firebaseUserCredential}) =
+  factory AuthStatusExistingUser({required final String uid}) =
       _$AuthStatusExistingUser;
 
-  UserCredential get firebaseUserCredential;
+  String get uid;
   @JsonKey(ignore: true)
   _$$AuthStatusExistingUserCopyWith<_$AuthStatusExistingUser> get copyWith =>
       throw _privateConstructorUsedError;
