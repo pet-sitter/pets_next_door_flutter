@@ -7,6 +7,7 @@ import 'package:go_router/go_router.dart';
 import 'package:pets_next_door_flutter/src/constants/enums.dart';
 import 'package:pets_next_door_flutter/src/features/auth/data/auth_repository.dart';
 import 'package:pets_next_door_flutter/src/features/auth/domain/auth_status.dart';
+import 'package:pets_next_door_flutter/src/features/user/domain/user_profile_view_state.dart';
 import 'package:pets_next_door_flutter/src/routing/app_router.dart';
 
 abstract interface class _SignInEvent {
@@ -23,20 +24,13 @@ abstract interface class _SignInEvent {
 mixin class SignInEvent implements _SignInEvent {
   /// 유저 데이터 여부 조회 후 회원가입을 완료했는지 여부에 따라 라우팅을 분기한다.
   Future<void> _routeByUserData(WidgetRef ref, AuthStatus authStatus) async {
-    // authStatus.when(
-    //   newUser: (snsOAuthInfo) {
-    //     ref.context.pushNamed(
-    //       AppRoute.profile.name,
-    //       extra: UserProfileViewState.register(snsOAuthInfo: snsOAuthInfo),
-    //     );
-    //   },
-    //   existingUser: (_) =>
-    //       // TODO: 유저 데이터 가지고 온 뒤에 홈으로 보낸다
-    //       ref.context.goNamed(AppRoute.home.name),
-    // );
-
-    authStatus.when(newUser: newUser, existingUser: (credential,provider){
-    ref.read(authRepositoryProvider(provider)).signInFirebaseAuth(snsOAuthInfo)
+    authStatus.when(newUser: (snsOAuthInfo) {
+      ref.context.pushNamed(
+        AppRoute.profile.name,
+        extra: UserProfileViewState.register(snsOAuthInfo: snsOAuthInfo),
+      );
+    }, existingUser: (uid) {
+      ref.context.goNamed(AppRoute.home.name);
     });
   }
 

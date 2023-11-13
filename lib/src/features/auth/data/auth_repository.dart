@@ -150,7 +150,9 @@ Future<AuthStatus> authSignInOrRegister(
     final userCredential =
         await authRepository.signInFirebaseAuth(snsOAuthInfo);
 
-    return AuthStatus.existingUser(firebaseUserCredential: userCredential);
+    return AuthStatus.existingUser(
+      uid: userCredential.user!.uid,
+    );
   }
 
   return AuthStatus.newUser(snsOAuthInfo: snsOAuthInfo);

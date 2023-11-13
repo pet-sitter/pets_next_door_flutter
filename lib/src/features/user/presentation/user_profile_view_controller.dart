@@ -2,6 +2,7 @@ import 'package:pets_next_door_flutter/src/constants/enums.dart';
 import 'package:pets_next_door_flutter/src/features/auth/data/auth_repository.dart';
 import 'package:pets_next_door_flutter/src/features/pet/domain/pet.dart';
 import 'package:pets_next_door_flutter/src/features/sign_up/domain/profile_form.dart';
+import 'package:pets_next_door_flutter/src/features/user/domain/user_profile_view_state.dart';
 import 'package:pets_next_door_flutter/src/features/user/presentation/layout/text_form_state.dart';
 import 'package:pets_next_door_flutter/src/features/user/presentation/layout/user_nickname_notifier_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -19,19 +20,15 @@ class UserProfileViewController extends _$UserProfileViewController {
 
   Future<void> submit(
     ProfileForm newProfileForm,
+    UserProfileViewState profileViewState,
   ) async {
-    // final nickname = ref.watch(userNicknameNotifierProvider).maybeWhen(
-    //       valid: (nickname) => nickname,
-    //       orElse: () => null,
-    //     );
-
-    // if (nickname == null) return;
-    newProfileForm.when(
-        register: (snsOAuthInfo, nickname, profileImageId, pets) {
+    profileViewState.when(register: (snsOAuthInfo) {
       final authRepository =
           ref.read(authRepositoryProvider(snsOAuthInfo.providerType));
-    }, edit: (nickname, profileImageId, pets) {
-      // final userRepository = ref.read(userRepo)
+
+      authRepository.signInFirebaseAuth(snsOAuthInfo);
+    }, edit: (userId) {
+      // TODO: 유저 프로필 수정 로직 구현
     });
   }
 
