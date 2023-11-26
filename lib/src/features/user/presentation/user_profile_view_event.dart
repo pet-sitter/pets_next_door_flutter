@@ -55,12 +55,14 @@ mixin class SignUpPageEvent {
     //     );
 
     // if (nickname == null) return;
-    newProfileForm.when(
-        register: (snsOAuthInfo, nickname, profileImageId, pets) {
-      final authRepository =
-          ref.read(authRepositoryProvider(snsOAuthInfo.providerType));
-    }, edit: (nickname, profileImageId, pets) {
-      // final userRepository = ref.read(userRepo)
-    });
+    // newProfileForm.when(
+    //   register: (snsOAuthInfo, nickname, profileImageId, pets) {
+    //     final authRepository =
+    //         ref.read(authRepositoryProvider(snsOAuthInfo.providerType));
+    //   },
+    //   edit: (nickname, profileImageId, pets) {
+    //     // final userRepository = ref.read(userRepo)
+    //   },
+    // );
   }
 }

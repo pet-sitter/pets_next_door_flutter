@@ -7,7 +7,7 @@ class UserAPI {
 
   static const String _apiPath = '/user/';
 
-  Uri register(ProfileFormRegister registrationInfo) =>
+  Uri register(ProfileForm registrationInfo) =>
       _buildUri(endpoint: 'register', parametersBuilder: () => {});
 
   Uri _buildUri({

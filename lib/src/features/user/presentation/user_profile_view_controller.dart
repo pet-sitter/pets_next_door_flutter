@@ -39,7 +39,7 @@ class UserProfileViewController extends _$UserProfileViewController {
 
 @riverpod
 Future<ProfileForm> userProfileFuture(UserProfileFutureRef ref, int id) async {
-  return ProfileForm.edit(
+  return ProfileForm(
       nickname: TextFormState.valid('이전닉네임'),
       profileImageId: 1,
       pets: [

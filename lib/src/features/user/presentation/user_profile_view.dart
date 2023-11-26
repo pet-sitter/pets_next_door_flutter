@@ -50,14 +50,13 @@ class UserProfileView extends ConsumerWidget {
                     const UserProfileImage(),
                     gapH32,
                     UserNicknameTextFormField(
-                      previousProfileForm: previousProfileForm,
                       nicknameController: TextEditingController(
-                        text: previousNickname,
+                        text: '',
                       ),
                     ),
                     gapH20,
                     UserPetListLayout(
-                      previousProfileForm: previousProfileForm,
+                      previousProfileForm: ProfileForm(),
                     ),
                     gapH20,
                     const UserPetAddButton(),
