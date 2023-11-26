@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:pets_next_door_flutter/src/routing/app_router.dart';
+import 'package:pets_next_door_flutter/app/router/app_router.dart';
 
 class App extends ConsumerWidget {
   const App({super.key});

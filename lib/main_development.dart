@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kakao_flutter_sdk_auth/kakao_flutter_sdk_auth.dart';
 import 'package:pets_next_door_flutter/app.dart';
-import 'package:pets_next_door_flutter/env/flavors.dart';
+import 'package:pets_next_door_flutter/app/env/flavors.dart';
 
 const String NATIVE_APP_KEY = 'c731277fe79636328bb7e45a3ffa2b57';
 
