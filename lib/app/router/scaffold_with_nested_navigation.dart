@@ -63,38 +63,39 @@ class ScaffoldWithBottomNavBar extends StatelessWidget {
       body: body,
       bottomNavigationBar: SizedBox(
         height: 60,
-        child: BottomNavigationBar(
-          elevation: 10,
-          type: BottomNavigationBarType.fixed,
-          showSelectedLabels: false,
-          showUnselectedLabels: false,
-          selectedItemColor: Colors.amber,
-          unselectedItemColor: Colors.blueGrey.shade100,
-          currentIndex: currentIndex,
-          items: [
-            // products
+        child: Wrap(children: [
+          BottomNavigationBar(
+            elevation: 10,
+            iconSize: 32,
+            type: BottomNavigationBarType.fixed,
+            showSelectedLabels: false,
+            showUnselectedLabels: false,
+            selectedItemColor: Colors.amber,
+            unselectedItemColor: Colors.blueGrey.shade100,
+            currentIndex: currentIndex,
+            items: [
+              // products
 
-            BottomNavigationBarItem(
-              icon: SvgPicture.asset(
-                PNDSvgs.home,
-                height: 32,
+              BottomNavigationBarItem(
+                icon: SvgPicture.asset(
+                  PNDSvgs.home,
+                ),
+                activeIcon: SvgPicture.asset(
+                  PNDSvgs.home,
+                  color: Color(0xffFF8B00),
+                ),
+                label: '',
               ),
-              activeIcon: SvgPicture.asset(
-                PNDSvgs.home,
-                height: 32,
-                color: Color(0xffFF8B00),
-              ),
-              label: '',
-            ),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.view_headline_outlined), label: ''),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.view_headline_outlined), label: ''),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.view_headline_outlined), label: ''),
-          ],
-          onTap: onDestinationSelected,
-        ),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.view_headline_outlined), label: ''),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.view_headline_outlined), label: ''),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.view_headline_outlined), label: ''),
+            ],
+            onTap: onDestinationSelected,
+          ),
+        ]),
       ),
     );
   }

@@ -1,19 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pets_next_door_flutter/app/router/scaffold_with_nested_navigation.dart';
-
 import 'package:pets_next_door_flutter/features/user/domain/user_profile_view_state.dart';
 import 'package:pets_next_door_flutter/presentation/pages/chat/chat_view.dart';
 import 'package:pets_next_door_flutter/presentation/pages/gather/gather_view.dart';
 import 'package:pets_next_door_flutter/presentation/pages/home/home_view.dart';
-import 'package:pets_next_door_flutter/presentation/pages/pet/breed_search_view.dart';
 import 'package:pets_next_door_flutter/presentation/pages/pet/register_pet_page.dart';
+import 'package:pets_next_door_flutter/presentation/pages/pet/steps/breed_search_view.dart';
 import 'package:pets_next_door_flutter/presentation/pages/sign_in/sign_in_view.dart';
 import 'package:pets_next_door_flutter/presentation/pages/sign_up/phone_auth_view.dart';
-
 import 'package:pets_next_door_flutter/presentation/pages/user/user_profile_view.dart';
 import 'package:pets_next_door_flutter/presentation/pages/user/user_view.dart';
-
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'app_router.g.dart';
@@ -41,7 +38,7 @@ enum AppRoute {
 // ignore: unsupported_provider_value
 GoRouter goRouter(GoRouterRef ref) {
   return GoRouter(
-    initialLocation: '/signIn',
+    initialLocation: '/home',
     navigatorKey: _rootNavigatorKey,
     debugLogDiagnostics: true,
     redirect: (context, state) {

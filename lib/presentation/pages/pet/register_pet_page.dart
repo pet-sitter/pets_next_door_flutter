@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pets_next_door_flutter/presentation/pages/pet/providers/register_pet_step_controller_provider.dart';
-import 'package:pets_next_door_flutter/presentation/pages/pet/register_pet_detail_view.dart';
 import 'package:pets_next_door_flutter/presentation/pages/pet/register_pet_event.dart';
-import 'package:pets_next_door_flutter/presentation/pages/pet/register_pet_initial_view.dart';
+import 'package:pets_next_door_flutter/presentation/pages/pet/steps/register_pet_detail_view.dart';
+import 'package:pets_next_door_flutter/presentation/pages/pet/steps/register_pet_initial_view.dart';
 import 'package:pets_next_door_flutter/presentation/widgets/appbar/appbar.dart';
 
 class RegisterPetPage extends StatelessWidget {
