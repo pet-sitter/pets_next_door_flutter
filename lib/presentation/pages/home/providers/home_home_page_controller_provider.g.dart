@@ -7,7 +7,7 @@ part of 'home_home_page_controller_provider.dart';
 // **************************************************************************
 
 String _$homeHomePageControllerHash() =>
-    r'8e1a0b5ac67604a00a719a601045b208263f4f1e';
+    r'b5b0f3a92ce4f36e62618dfa5461115c0179a567';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -127,7 +127,7 @@ class HomeHomePageControllerProvider extends AutoDisposeNotifierProviderImpl<
 }
 
 String _$currentHomeHomePageIndexHash() =>
-    r'f7f28ba331b73dcc856ddb922e7d4f6f42d7eada';
+    r'4a4888bc9025ea8438732e940b5ff0186348c351';
 
 /// See also [CurrentHomeHomePageIndex].
 @ProviderFor(CurrentHomeHomePageIndex)
