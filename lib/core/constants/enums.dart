@@ -32,11 +32,11 @@ enum PetType {
   final String code;
 }
 
-enum HomeHomeTab {
+enum HomeHomeTabType {
   petSos('돌봄급구'),
   petMate('돌봄메이트');
 
-  const HomeHomeTab(this.label);
+  const HomeHomeTabType(this.label);
 
   final String label;
 }

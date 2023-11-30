@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'home_home_page_controller_provider.dart';
+part of 'home_home_tab_controller_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$homeHomePageControllerHash() =>
-    r'b5b0f3a92ce4f36e62618dfa5461115c0179a567';
+String _$homeHomeTabControllerHash() =>
+    r'1abe1adb20635b7b484b980084c023c5ef713583';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -30,39 +30,44 @@ class _SystemHash {
   }
 }
 
-abstract class _$HomeHomePageController
+abstract class _$HomeHomeTabController
     extends BuildlessAutoDisposeNotifier<TabController> {
   late final TickerProvider tickerProvider;
+  late final int tabLength;
 
   TabController build(
     TickerProvider tickerProvider,
+    int tabLength,
   );
 }
 
-/// See also [HomeHomePageController].
-@ProviderFor(HomeHomePageController)
-const homeHomePageControllerProvider = HomeHomePageControllerFamily();
+/// See also [HomeHomeTabController].
+@ProviderFor(HomeHomeTabController)
+const homeHomeTabControllerProvider = HomeHomeTabControllerFamily();
 
-/// See also [HomeHomePageController].
-class HomeHomePageControllerFamily extends Family<TabController> {
-  /// See also [HomeHomePageController].
-  const HomeHomePageControllerFamily();
+/// See also [HomeHomeTabController].
+class HomeHomeTabControllerFamily extends Family<TabController> {
+  /// See also [HomeHomeTabController].
+  const HomeHomeTabControllerFamily();
 
-  /// See also [HomeHomePageController].
-  HomeHomePageControllerProvider call(
+  /// See also [HomeHomeTabController].
+  HomeHomeTabControllerProvider call(
     TickerProvider tickerProvider,
+    int tabLength,
   ) {
-    return HomeHomePageControllerProvider(
+    return HomeHomeTabControllerProvider(
       tickerProvider,
+      tabLength,
     );
   }
 
   @override
-  HomeHomePageControllerProvider getProviderOverride(
-    covariant HomeHomePageControllerProvider provider,
+  HomeHomeTabControllerProvider getProviderOverride(
+    covariant HomeHomeTabControllerProvider provider,
   ) {
     return call(
       provider.tickerProvider,
+      provider.tabLength,
     );
   }
 
@@ -78,50 +83,57 @@ class HomeHomePageControllerFamily extends Family<TabController> {
       _allTransitiveDependencies;
 
   @override
-  String? get name => r'homeHomePageControllerProvider';
+  String? get name => r'homeHomeTabControllerProvider';
 }
 
-/// See also [HomeHomePageController].
-class HomeHomePageControllerProvider extends AutoDisposeNotifierProviderImpl<
-    HomeHomePageController, TabController> {
-  /// See also [HomeHomePageController].
-  HomeHomePageControllerProvider(
+/// See also [HomeHomeTabController].
+class HomeHomeTabControllerProvider extends AutoDisposeNotifierProviderImpl<
+    HomeHomeTabController, TabController> {
+  /// See also [HomeHomeTabController].
+  HomeHomeTabControllerProvider(
     this.tickerProvider,
+    this.tabLength,
   ) : super.internal(
-          () => HomeHomePageController()..tickerProvider = tickerProvider,
-          from: homeHomePageControllerProvider,
-          name: r'homeHomePageControllerProvider',
+          () => HomeHomeTabController()
+            ..tickerProvider = tickerProvider
+            ..tabLength = tabLength,
+          from: homeHomeTabControllerProvider,
+          name: r'homeHomeTabControllerProvider',
           debugGetCreateSourceHash:
               const bool.fromEnvironment('dart.vm.product')
                   ? null
-                  : _$homeHomePageControllerHash,
-          dependencies: HomeHomePageControllerFamily._dependencies,
+                  : _$homeHomeTabControllerHash,
+          dependencies: HomeHomeTabControllerFamily._dependencies,
           allTransitiveDependencies:
-              HomeHomePageControllerFamily._allTransitiveDependencies,
+              HomeHomeTabControllerFamily._allTransitiveDependencies,
         );
 
   final TickerProvider tickerProvider;
+  final int tabLength;
 
   @override
   bool operator ==(Object other) {
-    return other is HomeHomePageControllerProvider &&
-        other.tickerProvider == tickerProvider;
+    return other is HomeHomeTabControllerProvider &&
+        other.tickerProvider == tickerProvider &&
+        other.tabLength == tabLength;
   }
 
   @override
   int get hashCode {
     var hash = _SystemHash.combine(0, runtimeType.hashCode);
     hash = _SystemHash.combine(hash, tickerProvider.hashCode);
+    hash = _SystemHash.combine(hash, tabLength.hashCode);
 
     return _SystemHash.finish(hash);
   }
 
   @override
   TabController runNotifierBuild(
-    covariant HomeHomePageController notifier,
+    covariant HomeHomeTabController notifier,
   ) {
     return notifier.build(
       tickerProvider,
+      tabLength,
     );
   }
 }

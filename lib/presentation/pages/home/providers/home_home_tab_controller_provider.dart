@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'home_home_page_controller_provider.g.dart';
+part 'home_home_tab_controller_provider.g.dart';
 
 @riverpod
-class HomeHomePageController extends _$HomeHomePageController {
-  final _pagingDuration = Duration(milliseconds: 500);
+class HomeHomeTabController extends _$HomeHomeTabController {
+  final _pagingDuration = const Duration(milliseconds: 500);
   final _pagingCurve = Curves.easeOutExpo;
 
   @override
-  Raw<TabController> build(TickerProvider tickerProvider) {
+  Raw<TabController> build(TickerProvider tickerProvider, int tabLength) {
     final controller = TabController(
-      length: 2,
+      length: tabLength,
       vsync: tickerProvider,
     );
 
