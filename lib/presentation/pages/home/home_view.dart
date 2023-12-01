@@ -55,10 +55,14 @@ class _HomeLoactionHeader extends StatelessWidget {
           gapW4,
           IntrinsicWidth(
             child: Stack(
+              alignment: Alignment.bottomCenter,
               children: [
-                Text(
-                  '용답동',
-                  style: const TextStyle(fontSize: 23),
+                SizedBox(
+                  height: 30,
+                  child: Text(
+                    '용답동',
+                    style: const TextStyle(fontSize: 23),
+                  ),
                 ),
                 Positioned(
                     child: Container(
