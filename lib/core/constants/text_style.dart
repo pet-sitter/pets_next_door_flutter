@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 
 abstract class AppTextStyle {
   static TextStyle pretendardStyle(double size, double? height) => TextStyle(
-        fontFamily: 'pretendard',
+        fontFamily: 'Pretendard',
         leadingDistribution: TextLeadingDistribution.even,
-        letterSpacing: -0.02,
         fontSize: size,
         height: height == null ? null : height / size,
       );
