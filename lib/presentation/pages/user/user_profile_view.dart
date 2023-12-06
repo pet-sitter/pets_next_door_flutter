@@ -109,7 +109,8 @@ class UserProfileSubmitButton extends StatelessWidget with SignUpPageEvent {
         return Padding(
           padding: const EdgeInsets.symmetric(horizontal: PNDSizes.p24),
           child: PNDBasicActivateButton(
-            onTap: () => onTapSubmit(ref, profileForm),
+            // onTap: () => onTapSubmit(ref, profileForm),
+            onTap: () => context.goNamed(AppRoute.home.name),
             text: '다음으로',
             isActive: profileForm.isFormValid,
           ),

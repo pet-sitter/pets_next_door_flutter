@@ -61,15 +61,17 @@ dev_dependencies:
 flutter:
   assets:
     - assets/imgs/
+    - assets/fonts/
     - assets/imgs/pet/
     - assets/svgs/
     - assets/svgs/login/
     - assets/svgs/home/
     - assets/svgs/pet/
+    
 
   uses-material-design: true
   fonts:
-    - family: Pretendard
+    - family: pretendard
       fonts:
         - asset: assets/fonts/Pretendard-Thin.otf
           weight: 100

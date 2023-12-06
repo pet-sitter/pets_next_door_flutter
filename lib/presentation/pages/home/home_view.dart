@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pets_next_door_flutter/core/constants/enums.dart';
 import 'package:pets_next_door_flutter/core/constants/sizes.dart';
+import 'package:pets_next_door_flutter/core/constants/text_style.dart';
+import 'package:pets_next_door_flutter/core/theme/extension/app_color.dart';
 import 'package:pets_next_door_flutter/presentation/pages/home/providers/home_home_tab_controller_provider.dart';
 import 'package:pets_next_door_flutter/presentation/pages/home/providers/show_search_bar_provider.dart';
 import 'package:pets_next_door_flutter/presentation/pages/pet_mate/pet_sitting_mate_view.dart';
@@ -48,29 +50,43 @@ class _HomeLoactionHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 24),
+      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 24),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Icon(Icons.place),
+          SizedBox(child: Icon(Icons.place)),
           gapW4,
-          IntrinsicWidth(
-            child: Stack(
-              alignment: Alignment.bottomCenter,
-              children: [
-                SizedBox(
-                  height: 30,
-                  child: Text(
-                    '용답동',
-                    style: const TextStyle(fontSize: 23),
-                  ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              IntrinsicWidth(
+                child: Stack(
+                  alignment: Alignment.bottomCenter,
+                  children: [
+                    Positioned(
+                        child: Container(
+                      height: 10,
+                      color: AppColor.of.lightGreen,
+                    )),
+                    SizedBox(
+                      height: 30,
+                      child: Text(
+                        '용답동',
+                        style: AppTextStyle.headlineBold1,
+                      ),
+                    ),
+                  ],
                 ),
-                Positioned(
-                    child: Container(
-                  height: 10,
-                  color: Colors.amber.withOpacity(0.2),
-                ))
-              ],
-            ),
+              ),
+              SizedBox(
+                height: 30,
+                child: Text(
+                  ' 의 멍냥모임',
+                  style: AppTextStyle.headlineBold1,
+                ),
+              ),
+            ],
           ),
         ],
       ),
@@ -109,6 +125,7 @@ class _HomeTabBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: 40,
       padding: const EdgeInsets.only(left: 24, top: 8),
       alignment: Alignment.centerLeft,
       child: TabBar(
@@ -117,15 +134,16 @@ class _HomeTabBar extends StatelessWidget {
         labelPadding: const EdgeInsets.only(right: 16),
         indicatorColor: Colors.transparent,
         dividerColor: Colors.transparent,
-        unselectedLabelColor: Colors.grey,
-        labelColor: Colors.red,
+        unselectedLabelColor: AppColor.of.gray50,
+        labelStyle: AppTextStyle.headlineSemibold2,
+        labelColor: AppColor.of.primaryGreen,
+        unselectedLabelStyle: AppTextStyle.headlineSemibold2,
         overlayColor: const MaterialStatePropertyAll(Colors.transparent),
         indicator: const UnderlineTabIndicator(borderRadius: BorderRadius.zero),
         tabs: [
           ...HomeHomeTabType.values.map(
             (tab) => Text(
               tab.label,
-              style: const TextStyle(fontSize: 20),
             ),
           ),
         ],
@@ -149,7 +167,7 @@ class _HomeSearchBar extends ConsumerWidget {
       decoration: BoxDecoration(
         border: Border(
           bottom: showSearchBar
-              ? const BorderSide(width: 15, color: Colors.grey)
+              ? BorderSide(width: 15, color: AppColor.of.gray20)
               : BorderSide.none,
         ),
       ),
@@ -161,8 +179,8 @@ class _HomeSearchBar extends ConsumerWidget {
             decoration: InputDecoration(
               contentPadding: EdgeInsets.symmetric(horizontal: 12),
               filled: true,
-              fillColor: Colors.grey,
-              focusColor: Colors.grey,
+              fillColor: AppColor.of.gray20,
+              focusColor: AppColor.of.gray20,
               prefixIcon: Padding(
                 padding: const EdgeInsets.only(left: 12, right: 8),
                 child: Icon(Icons.search),

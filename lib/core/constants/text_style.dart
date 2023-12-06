@@ -28,10 +28,12 @@ abstract class AppTextStyle {
         fontWeight: FontWeight.w800,
       );
 
-  static final TextStyle headlineBold1 = pretendardBoldStyle(24, 33);
-  static final TextStyle headlineRegular1 = pretendardRegularStyle(24, 33);
+  static final TextStyle headlineBold1 = pretendardBoldStyle(24, 29);
+  static final TextStyle headlineRegular1 = pretendardRegularStyle(24, 29);
+
   static final TextStyle headlineBold2 = pretendardBoldStyle(20, 24);
   static final TextStyle headlineRegular2 = pretendardRegularStyle(20, 24);
+  static final TextStyle headlineSemibold2 = pretendardSemiBoldStyle(20, 24);
   static final TextStyle bodyBold1 = pretendardSemiBoldStyle(16, 19);
   static final TextStyle bodyRegular1 = pretendardSemiBoldStyle(16, 19);
   static final TextStyle bodyBold2 = pretendardRegularStyle(12, 14);

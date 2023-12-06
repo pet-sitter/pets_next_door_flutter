@@ -9,5 +9,5 @@ class ShowSearchBar extends _$ShowSearchBar {
     return false;
   }
 
-  set show(bool show) => state = show;
+  set showSearchBar(bool show) => state = show;
 }

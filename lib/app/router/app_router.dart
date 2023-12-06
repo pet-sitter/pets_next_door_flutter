@@ -38,7 +38,7 @@ enum AppRoute {
 // ignore: unsupported_provider_value
 GoRouter goRouter(GoRouterRef ref) {
   return GoRouter(
-    initialLocation: '/home',
+    initialLocation: '/signIn',
     navigatorKey: _rootNavigatorKey,
     debugLogDiagnostics: true,
     redirect: (context, state) {

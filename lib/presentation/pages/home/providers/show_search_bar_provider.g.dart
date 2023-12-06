@@ -6,7 +6,7 @@ part of 'show_search_bar_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$showSearchBarHash() => r'b075c2cb1e1d138e7e4b5df3910c7f97be2108e8';
+String _$showSearchBarHash() => r'360f64e9a55d14428775cbf87b801f4dde76adf5';
 
 /// See also [ShowSearchBar].
 @ProviderFor(ShowSearchBar)
