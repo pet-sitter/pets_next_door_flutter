@@ -16,8 +16,6 @@ class AppTheme {
           bodyColor: AppColor().black,
           displayColor: AppColor().black,
         ),
-    // filledButtonTheme: _FilledButtonTheme.light,
-    // inputDecorationTheme: _InputDecorationTheme.light,
     appBarTheme: _AppBarTheme.light,
     extensions: <ThemeExtension<dynamic>>[
       AppColor(),
