@@ -60,6 +60,7 @@ dev_dependencies:
 
 flutter:
   assets:
+    - assets/fonts/
     - assets/imgs/
     - assets/imgs/pet/
     - assets/svgs/
