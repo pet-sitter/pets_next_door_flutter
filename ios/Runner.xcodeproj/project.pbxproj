@@ -15,6 +15,8 @@
 		97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */; };
 		AC98D7E4A1B5E9E6EF2E9C0E /* Pods_Runner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B541464B1F06BA02C5E367B5 /* Pods_Runner.framework */; };
 		B835C0992A9C753800A9D1D0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B835C0982A9C753800A9D1D0 /* GoogleService-Info.plist */; };
+		B8AEC1E52B244E5600DFCE8F /* LaunchScreenProduction.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8AEC1E12B244E5600DFCE8F /* LaunchScreenProduction.storyboard */; };
+		B8AEC1E62B244E5600DFCE8F /* LaunchScreenDevelopment.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8AEC1E32B244E5600DFCE8F /* LaunchScreenDevelopment.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -54,6 +56,8 @@
 		97C147021CF9000F007C117D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B541464B1F06BA02C5E367B5 /* Pods_Runner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Runner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B835C0982A9C753800A9D1D0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B8AEC1E22B244E5600DFCE8F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreenProduction.storyboard; sourceTree = "<group>"; };
+		B8AEC1E42B244E5600DFCE8F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreenDevelopment.storyboard; sourceTree = "<group>"; };
 		B8AF62A62A9C72120068F239 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B8AF62A82A9C721B0068F239 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FBA83F7B1D27A262605930F1 /* Pods-Runner.release-staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-staging.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-staging.xcconfig"; sourceTree = "<group>"; };
@@ -129,6 +133,8 @@
 		97C146F01CF9000F007C117D /* Runner */ = {
 			isa = PBXGroup;
 			children = (
+				B8AEC1E32B244E5600DFCE8F /* LaunchScreenDevelopment.storyboard */,
+				B8AEC1E12B244E5600DFCE8F /* LaunchScreenProduction.storyboard */,
 				B835C0982A9C753800A9D1D0 /* GoogleService-Info.plist */,
 				97C146FA1CF9000F007C117D /* Main.storyboard */,
 				97C146FD1CF9000F007C117D /* Assets.xcassets */,
@@ -234,8 +240,10 @@
 			files = (
 				B835C0992A9C753800A9D1D0 /* GoogleService-Info.plist in Resources */,
 				97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */,
+				B8AEC1E62B244E5600DFCE8F /* LaunchScreenDevelopment.storyboard in Resources */,
 				3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */,
 				97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */,
+				B8AEC1E52B244E5600DFCE8F /* LaunchScreenProduction.storyboard in Resources */,
 				97C146FC1CF9000F007C117D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -379,6 +387,22 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		B8AEC1E12B244E5600DFCE8F /* LaunchScreenProduction.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B8AEC1E22B244E5600DFCE8F /* Base */,
+			);
+			name = LaunchScreenProduction.storyboard;
+			sourceTree = "<group>";
+		};
+		B8AEC1E32B244E5600DFCE8F /* LaunchScreenDevelopment.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B8AEC1E42B244E5600DFCE8F /* Base */,
+			);
+			name = LaunchScreenDevelopment.storyboard;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -446,6 +470,7 @@
 				GOOGLE_SCHEME = "com.googleusercontent.apps.424678055013-lqikhot4d87ifooit42092ukp8uo1e4g";
 				INFOPLIST_FILE = Runner/Info.plist;
 				KAKAO_APP_SCHEME = "";
+				LAUNCH_SCREEN_STORYBOARD = LaunchScreenProduction;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -580,6 +605,7 @@
 				GOOGLE_SCHEME = "com.googleusercontent.apps.424678055013-lqikhot4d87ifooit42092ukp8uo1e4g";
 				INFOPLIST_FILE = Runner/Info.plist;
 				KAKAO_APP_SCHEME = "";
+				LAUNCH_SCREEN_STORYBOARD = LaunchScreenProduction;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -606,6 +632,7 @@
 				GOOGLE_SCHEME = "com.googleusercontent.apps.424678055013-lqikhot4d87ifooit42092ukp8uo1e4g";
 				INFOPLIST_FILE = Runner/Info.plist;
 				KAKAO_APP_SCHEME = "";
+				LAUNCH_SCREEN_STORYBOARD = LaunchScreenProduction;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -687,6 +714,7 @@
 				GOOGLE_SCHEME = "com.googleusercontent.apps.231574029969-6g4o5a6ec3o3n073i57b225m1ibh6107";
 				INFOPLIST_FILE = Runner/Info.plist;
 				KAKAO_APP_SCHEME = kakaoc731277fe79636328bb7e45a3ffa2b57;
+				LAUNCH_SCREEN_STORYBOARD = LaunchScreenDevelopment;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -766,6 +794,7 @@
 				GOOGLE_SCHEME = "com.googleusercontent.apps.231574029969-6g4o5a6ec3o3n073i57b225m1ibh6107";
 				INFOPLIST_FILE = Runner/Info.plist;
 				KAKAO_APP_SCHEME = kakaoc731277fe79636328bb7e45a3ffa2b57;
+				LAUNCH_SCREEN_STORYBOARD = LaunchScreenDevelopment;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -842,6 +871,7 @@
 				GOOGLE_SCHEME = "com.googleusercontent.apps.231574029969-6g4o5a6ec3o3n073i57b225m1ibh6107";
 				INFOPLIST_FILE = Runner/Info.plist;
 				KAKAO_APP_SCHEME = kakaoc731277fe79636328bb7e45a3ffa2b57;
+				LAUNCH_SCREEN_STORYBOARD = LaunchScreenDevelopment;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -923,6 +953,7 @@
 				GOOGLE_SCHEME = "com.googleusercontent.apps.424678055013-lqikhot4d87ifooit42092ukp8uo1e4g";
 				INFOPLIST_FILE = Runner/Info.plist;
 				KAKAO_APP_SCHEME = "";
+				LAUNCH_SCREEN_STORYBOARD = LaunchScreenProduction;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1002,6 +1033,7 @@
 				GOOGLE_SCHEME = "com.googleusercontent.apps.424678055013-lqikhot4d87ifooit42092ukp8uo1e4g";
 				INFOPLIST_FILE = Runner/Info.plist;
 				KAKAO_APP_SCHEME = "";
+				LAUNCH_SCREEN_STORYBOARD = LaunchScreenProduction;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1078,6 +1110,7 @@
 				GOOGLE_SCHEME = "com.googleusercontent.apps.424678055013-lqikhot4d87ifooit42092ukp8uo1e4g";
 				INFOPLIST_FILE = Runner/Info.plist;
 				KAKAO_APP_SCHEME = "";
+				LAUNCH_SCREEN_STORYBOARD = LaunchScreenProduction;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
