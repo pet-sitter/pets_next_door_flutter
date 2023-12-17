@@ -1,3 +1,5 @@
+import 'package:pets_next_door_flutter/app/di/modules/user_di.dart';
+
 final class AppBinder {
   AppBinder._();
 
@@ -8,7 +10,9 @@ final class AppBinder {
   static void init() {
     _initTopPriority();
 
-    for (final di in []) {
+    for (final di in [
+      UserDependencyInjection(),
+    ]) {
       di.init();
     }
   }
