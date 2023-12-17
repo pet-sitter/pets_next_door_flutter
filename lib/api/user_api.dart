@@ -1,35 +1,13 @@
-import 'package:pets_next_door_flutter/features/sign_up/domain/profile_form.dart';
+import 'package:dio/dio.dart';
+import 'package:pets_next_door_flutter/features/user/data/models/user_data_model.dart';
+import 'package:retrofit/retrofit.dart';
 
-/// Uri builder class for the UserAPI
-class UserAPI {
-  UserAPI(this._apiBaseUrl);
-  final String _apiBaseUrl;
+part 'user_api.g.dart';
 
-  static const String _apiPath = '/user/';
+@RestApi()
+abstract class UserAPI {
+  factory UserAPI(Dio dio, {String baseUrl}) = _UserAPI;
 
-  Uri register(ProfileForm registrationInfo) =>
-      _buildUri(endpoint: 'register', parametersBuilder: () => {});
-
-  Uri _buildUri({
-    required String endpoint,
-    required Map<String, dynamic> Function() parametersBuilder,
-  }) {
-    return Uri(
-      scheme: 'https',
-      host: _apiBaseUrl,
-      path: '$_apiPath$endpoint',
-      queryParameters: parametersBuilder(),
-    );
-  }
-
-  // Map<String, dynamic> registerationQueryParameters(
-  //   RegistrationInfo registerationInfo,
-  // ) =>
-  //     {
-  //       'email': registerationInfo.userInfo.email,
-  //       'fbProviderType': registerationInfo.userInfo.providerType.name,
-  //       'fbUid': registerationInfo.firebaseUid,
-  //       'fullname': registerationInfo.fullname,
-  //       'nickname': registerationInfo.nickname,
-  //     };
+  @GET("/users/me")
+  Future<UserDataModel> getUserData();
 }
