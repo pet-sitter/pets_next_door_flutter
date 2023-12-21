@@ -1,5 +1,3 @@
-import 'package:pets_next_door_flutter/core/constants/enums.dart';
-
 /// Metadata used when fetching movies with the paginated search API.
 class PaginationResponse<T> {
   PaginationResponse({
