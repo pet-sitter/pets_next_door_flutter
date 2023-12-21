@@ -3,9 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pets_next_door_flutter/app/router/app_router.dart';
 import 'package:pets_next_door_flutter/core/constants/sizes.dart';
-import 'package:pets_next_door_flutter/features/auth/domain/providers/app_user_data_provider.dart';
+import 'package:pets_next_door_flutter/features/pet/domain/provider/pet_list_notifier_provider.dart';
 import 'package:pets_next_door_flutter/features/sign_up/domain/profile_form.dart';
-import 'package:pets_next_door_flutter/features/user/domain/provider/user_profile_info_provider.dart';
 import 'package:pets_next_door_flutter/features/user/domain/user_profile_view_state.dart';
 import 'package:pets_next_door_flutter/presentation/pages/pet/widgets/pet_profile_list_tile.dart';
 import 'package:pets_next_door_flutter/presentation/pages/user/layout/user_nickname_text_form_field.dart';
@@ -29,7 +28,7 @@ class UserProfileView extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
 // TODO: 여기서 수정이면 유저 정보 부르기
 
-    final userInfo = ref.watch(appUserDataProvider);
+    // final userInfo = ref.watch(appUserDataProvider);
 
     return Scaffold(
       backgroundColor: Colors.white,
