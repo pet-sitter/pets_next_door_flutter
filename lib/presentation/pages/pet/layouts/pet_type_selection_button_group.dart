@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:pets_next_door_flutter/core/constants/enums.dart';
+import 'package:pets_next_door_flutter/core/enums/pet_type.dart';
 import 'package:pets_next_door_flutter/core/constants/sizes.dart';
 import 'package:pets_next_door_flutter/features/pet/domain/pet.dart';
 import 'package:pets_next_door_flutter/presentation/pages/pet/widgets/pet_type_selection_button.dart';

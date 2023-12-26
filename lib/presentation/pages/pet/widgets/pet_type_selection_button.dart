@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pets_next_door_flutter/core/constants/enums.dart';
-import 'package:pets_next_door_flutter/core/constants/imgs.dart';
+import 'package:pets_next_door_flutter/core/enums/pet_type.dart';
+import 'package:pets_next_door_flutter/core/constants/images.dart';
 
 class PetTypeSelectionButton extends StatelessWidget {
   const PetTypeSelectionButton({
@@ -18,11 +18,11 @@ class PetTypeSelectionButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final imgWidget = switch (petType) {
       PetType.cat => Image.asset(
-          PNDImgs.cat,
+          PNDImages.cat,
           height: 160,
         ),
       PetType.dog => Image.asset(
-          PNDImgs.dog,
+          PNDImages.dog,
           height: 115,
         ),
     };

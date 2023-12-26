@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:pets_next_door_flutter/core/constants/enums.dart';
+import 'package:pets_next_door_flutter/core/enums/pet_type.dart';
 import 'package:pets_next_door_flutter/features/pet/data/pet_repository.dart';
 import 'package:pets_next_door_flutter/features/pet/domain/breed_pagination_request.dart';
 

@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart';
-import 'package:pets_next_door_flutter/core/constants/enums.dart';
+import 'package:pets_next_door_flutter/core/enums/sns_provider_type.dart';
 import 'package:pets_next_door_flutter/features/auth/data/data_sources/local_auth_data_source.dart';
 import 'package:pets_next_door_flutter/features/auth/data/data_sources/sns_data_sources/apple_auth_data_source_impl.dart';
 import 'package:pets_next_door_flutter/features/auth/data/data_sources/sns_data_sources/google_auth_data_source_impl.dart';

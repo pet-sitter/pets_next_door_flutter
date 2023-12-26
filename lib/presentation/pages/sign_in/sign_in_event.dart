@@ -5,7 +5,7 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pets_next_door_flutter/app/router/app_router.dart';
-import 'package:pets_next_door_flutter/core/constants/enums.dart';
+import 'package:pets_next_door_flutter/core/enums/sns_provider_type.dart';
 import 'package:pets_next_door_flutter/features/auth/data/auth_repository.dart';
 import 'package:pets_next_door_flutter/features/auth/domain/auth_status.dart';
 import 'package:pets_next_door_flutter/features/user/domain/user_profile_view_state.dart';

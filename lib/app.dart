@@ -3,8 +3,8 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:pets_next_door_flutter/app/router/app_router.dart';
+import 'package:pets_next_door_flutter/core/constants/colors.dart';
 import 'package:pets_next_door_flutter/core/theme/app_theme.dart';
-import 'package:pets_next_door_flutter/core/theme/extension/app_color.dart';
 
 class App extends ConsumerWidget {
   const App({super.key});

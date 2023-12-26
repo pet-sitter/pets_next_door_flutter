@@ -1,4 +1,4 @@
-import 'package:pets_next_door_flutter/core/constants/enums.dart';
+import 'package:pets_next_door_flutter/core/enums/pet_type.dart';
 import 'package:pets_next_door_flutter/features/auth/data/auth_repository.dart';
 import 'package:pets_next_door_flutter/features/pet/domain/pet.dart';
 import 'package:pets_next_door_flutter/features/sign_up/domain/profile_form.dart';

@@ -4,7 +4,7 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:pets_next_door_flutter/api/pet_api.dart';
-import 'package:pets_next_door_flutter/core/constants/enums.dart';
+import 'package:pets_next_door_flutter/core/enums/pet_type.dart';
 import 'package:pets_next_door_flutter/core/utils/dio_provider.dart';
 import 'package:pets_next_door_flutter/features/auth/data/api_exceptions.dart';
 import 'package:pets_next_door_flutter/features/pet/domain/breed.dart';
