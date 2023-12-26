@@ -1,4 +1,4 @@
-import 'package:pets_next_door_flutter/core/constants/enums.dart';
+import 'package:pets_next_door_flutter/core/enums/pet_type.dart';
 import 'package:pets_next_door_flutter/features/pet/domain/pagination_request.dart';
 
 /// Metadata used when fetching movies with the paginated search API.

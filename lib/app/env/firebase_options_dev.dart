@@ -70,7 +70,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '231574029969',
     projectId: 'petsnextdoor-788a0',
     storageBucket: 'petsnextdoor-788a0.appspot.com',
-    iosClientId: '231574029969-6g4o5a6ec3o3n073i57b225m1ibh6107.apps.googleusercontent.com',
+    iosClientId:
+        '231574029969-6g4o5a6ec3o3n073i57b225m1ibh6107.apps.googleusercontent.com',
     iosBundleId: 'co.yellowtoast.pets-next-door-flutter.dev',
   );
 }

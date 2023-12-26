@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:pets_next_door_flutter/core/constants/enums.dart';
+import 'package:pets_next_door_flutter/core/enums/sns_provider_type.dart';
 import 'package:pets_next_door_flutter/features/auth/data/data_sources/sns_data_sources/sns_auth_data_source.dart';
 import 'package:pets_next_door_flutter/features/auth/domain/sns_oauth_info.dart';
 

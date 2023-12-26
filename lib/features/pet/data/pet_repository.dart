@@ -4,13 +4,12 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:pets_next_door_flutter/api/pet_api.dart';
-import 'package:pets_next_door_flutter/core/constants/enums.dart';
-import 'package:pets_next_door_flutter/core/utils/dio_provider.dart';
+import 'package:pets_next_door_flutter/core/enums/pet_type.dart';
+import 'package:pets_next_door_flutter/core/network_handling/app_dio.dart';
 import 'package:pets_next_door_flutter/features/auth/data/api_exceptions.dart';
 import 'package:pets_next_door_flutter/features/pet/domain/breed.dart';
 import 'package:pets_next_door_flutter/features/pet/domain/breed_pagination_request.dart';
 import 'package:pets_next_door_flutter/features/pet/domain/pagination_response.dart';
-
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'pet_repository.g.dart';
@@ -66,7 +65,7 @@ final petRepositoryProvider = Provider<PetRepository>((ref) {
 
   return PetRepository(
     api: PNDPetAPI(apiBaseUrl),
-    client: ref.read(dioProvider),
+    client: AppDio.getInstance(),
   );
 });
 

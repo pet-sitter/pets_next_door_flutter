@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:kakao_flutter_sdk_auth/kakao_flutter_sdk_auth.dart';
-import 'package:pets_next_door_flutter/core/constants/enums.dart';
+import 'package:pets_next_door_flutter/core/enums/sns_provider_type.dart';
 
 part 'sns_oauth_info.freezed.dart';
 

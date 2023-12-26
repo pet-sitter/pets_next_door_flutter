@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:pets_next_door_flutter/core/constants/svgs.dart';
+import 'package:pets_next_door_flutter/core/constants/images.dart';
 import 'package:pets_next_door_flutter/core/localization/string_hardcoded.dart';
 
 // Stateful navigation based on:
@@ -78,10 +78,10 @@ class ScaffoldWithBottomNavBar extends StatelessWidget {
 
               BottomNavigationBarItem(
                 icon: SvgPicture.asset(
-                  PNDSvgs.home,
+                  PNDImages.home,
                 ),
                 activeIcon: SvgPicture.asset(
-                  PNDSvgs.home,
+                  PNDImages.home,
                   color: Color(0xffFF8B00),
                 ),
                 label: '',

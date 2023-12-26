@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:pets_next_door_flutter/core/constants/enums.dart';
+import 'package:pets_next_door_flutter/core/enums/pet_type.dart';
 import 'package:pets_next_door_flutter/features/pet/domain/pet.dart';
 
 final petListNotifierProvider = NotifierProvider<PetListNotifier, List<Pet>>(

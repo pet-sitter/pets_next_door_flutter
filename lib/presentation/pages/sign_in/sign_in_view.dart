@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:pets_next_door_flutter/core/constants/images.dart';
 import 'package:pets_next_door_flutter/core/constants/sizes.dart';
 import 'package:pets_next_door_flutter/core/constants/strings.dart';
-import 'package:pets_next_door_flutter/core/constants/svgs.dart';
 import 'package:pets_next_door_flutter/presentation/pages/sign_in/widgets/start_with_apple_button.dart';
 import 'package:pets_next_door_flutter/presentation/pages/sign_in/widgets/start_with_google_button.dart';
 import 'package:pets_next_door_flutter/presentation/pages/sign_in/widgets/start_with_kakao_button.dart';
@@ -24,9 +24,9 @@ class SignInView extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      SvgPicture.asset(PNDSvgs.mainIcon),
+                      SvgPicture.asset(PNDImages.mainIcon),
                       gapH20,
-                      SvgPicture.asset(PNDSvgs.mainTitleIcon),
+                      SvgPicture.asset(PNDImages.mainTitleIcon),
                     ],
                   ),
                 ),
