@@ -17,7 +17,7 @@ abstract class AppDio {
 
   static Dio? _instance;
 
-  static Dio getInstance() => _instance ??= _AppDio();
+  static Dio get instance => _instance ??= _AppDio();
 }
 
 class _AppDio with DioMixin implements Dio {
