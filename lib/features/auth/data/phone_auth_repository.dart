@@ -53,6 +53,6 @@ final phoneAuthRepositoryProvider = Provider<DioAuthRepository>((ref) {
   );
   return DioAuthRepository(
     api: PNDAuthAPI(apiKey),
-    client: AppDio.getInstance(),
+    client: AppDio.instance,
   );
 });

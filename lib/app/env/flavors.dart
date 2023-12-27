@@ -7,6 +7,7 @@ import 'package:pets_next_door_flutter/app/env/firebase_options_dev.dart'
     as dev;
 import 'package:pets_next_door_flutter/app/env/firebase_options_prod.dart'
     as prod;
+import 'package:pets_next_door_flutter/core/services/local_storage_service.dart';
 
 enum BuildType {
   development,
@@ -44,6 +45,8 @@ class Flavor {
       nativeAppKey: dotenv.env['NATIVE_APP_KEY'],
       javaScriptAppKey: dotenv.env['JAVASCRIPT_APP_KEY'],
     );
+
+    await LocalStorageService.init();
 
     // 앱 DI 실행
     AppBinder.init();

@@ -6,7 +6,21 @@ part of 'user_data_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$userDataHash() => r'9e00e111b5a3aae812ceb2df6e53518b30b83ca2';
+String _$userTokenHash() => r'1170b0e699e542d1611cd7f7208d0976abcb0b87';
+
+/// See also [userToken].
+@ProviderFor(userToken)
+final userTokenProvider = AutoDisposeFutureProvider<String?>.internal(
+  userToken,
+  name: r'userTokenProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$userTokenHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef UserTokenRef = AutoDisposeFutureProviderRef<String?>;
+String _$userDataHash() => r'0587e70e7b6971b9fc900e5134c57fe9c8008edc';
 
 /// See also [UserData].
 @ProviderFor(UserData)
