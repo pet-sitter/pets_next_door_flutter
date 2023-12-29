@@ -1,56 +1,58 @@
-import 'package:pets_next_door_flutter/core/enums/pet_type.dart';
-import 'package:pets_next_door_flutter/features/auth/data/auth_repository.dart';
-import 'package:pets_next_door_flutter/features/pet/domain/pet.dart';
-import 'package:pets_next_door_flutter/features/sign_up/domain/profile_form.dart';
-import 'package:pets_next_door_flutter/features/user/domain/user_profile_view_state.dart';
-import 'package:pets_next_door_flutter/presentation/pages/user/layout/text_form_state.dart';
-import 'package:pets_next_door_flutter/presentation/pages/user/layout/user_nickname_notifier_provider.dart';
+// import 'package:pets_next_door_flutter/core/enums/pet_type.dart';
+// import 'package:pets_next_door_flutter/features/auth/data/auth_repository.dart';
+// import 'package:pets_next_door_flutter/features/pet/domain/pet.dart';
+// import 'package:pets_next_door_flutter/features/sign_up/entities/sign_up_data_entity.dart';
+// import 'package:pets_next_door_flutter/features/user/domain/user_profile_view_state.dart';
+// import 'package:pets_next_door_flutter/presentation/pages/user/layout/text_form_state.dart';
+// import 'package:pets_next_door_flutter/presentation/pages/user/layout/user_nickname_notifier_provider.dart';
 
-import 'package:riverpod_annotation/riverpod_annotation.dart';
+// import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'user_profile_view_controller.g.dart';
+// part 'user_profile_view_controller.g.dart';
 
-typedef ProfileFilled = bool;
+// typedef ProfileFilled = bool;
 
-@riverpod
-class UserProfileViewController extends _$UserProfileViewController {
-  @override
-  void build() {
-    return;
-  }
+// @riverpod
+// class UserProfileViewController extends _$UserProfileViewController {
+//   @override
+//   void build() {
+//     return;
+//   }
 
-  Future<void> submit(
-    ProfileForm newProfileForm,
-    UserProfileViewState profileViewState,
-  ) async {
-    profileViewState.when(register: (snsOAuthInfo) {
-      final authRepository =
-          ref.read(authRepositoryProvider(snsOAuthInfo.providerType));
+//   Future<void> submit(
+//     SignUpDataEntity newProfileForm,
+//     UserProfileViewState profileViewState,
+//   ) async {
+//     profileViewState.when(register: (snsOAuthInfo) {
+//       final authRepository =
+//           ref.read(authRepositoryProvider(snsOAuthInfo.providerType));
 
-      authRepository.signInFirebaseAuth(snsOAuthInfo);
-    }, edit: (userId) {
-      // TODO: 유저 프로필 수정 로직 구현
-    });
-  }
+//       authRepository.signInFirebaseAuth(snsOAuthInfo);
+//     }, edit: (userId) {
+//       // TODO: 유저 프로필 수정 로직 구현
+//     });
+//   }
 
-  bool isProfileValid() {
-    return ref.watch(userNicknameNotifierProvider) is TextFormStateValid;
-  }
-}
+//   bool isProfileValid() {
+//     return ref.watch(userNicknameNotifierProvider) is TextFormStateValid;
+//   }
+// }
 
-@riverpod
-Future<ProfileForm> userProfileFuture(UserProfileFutureRef ref, int id) async {
-  return ProfileForm(
-      nickname: TextFormState.valid('이전닉네임'),
-      profileImageId: 1,
-      pets: [
-        Pet(
-          name: '콩이',
-          petType: PetType.dog,
-          neutered: true,
-          breed: '비숑프리제',
-          birthDate: DateTime.now(),
-          weight: 3.5,
-        ),
-      ]);
-}
+// @riverpod
+// Future<SignUpDataEntity> userProfileFuture(
+//     UserProfileFutureRef ref, int id) async {
+//   return SignUpDataEntity(
+//       nickname: TextFormState.valid('이전닉네임'),
+//       profileImageId: 1,
+//       pets: [
+//         Pet(
+//           name: '콩이',
+//           petType: PetType.dog,
+//           neutered: true,
+//           breed: '비숑프리제',
+//           birthDate: DateTime.now(),
+//           weight: 3.5,
+//         ),
+//       ],
+//       firebaseUid: id.toString());
+// }

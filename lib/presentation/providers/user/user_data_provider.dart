@@ -1,4 +1,3 @@
-import 'package:pets_next_door_flutter/core/network_handling/exceptions/custom_exception.dart';
 import 'package:pets_next_door_flutter/core/services/toast_service.dart';
 import 'package:pets_next_door_flutter/features/user/entities/user_data_entity.dart';
 import 'package:pets_next_door_flutter/features/user/user.dart';
@@ -15,13 +14,13 @@ class UserData extends _$UserData {
     try {
       final userAuth = ref.watch(userAuthProvider);
 
-      if (userAuth == null) throw const UnAuthorizedException();
+      if (userAuth == null) return null;
 
       final userData = await getUserDataUseCase.call();
 
       return userData.fold(
         onSuccess: (userData) => userData,
-        onFailure: (e) => throw e,
+        onFailure: (e) => null,
       );
     } catch (e) {
       ToastService.show(NormalToast(message: '$e'));
@@ -30,19 +29,4 @@ class UserData extends _$UserData {
   }
 
   void updateUserData() {}
-}
-
-@riverpod
-Future<String?> userToken(UserTokenRef ref) async {
-  final userToken = await ref
-      .watch(userDataProvider.future)
-      .then((userData) => userData?.uid);
-
-  final updateSucceed = await updateUserTokenUseCase.call(newToken: userToken);
-
-  if (updateSucceed) {
-    return getUserTokenUseCase.call();
-  } else {
-    throw LocalDataNotUpdatedException();
-  }
 }

@@ -7,7 +7,7 @@ part of 'user_profile_provider.dart';
 // **************************************************************************
 
 String _$userProfileControllerHash() =>
-    r'75046957712b638f35a27d19facd76b4cbf22796';
+    r'333c909adcea4030bfdd20959e7dd985ecc5d69a';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -31,11 +31,11 @@ class _SystemHash {
 }
 
 abstract class _$UserProfileController
-    extends BuildlessAutoDisposeAsyncNotifier<ProfileForm> {
-  late final ProfileForm previousProfile;
+    extends BuildlessAutoDisposeAsyncNotifier<SignUpDataEntity> {
+  late final SignUpDataEntity previousProfile;
 
-  Future<ProfileForm> build(
-    ProfileForm previousProfile,
+  Future<SignUpDataEntity> build(
+    SignUpDataEntity previousProfile,
   );
 }
 
@@ -44,13 +44,13 @@ abstract class _$UserProfileController
 const userProfileControllerProvider = UserProfileControllerFamily();
 
 /// See also [UserProfileController].
-class UserProfileControllerFamily extends Family<AsyncValue<ProfileForm>> {
+class UserProfileControllerFamily extends Family<AsyncValue<SignUpDataEntity>> {
   /// See also [UserProfileController].
   const UserProfileControllerFamily();
 
   /// See also [UserProfileController].
   UserProfileControllerProvider call(
-    ProfileForm previousProfile,
+    SignUpDataEntity previousProfile,
   ) {
     return UserProfileControllerProvider(
       previousProfile,
@@ -84,7 +84,7 @@ class UserProfileControllerFamily extends Family<AsyncValue<ProfileForm>> {
 /// See also [UserProfileController].
 class UserProfileControllerProvider
     extends AutoDisposeAsyncNotifierProviderImpl<UserProfileController,
-        ProfileForm> {
+        SignUpDataEntity> {
   /// See also [UserProfileController].
   UserProfileControllerProvider(
     this.previousProfile,
@@ -101,7 +101,7 @@ class UserProfileControllerProvider
               UserProfileControllerFamily._allTransitiveDependencies,
         );
 
-  final ProfileForm previousProfile;
+  final SignUpDataEntity previousProfile;
 
   @override
   bool operator ==(Object other) {
@@ -118,7 +118,7 @@ class UserProfileControllerProvider
   }
 
   @override
-  Future<ProfileForm> runNotifierBuild(
+  Future<SignUpDataEntity> runNotifierBuild(
     covariant UserProfileController notifier,
   ) {
     return notifier.build(

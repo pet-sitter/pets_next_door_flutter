@@ -4,6 +4,7 @@ import 'package:pets_next_door_flutter/features/user/data/local/user_local_data_
 import 'package:pets_next_door_flutter/features/user/data/local/user_local_data_source_impl.dart';
 import 'package:pets_next_door_flutter/features/user/data/remote/user_remote_data_source_impl.dart';
 import 'package:pets_next_door_flutter/features/user/repositories/user_repository_impl.dart';
+import 'package:pets_next_door_flutter/features/user/usecases/create_user_data_use_case.dart';
 import 'package:pets_next_door_flutter/features/user/user.dart';
 
 final class UserDependencyInjection extends FeatureDependencyInjection {
@@ -38,8 +39,13 @@ final class UserDependencyInjection extends FeatureDependencyInjection {
           userRepository,
         ),
       )
-      ..registerFactory(
+      ..registerFactory<UpdateUserTokenLocalUseCase>(
         () => UpdateUserTokenLocalUseCase(
+          userRepository,
+        ),
+      )
+      ..registerFactory<CreateUserDataUseCase>(
+        () => CreateUserDataUseCase(
           userRepository,
         ),
       );

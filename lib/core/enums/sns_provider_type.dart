@@ -1,6 +1,11 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
+
 enum SnsProviderType {
+  @JsonValue('kakao')
   kakao(providerId: 'kakao.com'),
+  @JsonValue('google')
   google(providerId: 'google.com'),
+  @JsonValue('apple')
   apple(providerId: 'apple.com');
 
   const SnsProviderType({required this.providerId});

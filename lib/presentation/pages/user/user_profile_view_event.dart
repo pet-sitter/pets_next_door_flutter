@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:pets_next_door_flutter/features/sign_up/domain/profile_form.dart';
+import 'package:pets_next_door_flutter/features/sign_up/entities/sign_up_data_entity.dart';
 
 // final Debouncer _nicknameValidateDebouncer = Debouncer(1.seconds);
 
-mixin class SignUpPageEvent {
+mixin class UserProfileEvent {
   /// 앱바의 [BackButton]을 눌렀을 때 실행할 콜백
   ///
   /// 이전 회원가입 단계로 넘어간다. 이전 단계로 넘어갈 시 현재 단계에 작성한 데이터는 삭제한다.
@@ -19,7 +19,7 @@ mixin class SignUpPageEvent {
   /// [debouncer]를 통헤 여러번 입력하더라도 마지막 입력만 검사하도록 제한한다.
   /// 입력 사이의 제한시간은 1초로 지정한다.
   Future<void> onChangeNicknameField(WidgetRef ref,
-      {required String nickname, required ProfileForm previousProfile
+      {required String nickname, required SignUpDataEntity previousProfile
       // required ValueNotifier<bool> isRunningDebouncer,
       }) async {
     // 입력받은 nickname이 비어있다면 콜백을 중단하고 닉네임 데이터를 초기화한다.
@@ -46,7 +46,7 @@ mixin class SignUpPageEvent {
 
   Future<void> onTapSubmit(
     WidgetRef ref,
-    ProfileForm newProfileForm,
+    SignUpDataEntity newProfileForm,
   ) async {
     // final nickname = ref.watch(userNicknameNotifierProvider).maybeWhen(
     //       valid: (nickname) => nickname,

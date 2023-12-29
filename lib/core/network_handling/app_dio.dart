@@ -28,9 +28,6 @@ class _AppDio with DioMixin implements Dio {
       receiveTimeout: Duration(milliseconds: 30000),
       sendTimeout: Duration(milliseconds: 30000),
       receiveDataWhenStatusError: true,
-      headers: <String, dynamic>{
-        'accept': 'application/json',
-      },
     );
 
     (transformer as BackgroundTransformer).jsonDecodeCallback = parseJson;

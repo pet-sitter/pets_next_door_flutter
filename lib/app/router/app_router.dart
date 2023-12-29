@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pets_next_door_flutter/app/router/scaffold_with_nested_navigation.dart';
-import 'package:pets_next_door_flutter/features/user/domain/user_profile_view_state.dart';
 import 'package:pets_next_door_flutter/presentation/pages/chat/chat_view.dart';
 import 'package:pets_next_door_flutter/presentation/pages/gather/gather_view.dart';
 import 'package:pets_next_door_flutter/presentation/pages/home/home_view.dart';
 import 'package:pets_next_door_flutter/presentation/pages/pet/register_pet_page.dart';
 import 'package:pets_next_door_flutter/presentation/pages/pet/steps/breed_search_view.dart';
-import 'package:pets_next_door_flutter/presentation/pages/sign_in/sign_in_view.dart';
+import 'package:pets_next_door_flutter/presentation/pages/sign_in/sign_in_page.dart';
 import 'package:pets_next_door_flutter/presentation/pages/sign_up/phone_auth_view.dart';
+import 'package:pets_next_door_flutter/presentation/pages/sign_up/sign_up_page.dart';
 import 'package:pets_next_door_flutter/presentation/pages/splash/splash_page.dart';
-import 'package:pets_next_door_flutter/presentation/pages/user/user_profile_view.dart';
 import 'package:pets_next_door_flutter/presentation/pages/user/user_view.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -26,6 +25,7 @@ final _userNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'user');
 enum AppRoute {
   splash,
   signIn,
+  signUp,
   phoneAuth,
   home,
   gather,
@@ -33,14 +33,18 @@ enum AppRoute {
   user,
   profile,
   breedSearch,
-  registerPet,
+  registerPet;
+
+  const AppRoute();
+
+  String get path => '/${this.name}';
 }
 
 @riverpod
 // ignore: unsupported_provider_value
 GoRouter goRouter(GoRouterRef ref) {
   return GoRouter(
-    initialLocation: '/${AppRoute.splash}',
+    initialLocation: AppRoute.splash.path,
     navigatorKey: rootNavigatorKey,
     debugLogDiagnostics: true,
     redirect: (context, state) {
@@ -48,23 +52,32 @@ GoRouter goRouter(GoRouterRef ref) {
     },
     routes: [
       GoRoute(
-        path: '/${AppRoute.splash}',
+        path: AppRoute.splash.path,
         name: AppRoute.splash.name,
         pageBuilder: (context, state) => MaterialPage(
           key: state.pageKey,
-          child: SplashPage(),
+          child: SplashView(),
         ),
       ),
       GoRoute(
-        path: '/signIn',
+        path: AppRoute.signIn.path,
         name: AppRoute.signIn.name,
         pageBuilder: (context, state) => MaterialPage(
           key: state.pageKey,
-          child: SignInView(),
+          child: SignInPage(),
+        ),
+      ),
+
+      GoRoute(
+        path: AppRoute.signUp.path,
+        name: AppRoute.signUp.name,
+        pageBuilder: (context, state) => MaterialPage(
+          key: state.pageKey,
+          child: SignUpPage(),
         ),
       ),
       GoRoute(
-        path: '/phoneAuth',
+        path: AppRoute.phoneAuth.path,
         name: AppRoute.phoneAuth.name,
         pageBuilder: (context, state) => MaterialPage(
           key: state.pageKey,
@@ -72,19 +85,19 @@ GoRouter goRouter(GoRouterRef ref) {
         ),
       ),
 
-      GoRoute(
-        path: '/profile',
-        name: AppRoute.profile.name,
-        pageBuilder: (context, state) => MaterialPage(
-          key: state.pageKey,
-          child: UserProfileView(
-            profileViewState: state.extra! as UserProfileViewState,
-          ),
-        ),
-      ),
+      // GoRoute(
+      //   path: '/profile',
+      //   name: AppRoute.profile.name,
+      //   pageBuilder: (context, state) => MaterialPage(
+      //     key: state.pageKey,
+      //     child: UserProfileView(
+      //       profileViewState: state.extra! as UserProfileViewState,
+      //     ),
+      //   ),
+      // ),
 
       GoRoute(
-        path: '/breedSearch',
+        path: AppRoute.breedSearch.path,
         name: AppRoute.breedSearch.name,
         pageBuilder: (context, state) => MaterialPage(
           key: state.pageKey,
@@ -93,7 +106,7 @@ GoRouter goRouter(GoRouterRef ref) {
       ),
 
       GoRoute(
-        path: '/${AppRoute.registerPet.name}',
+        path: AppRoute.registerPet.path,
         name: AppRoute.registerPet.name,
         pageBuilder: (context, state) => MaterialPage(
           key: state.pageKey,
@@ -120,7 +133,7 @@ GoRouter goRouter(GoRouterRef ref) {
             routes: [
               // Products
               GoRoute(
-                path: '/home',
+                path: AppRoute.home.path,
                 name: AppRoute.home.name,
                 pageBuilder: (context, state) => NoTransitionPage(
                   key: state.pageKey,
