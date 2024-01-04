@@ -9,6 +9,7 @@ import 'package:pets_next_door_flutter/presentation/pages/pet/register_pet_page.
 import 'package:pets_next_door_flutter/presentation/pages/pet/steps/breed_search_view.dart';
 import 'package:pets_next_door_flutter/presentation/pages/sign_in/sign_in_view.dart';
 import 'package:pets_next_door_flutter/presentation/pages/sign_up/phone_auth_view.dart';
+import 'package:pets_next_door_flutter/presentation/pages/splash/splash_page.dart';
 import 'package:pets_next_door_flutter/presentation/pages/user/user_profile_view.dart';
 import 'package:pets_next_door_flutter/presentation/pages/user/user_view.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -16,13 +17,14 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'app_router.g.dart';
 
 // private navigators
-final _rootNavigatorKey = GlobalKey<NavigatorState>();
+final rootNavigatorKey = GlobalKey<NavigatorState>();
 final _homeNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'home');
 final _gatherNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'gather');
 final _chatNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'chat');
 final _userNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'user');
 
 enum AppRoute {
+  splash,
   signIn,
   phoneAuth,
   home,
@@ -38,13 +40,21 @@ enum AppRoute {
 // ignore: unsupported_provider_value
 GoRouter goRouter(GoRouterRef ref) {
   return GoRouter(
-    initialLocation: '/home',
-    navigatorKey: _rootNavigatorKey,
+    initialLocation: '/${AppRoute.splash}',
+    navigatorKey: rootNavigatorKey,
     debugLogDiagnostics: true,
     redirect: (context, state) {
       return null;
     },
     routes: [
+      GoRoute(
+        path: '/${AppRoute.splash}',
+        name: AppRoute.splash.name,
+        pageBuilder: (context, state) => MaterialPage(
+          key: state.pageKey,
+          child: SplashPage(),
+        ),
+      ),
       GoRoute(
         path: '/signIn',
         name: AppRoute.signIn.name,

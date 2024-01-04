@@ -65,7 +65,7 @@ final petRepositoryProvider = Provider<PetRepository>((ref) {
 
   return PetRepository(
     api: PNDPetAPI(apiBaseUrl),
-    client: AppDio.getInstance(),
+    client: AppDio.instance,
   );
 });
 

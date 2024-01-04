@@ -1,16 +1,23 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:pets_next_door_flutter/presentation/providers/user/user_auth_provider.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:pets_next_door_flutter/features/user/user.dart';
 
 class TokenInterceptor implements Interceptor {
   @override
-  void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
-    final isUserAuthorized = ProviderContainer().read(isUserAuthorizedProvider);
+  Future<void> onRequest(
+      RequestOptions options, RequestInterceptorHandler handler) async {
+    final requiresToken = (options.headers['requiresToken'] ?? true) as bool;
+
+    if (!requiresToken) return handler.next(options);
+
+    final isUserAuthorized = (FirebaseAuth.instance.currentUser != null);
 
     if (isUserAuthorized) {
-      final token = '';
+      final token = await getUserTokenUseCase.call();
       options.headers['Authorization'] = 'Bearer $token';
     }
+
+    return handler.next(options);
   }
 
   @override
