@@ -6,7 +6,7 @@ import 'package:dio/dio.dart';
 import 'package:pets_next_door_flutter/api/pet_api.dart';
 import 'package:pets_next_door_flutter/core/enums/pet_type.dart';
 import 'package:pets_next_door_flutter/core/network_handling/app_dio.dart';
-import 'package:pets_next_door_flutter/features/auth/data/api_exceptions.dart';
+import 'package:pets_next_door_flutter/core/network_handling/exceptions/custom_exception.dart';
 import 'package:pets_next_door_flutter/features/pet/domain/breed.dart';
 import 'package:pets_next_door_flutter/features/pet/domain/breed_pagination_request.dart';
 import 'package:pets_next_door_flutter/features/pet/domain/pagination_response.dart';
@@ -43,15 +43,12 @@ class PetRepository {
         case 200:
           final data = response.data;
           return builder(data);
-        case 401:
-          throw InvalidApiKeyException();
-        case 404:
-          throw CityNotFoundException();
+
         default:
-          throw UnknownException();
+          throw AlreadyExistUserDataException();
       }
-    } on SocketException catch (_) {
-      throw NoInternetConnectionException();
+    } on SocketException catch (e) {
+      throw e;
     }
   }
 }

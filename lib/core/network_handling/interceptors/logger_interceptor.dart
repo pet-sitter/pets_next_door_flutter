@@ -9,12 +9,16 @@ class LoggerInterceptor implements Interceptor {
     log('❌ Url: ${err.requestOptions.uri}');
     log('❌ ${err.stackTrace}');
     log('❌ Response Error: ${err.response?.data}');
+    log('❌ Response Message: ${err.message}');
     return handler.next(err);
   }
 
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
     log('🌍 Sending network request: ${options.baseUrl}${options.path}');
+    log('🌍 Header: ${options.headers}');
+    log('🌍 Query: ${options.queryParameters}');
+    log('🌍 Data: ${options.data}');
     return handler.next(options);
   }
 
@@ -26,6 +30,7 @@ class LoggerInterceptor implements Interceptor {
     log('⬅️ Received network response');
     log('${response.statusCode != 200 ? '❌ ${response.statusCode} ❌' : '✅ 200 ✅'} ${response.requestOptions.baseUrl}${response.requestOptions.path}');
     log('Query params: ${response.requestOptions.queryParameters}');
+    log('Response Data: ${response.data}');
     log('-------------------------');
     return handler.next(response);
   }

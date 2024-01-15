@@ -1,4 +1,5 @@
 import 'package:pets_next_door_flutter/core/utils/result.dart';
+import 'package:pets_next_door_flutter/features/sign_up/entities/sign_up_data_entity.dart';
 import 'package:pets_next_door_flutter/features/user/data/local/user_local_data_source.dart';
 import 'package:pets_next_door_flutter/features/user/data/remote/user_remote_data_source.dart';
 import 'package:pets_next_door_flutter/features/user/entities/user_data_entity.dart';
@@ -15,8 +16,16 @@ final class UserRepositoryImpl implements UserRepository {
   final UserLocalDataSource _userLocalDataSource;
 
   @override
-  Future<void> createUserData(UserDataEntity data) async {
-    // TODO: 추후 회원가입 로직에서 구현예정
+  Future<Result<UserDataEntity>> createUserData(SignUpDataEntity data) async {
+    try {
+      final userDto =
+          await _userRemoteDataSource.createUserData(signUpData: data.toDto());
+
+      // remote data source에서 받아온 모델을 앱에서 사용하는 모델로 변환
+      return Result.success(UserDataEntity.fromDto(userDto));
+    } on Exception catch (e) {
+      return Result.failure(e);
+    }
   }
 
   @override
@@ -25,7 +34,7 @@ final class UserRepositoryImpl implements UserRepository {
       final userData = await _userRemoteDataSource.getUserData();
 
       // remote data source에서 받아온 모델을 앱에서 사용하는 모델로 변환
-      return Result.success(UserDataEntity.fromModel(userData));
+      return Result.success(UserDataEntity.fromDto(userData));
     } on Exception catch (e) {
       return Result.failure(e);
     }

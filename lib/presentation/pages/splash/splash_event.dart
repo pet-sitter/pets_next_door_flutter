@@ -18,16 +18,15 @@ mixin class SplashEvent implements _SplashEvent {
       return;
     }
 
-    await ref.read(userDataProvider.future).then(
-      (userData) {
-        if (userData != null) {
-          ref.context.goNamed(AppRoute.home.name);
-        } else {
-          ref.context.goNamed(AppRoute.signIn.name);
-        }
-      },
-    ).onError((error, stackTrace) {
+    final userData =
+        await ref.read(userDataProvider.future).onError((error, stackTrace) {
       ref.context.goNamed(AppRoute.signIn.name);
     });
+
+    if (userData != null) {
+      ref.context.goNamed(AppRoute.home.name);
+    } else {
+      ref.context.goNamed(AppRoute.signIn.name);
+    }
   }
 }
