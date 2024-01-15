@@ -12,9 +12,14 @@ class RegisterPetPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      appBar: _AppBar(),
-      body: _Body(),
+    return WillPopScope(
+      onWillPop: () async {
+        return false;
+      },
+      child: Scaffold(
+        appBar: _AppBar(),
+        body: _Body(),
+      ),
     );
   }
 }

@@ -1,9 +1,13 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:pets_next_door_flutter/app/router/app_router.dart';
 import 'package:pets_next_door_flutter/core/constants/images.dart';
+import 'package:pets_next_door_flutter/core/constants/svgs.dart';
 import 'package:pets_next_door_flutter/core/localization/string_hardcoded.dart';
+import 'package:pets_next_door_flutter/presentation/providers/user/user_auth_provider.dart';
 
 // Stateful navigation based on:
 // https://github.com/flutter/packages/blob/main/packages/go_router/example/lib/stateful_shell_route.dart
@@ -61,6 +65,16 @@ class ScaffoldWithBottomNavBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: body,
+      floatingActionButton: Consumer(
+        builder: (BuildContext context, WidgetRef ref, Widget? child) {
+          return FloatingActionButton(onPressed: () async {
+            final signOutSucceed =
+                await ref.read(userAuthProvider.notifier).signOut();
+
+            if (signOutSucceed) ref.context.goNamed(AppRoute.signIn.name);
+          });
+        },
+      ),
       bottomNavigationBar: SizedBox(
         height: 60,
         child: Wrap(children: [
@@ -78,10 +92,10 @@ class ScaffoldWithBottomNavBar extends StatelessWidget {
 
               BottomNavigationBarItem(
                 icon: SvgPicture.asset(
-                  PNDImages.home,
+                  PNDSvgs.home,
                 ),
                 activeIcon: SvgPicture.asset(
-                  PNDImages.home,
+                  PNDSvgs.home,
                   color: Color(0xffFF8B00),
                 ),
                 label: '',
