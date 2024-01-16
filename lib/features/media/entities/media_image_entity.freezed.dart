@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$MediaImageEntity {
   int get id => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
-  MediaType get mediaType => throw _privateConstructorUsedError;
+  AppMediaType get mediaType => throw _privateConstructorUsedError;
   String get url => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -32,7 +32,7 @@ abstract class $MediaImageEntityCopyWith<$Res> {
           MediaImageEntity value, $Res Function(MediaImageEntity) then) =
       _$MediaImageEntityCopyWithImpl<$Res, MediaImageEntity>;
   @useResult
-  $Res call({int id, DateTime createdAt, MediaType mediaType, String url});
+  $Res call({int id, DateTime createdAt, AppMediaType mediaType, String url});
 }
 
 /// @nodoc
@@ -65,7 +65,7 @@ class _$MediaImageEntityCopyWithImpl<$Res, $Val extends MediaImageEntity>
       mediaType: null == mediaType
           ? _value.mediaType
           : mediaType // ignore: cast_nullable_to_non_nullable
-              as MediaType,
+              as AppMediaType,
       url: null == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
@@ -82,7 +82,7 @@ abstract class _$$_MediaImageEntityCopyWith<$Res>
       __$$_MediaImageEntityCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, DateTime createdAt, MediaType mediaType, String url});
+  $Res call({int id, DateTime createdAt, AppMediaType mediaType, String url});
 }
 
 /// @nodoc
@@ -113,7 +113,7 @@ class __$$_MediaImageEntityCopyWithImpl<$Res>
       mediaType: null == mediaType
           ? _value.mediaType
           : mediaType // ignore: cast_nullable_to_non_nullable
-              as MediaType,
+              as AppMediaType,
       url: null == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
@@ -137,7 +137,7 @@ class _$_MediaImageEntity extends _MediaImageEntity {
   @override
   final DateTime createdAt;
   @override
-  final MediaType mediaType;
+  final AppMediaType mediaType;
   @override
   final String url;
 
@@ -173,7 +173,7 @@ abstract class _MediaImageEntity extends MediaImageEntity {
   const factory _MediaImageEntity(
       {required final int id,
       required final DateTime createdAt,
-      required final MediaType mediaType,
+      required final AppMediaType mediaType,
       required final String url}) = _$_MediaImageEntity;
   const _MediaImageEntity._() : super._();
 
@@ -182,7 +182,7 @@ abstract class _MediaImageEntity extends MediaImageEntity {
   @override
   DateTime get createdAt;
   @override
-  MediaType get mediaType;
+  AppMediaType get mediaType;
   @override
   String get url;
   @override

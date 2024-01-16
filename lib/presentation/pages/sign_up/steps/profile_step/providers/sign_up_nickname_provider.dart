@@ -24,4 +24,26 @@ class SignUpNickname extends _$SignUpNickname {
       state = TextFormState.valid(nickname);
     }
   }
+
+  Future<String> get checkNicknameDuplication async {
+    try {
+      // TODO: 여기서 닉네임 중복검사 하기
+      final nickname = state.when(
+        valid: (text) {
+          if (text.isEmpty) return null;
+          return text;
+        },
+        empty: () => null,
+        error: (text, error) => null,
+      );
+
+      if (nickname == null) {
+        throw '닉네임이 없습니다';
+      } else {
+        return nickname;
+      }
+    } catch (e) {
+      rethrow;
+    }
+  }
 }

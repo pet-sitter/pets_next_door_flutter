@@ -6,9 +6,11 @@ import 'package:pets_next_door_flutter/presentation/pages/pet/widgets/pet_profil
 import 'package:pets_next_door_flutter/presentation/pages/sign_up/sign_up_event.dart';
 import 'package:pets_next_door_flutter/presentation/pages/sign_up/steps/profile_step/providers/sign_up_nickname_provider.dart';
 import 'package:pets_next_door_flutter/presentation/pages/sign_up/steps/profile_step/providers/sign_up_pet_list_provider.dart';
+import 'package:pets_next_door_flutter/presentation/pages/sign_up/steps/profile_step/providers/sign_up_profile_img_provider.dart';
 import 'package:pets_next_door_flutter/presentation/widgets/appbar/appbar.dart';
 import 'package:pets_next_door_flutter/presentation/widgets/button/activation_button.dart';
 import 'package:pets_next_door_flutter/presentation/widgets/button/basic_icon_button.dart';
+import 'package:pets_next_door_flutter/presentation/widgets/image/image_type.dart';
 import 'package:pets_next_door_flutter/presentation/widgets/image/profile_image.dart';
 import 'package:pets_next_door_flutter/presentation/widgets/text_field/custom_text_field.dart';
 import 'package:pets_next_door_flutter/presentation/widgets/text_field/text_form_state.dart';

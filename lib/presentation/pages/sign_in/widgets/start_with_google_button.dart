@@ -1,7 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:pets_next_door_flutter/core/constants/images.dart';
 import 'package:pets_next_door_flutter/core/constants/svgs.dart';
 import 'package:pets_next_door_flutter/presentation/pages/sign_in/sign_in_event.dart';
 

@@ -19,6 +19,7 @@ class LoggerInterceptor implements Interceptor {
     log('🌍 Header: ${options.headers}');
     log('🌍 Query: ${options.queryParameters}');
     log('🌍 Data: ${options.data}');
+
     return handler.next(options);
   }
 
@@ -28,7 +29,7 @@ class LoggerInterceptor implements Interceptor {
     ResponseInterceptorHandler handler,
   ) {
     log('⬅️ Received network response');
-    log('${response.statusCode != 200 ? '❌ ${response.statusCode} ❌' : '✅ 200 ✅'} ${response.requestOptions.baseUrl}${response.requestOptions.path}');
+    log('${'✅ ${response.statusCode} ✅'} ${response.requestOptions.baseUrl}${response.requestOptions.path}');
     log('Query params: ${response.requestOptions.queryParameters}');
     log('Response Data: ${response.data}');
     log('-------------------------');

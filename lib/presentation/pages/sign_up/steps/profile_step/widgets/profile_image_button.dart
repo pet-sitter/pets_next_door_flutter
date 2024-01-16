@@ -1,17 +1,18 @@
 part of '../sign_up_profile_step.dart';
 
-class _ProfileImageButton extends StatelessWidget with SignUpEvent {
+class _ProfileImageButton extends ConsumerWidget with SignUpEvent {
   const _ProfileImageButton({
     super.key,
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final profileImageFile = ref.watch(signUpProfileImgProvider);
     return GestureDetector(
-      onTap: () {},
+      onTap: () => onTapProfileImageButton(ref),
       child: ProfileImage(
         size: 100,
-        imgUrl: '',
+        imageType: ImageType.file(profileImageFile),
       ),
     );
   }

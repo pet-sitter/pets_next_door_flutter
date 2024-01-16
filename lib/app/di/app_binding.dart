@@ -1,4 +1,5 @@
 import 'package:pets_next_door_flutter/app/di/modules/auth_di.dart';
+import 'package:pets_next_door_flutter/app/di/modules/media_di.dart';
 import 'package:pets_next_door_flutter/app/di/modules/user_di.dart';
 
 final class AppBinder {
@@ -14,6 +15,7 @@ final class AppBinder {
     for (final di in [
       AuthDependencyInjection(),
       UserDependencyInjection(),
+      MediaDependencyInjection(),
     ]) {
       di.init();
     }

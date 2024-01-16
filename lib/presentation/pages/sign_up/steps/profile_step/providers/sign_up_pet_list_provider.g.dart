@@ -6,7 +6,7 @@ part of 'sign_up_pet_list_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$signUpPetListHash() => r'ece4dc13bfbabfa883937b33c9f89e1ac36a7ed8';
+String _$signUpPetListHash() => r'93a18a03e82004449ae60d085938ef90f6e717cf';
 
 /// See also [SignUpPetList].
 @ProviderFor(SignUpPetList)
