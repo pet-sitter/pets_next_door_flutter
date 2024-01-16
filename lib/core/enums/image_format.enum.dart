@@ -1,7 +1,7 @@
 import 'package:pets_next_door_flutter/core/network_handling/exceptions/custom_exception.dart';
 
 enum ImageFormat {
-  png('jpeg'),
+  png('png'),
   jpeg('jpeg');
 
   const ImageFormat(this.str);

@@ -21,8 +21,7 @@ class MediaImageEntity with _$MediaImageEntity {
   factory MediaImageEntity.fromDto({required MediaImageDto dto}) =>
       MediaImageEntity(
         id: dto.id,
-        createdAt:
-            DateTime.fromMillisecondsSinceEpoch(int.parse(dto.createdAt)),
+        createdAt: DateTime.parse(dto.createdAt),
         mediaType: AppMediaType.getByTypeStr(type: dto.mediaType),
         url: dto.url,
       );
