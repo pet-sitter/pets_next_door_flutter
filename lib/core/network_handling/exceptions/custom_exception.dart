@@ -46,3 +46,11 @@ class NoFirebaseUserEssentialDataException extends CustomException {
   const NoFirebaseUserEssentialDataException()
       : super('100008', '파이어베이스 유저 필수 데이터가 없습니다.');
 }
+
+class ImageNotCompressedException extends CustomException {
+  const ImageNotCompressedException() : super('100009', '이미지 변환에 실패했습니다.');
+}
+
+class InvalidMimeTypeException extends CustomException {
+  const InvalidMimeTypeException() : super('100009', '올바른 Mime 타입이 아닙니다.');
+}

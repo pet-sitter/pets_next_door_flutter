@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:pets_next_door_flutter/app/router/app_router.dart';
 import 'package:pets_next_door_flutter/core/constants/colors.dart';
+import 'package:pets_next_door_flutter/core/services/size_service.dart';
 import 'package:pets_next_door_flutter/core/theme/app_theme.dart';
 
 class App extends ConsumerWidget {
@@ -20,6 +21,7 @@ class App extends ConsumerWidget {
       theme: AppTheme.light,
       builder: EasyLoading.init(builder: (context, child) {
         AppColor.init(context);
+        AppSizeService.to.init(context);
 
         return FToastBuilder()(
           context,

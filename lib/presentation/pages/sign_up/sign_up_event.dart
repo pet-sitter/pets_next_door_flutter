@@ -3,14 +3,14 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pets_next_door_flutter/app/router/app_router.dart';
+import 'package:pets_next_door_flutter/core/services/image_picker_service.dart';
 import 'package:pets_next_door_flutter/core/services/toast_service.dart';
-import 'package:pets_next_door_flutter/features/pet/domain/pet.dart';
 import 'package:pets_next_door_flutter/features/sign_up/entities/sign_up_data_entity.dart';
 import 'package:pets_next_door_flutter/features/user/user.dart';
 import 'package:pets_next_door_flutter/presentation/pages/pet/providers/register_pet_step_controller_provider.dart';
 import 'package:pets_next_door_flutter/presentation/pages/sign_up/providers/sign_up_firebase_auth_data_provider.dart';
 import 'package:pets_next_door_flutter/presentation/pages/sign_up/steps/profile_step/providers/sign_up_nickname_provider.dart';
-import 'package:pets_next_door_flutter/presentation/pages/sign_up/steps/profile_step/providers/sign_up_pet_list_provider.dart';
+import 'package:pets_next_door_flutter/presentation/pages/sign_up/steps/profile_step/providers/sign_up_profile_img_provider.dart';
 import 'package:pets_next_door_flutter/presentation/providers/user/user_data_provider.dart';
 import 'package:pets_next_door_flutter/presentation/widgets/toast/app_toast.dart';
 
@@ -23,6 +23,8 @@ abstract class _SignUpEvent {
   void onTapProfileNextButton(WidgetRef ref);
 
   void onTapAddPetButton(WidgetRef ref);
+
+  void onTapProfileImageButton(WidgetRef ref);
 }
 
 mixin class SignUpEvent implements _SignUpEvent {
@@ -40,21 +42,45 @@ mixin class SignUpEvent implements _SignUpEvent {
   }
 
   @override
+  Future<void> onTapAddPetButton(WidgetRef ref) async {
+    // TODO: 반려동물 추가 기능 구현 필요
+
+    // final newPet = await ref.context.pushNamed(AppRoute.registerPet.name);
+
+    // if (newPet == null) return;
+
+    // ref.read(signUpPetListProvider.notifier).add(newPet as Pet);
+  }
+
+  @override
+  onTapProfileImageButton(WidgetRef ref) async {
+    final imageSource =
+        await ImagePickerService.showImageSourceOptions(ref.context);
+
+    if (imageSource == null) return;
+
+    ref.read(signUpProfileImgProvider.notifier).pickImageFile(imageSource);
+  }
+
+  @override
   Future<void> onTapProfileNextButton(WidgetRef ref) async {
     try {
       await EasyLoading.show();
-      // TODO: 닉네임 중복검사 하기
-      // 그다음, 닉네임 업데이트
-      final nickname = ref.read(signUpNicknameProvider).mapOrNull(
-            valid: (value) => value.text,
-          );
 
-      if (nickname == null) return;
+      final firebaseAuthData = ref.read(signUpFirebaseAuthDataProvider);
+
+      final checkedNickname = await ref
+          .read(signUpNicknameProvider.notifier)
+          .checkNicknameDuplication;
+
+      final uploadedImageId =
+          await ref.read(signUpProfileImgProvider.notifier).uploadImage();
 
       final createUserResult = await createUserDataUseCase.call(
         SignUpDataEntity(
-          nickname: nickname,
-          firebaseAuthData: ref.read(signUpFirebaseAuthDataProvider),
+          nickname: checkedNickname,
+          firebaseAuthData: firebaseAuthData,
+          profileImageId: uploadedImageId,
         ),
       );
 
@@ -71,14 +97,5 @@ mixin class SignUpEvent implements _SignUpEvent {
     } finally {
       await EasyLoading.dismiss();
     }
-  }
-
-  @override
-  Future<void> onTapAddPetButton(WidgetRef ref) async {
-    final newPet = await ref.context.pushNamed(AppRoute.registerPet.name);
-
-    if (newPet == null) return;
-
-    ref.read(signUpPetListProvider.notifier).add(newPet as Pet);
   }
 }

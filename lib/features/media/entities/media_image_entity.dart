@@ -12,7 +12,7 @@ class MediaImageEntity with _$MediaImageEntity {
   const factory MediaImageEntity({
     required int id,
     required DateTime createdAt,
-    required MediaType mediaType,
+    required AppMediaType mediaType,
     required String url,
   }) = _MediaImageEntity;
 
@@ -23,7 +23,7 @@ class MediaImageEntity with _$MediaImageEntity {
         id: dto.id,
         createdAt:
             DateTime.fromMillisecondsSinceEpoch(int.parse(dto.createdAt)),
-        mediaType: MediaType.getByTypeStr(type: dto.mediaType),
+        mediaType: AppMediaType.getByTypeStr(type: dto.mediaType),
         url: dto.url,
       );
 }
