@@ -6,7 +6,6 @@ import 'package:pets_next_door_flutter/presentation/pages/gather/gather_view.dar
 import 'package:pets_next_door_flutter/presentation/pages/home/home_view.dart';
 import 'package:pets_next_door_flutter/presentation/pages/my_info/profile_view.dart';
 import 'package:pets_next_door_flutter/presentation/pages/pet/register_pet_page.dart';
-import 'package:pets_next_door_flutter/presentation/pages/pet/steps/breed_search_view.dart';
 import 'package:pets_next_door_flutter/presentation/pages/sign_in/sign_in_page.dart';
 import 'package:pets_next_door_flutter/presentation/pages/sign_up/sign_up_page.dart';
 import 'package:pets_next_door_flutter/presentation/pages/splash/splash_page.dart';
@@ -31,7 +30,6 @@ enum AppRoute {
   chat,
   myInfo,
   profile,
-  breedSearch,
   registerPet;
 
   const AppRoute();
@@ -73,15 +71,6 @@ GoRouter goRouter(GoRouterRef ref) {
         pageBuilder: (context, state) => MaterialPage(
           key: state.pageKey,
           child: SignUpPage(),
-        ),
-      ),
-
-      GoRoute(
-        path: AppRoute.breedSearch.path,
-        name: AppRoute.breedSearch.name,
-        pageBuilder: (context, state) => MaterialPage(
-          key: state.pageKey,
-          child: const BreedSearchView(),
         ),
       ),
 
