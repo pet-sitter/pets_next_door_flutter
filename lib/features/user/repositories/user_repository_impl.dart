@@ -1,6 +1,5 @@
 import 'package:pets_next_door_flutter/core/utils/result.dart';
 import 'package:pets_next_door_flutter/features/sign_up/entities/sign_up_data_entity.dart';
-import 'package:pets_next_door_flutter/features/user/data/local/user_local_data_source.dart';
 import 'package:pets_next_door_flutter/features/user/data/remote/user_remote_data_source.dart';
 import 'package:pets_next_door_flutter/features/user/entities/user_data_entity.dart';
 import 'package:pets_next_door_flutter/features/user/repositories/user_repository.dart';
@@ -8,12 +7,9 @@ import 'package:pets_next_door_flutter/features/user/repositories/user_repositor
 final class UserRepositoryImpl implements UserRepository {
   const UserRepositoryImpl(
     this._userRemoteDataSource,
-    this._userLocalDataSource,
   );
 
   final UserRemoteDataSource _userRemoteDataSource;
-
-  final UserLocalDataSource _userLocalDataSource;
 
   @override
   Future<Result<UserDataEntity>> createUserData(SignUpDataEntity data) async {
@@ -38,15 +34,5 @@ final class UserRepositoryImpl implements UserRepository {
     } on Exception catch (e) {
       return Result.failure(e);
     }
-  }
-
-  @override
-  String? getUserToken() {
-    return _userLocalDataSource.getUserToken();
-  }
-
-  @override
-  Future<bool> updateUserTokenLocal({required String? token}) async {
-    return _userLocalDataSource.updateUserToken(token: token);
   }
 }

@@ -1,7 +1,5 @@
 import 'package:get_it/get_it.dart';
 import 'package:pets_next_door_flutter/app/di/feature_di_interface.dart';
-import 'package:pets_next_door_flutter/features/user/data/local/user_local_data_source.dart';
-import 'package:pets_next_door_flutter/features/user/data/local/user_local_data_source_impl.dart';
 import 'package:pets_next_door_flutter/features/user/data/remote/user_remote_data_source_impl.dart';
 import 'package:pets_next_door_flutter/features/user/repositories/user_repository_impl.dart';
 import 'package:pets_next_door_flutter/features/user/usecases/create_user_data_use_case.dart';
@@ -13,9 +11,6 @@ final class UserDependencyInjection extends FeatureDependencyInjection {
     GetIt.I.registerLazySingleton<UserRemoteDataSource>(
       UserRemoteDataSourceImpl.new,
     );
-
-    GetIt.I.registerLazySingleton<UserLocalDataSource>(
-        UserLocalDataSourceImpl.new);
   }
 
   @override
@@ -23,7 +18,6 @@ final class UserDependencyInjection extends FeatureDependencyInjection {
     GetIt.I.registerLazySingleton<UserRepository>(
       () => UserRepositoryImpl(
         userRemoteDataSource,
-        userLocalDataSource,
       ),
     );
   }
@@ -31,23 +25,13 @@ final class UserDependencyInjection extends FeatureDependencyInjection {
   @override
   void useCases() {
     GetIt.I
-      ..registerFactory<GetUserDataUseCase>(
-        () => GetUserDataUseCase(userRepository),
-      )
-      ..registerFactory<GetUserTokenUseCase>(
-        () => GetUserTokenUseCase(
-          userRepository,
-        ),
-      )
-      ..registerFactory<UpdateUserTokenLocalUseCase>(
-        () => UpdateUserTokenLocalUseCase(
-          userRepository,
-        ),
-      )
       ..registerFactory<CreateUserDataUseCase>(
         () => CreateUserDataUseCase(
           userRepository,
         ),
+      )
+      ..registerFactory<GetUserDataUseCase>(
+        () => GetUserDataUseCase(userRepository),
       );
   }
 }

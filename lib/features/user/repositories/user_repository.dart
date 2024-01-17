@@ -7,10 +7,4 @@ abstract interface class UserRepository {
 
   /// 서버에서 유저 정보를 가져옴
   Future<Result<UserDataEntity>> getUserData();
-
-  /// 로컬에 유저 토큰 업데이트
-  Future<bool> updateUserTokenLocal({required String? token});
-
-  /// 로컬에 저장된 유저 토큰 가져오기
-  String? getUserToken();
 }
