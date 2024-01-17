@@ -4,7 +4,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pets_next_door_flutter/app/router/app_router.dart';
-import 'package:pets_next_door_flutter/core/constants/images.dart';
 import 'package:pets_next_door_flutter/core/constants/svgs.dart';
 import 'package:pets_next_door_flutter/core/localization/string_hardcoded.dart';
 import 'package:pets_next_door_flutter/presentation/providers/user/user_auth_provider.dart';
