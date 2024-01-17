@@ -1,7 +1,4 @@
 # Pets Next Door Flutter
-
-Pets Next Door
-
 ---
 
 ## Getting Started 🚀
