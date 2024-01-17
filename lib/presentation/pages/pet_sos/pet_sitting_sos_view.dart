@@ -1,44 +1,40 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pets_next_door_flutter/app/router/app_router.dart';
 import 'package:pets_next_door_flutter/core/constants/sizes.dart';
-import 'package:pets_next_door_flutter/presentation/pages/home/providers/show_search_bar_provider.dart';
 
-class PetSittingSosView extends ConsumerStatefulWidget {
+class PetSittingSosView extends HookConsumerWidget {
   const PetSittingSosView({
     super.key,
   });
   static const pageName = '돌봄급구';
 
-  @override
-  ConsumerState<PetSittingSosView> createState() => _PetSittingSosViewState();
-}
+  // @override
+  // void initState() {
+  //   _scrollController.addListener(_scrollListener);
+  //   super.initState();
+  // }
 
-class _PetSittingSosViewState extends ConsumerState<PetSittingSosView> {
-  final ScrollController _scrollController = ScrollController();
+  // void _scrollListener() {
+  //   if (_scrollController.position.userScrollDirection ==
+  //       ScrollDirection.reverse) {
+  //     ref.read(showSearchBarProvider.notifier).show = false;
+  //   }
 
-  @override
-  void initState() {
-    _scrollController.addListener(_scrollListener);
-    super.initState();
-  }
-
-  void _scrollListener() {
-    if (_scrollController.position.userScrollDirection ==
-        ScrollDirection.reverse) {
-      ref.read(showSearchBarProvider.notifier).show = false;
-    }
-
-    if (_scrollController.position.userScrollDirection ==
-        ScrollDirection.forward) {
-      ref.read(showSearchBarProvider.notifier).show = true;
-    }
-  }
+  //   if (_scrollController.position.userScrollDirection ==
+  //       ScrollDirection.forward) {
+  //     ref.read(showSearchBarProvider.notifier).show = true;
+  //   }
+  // }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final _scrollController = useScrollController();
+
+    // useListenableSelector(_scrollController, () => _scrollController.a)
+
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,

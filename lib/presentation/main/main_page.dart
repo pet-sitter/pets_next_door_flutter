@@ -85,12 +85,17 @@ class _BottomNavigationBar extends ConsumerWidget {
               ...MainNavigationTab.values.mapIndexed(
                 (index, e) => BottomNavigationBarItem(
                   label: e.label,
+                  activeIcon: SvgPicture.asset(
+                    e.iconPath,
+                    colorFilter: ColorFilter.mode(
+                      AppColor.of.primaryGreen,
+                      BlendMode.srcIn,
+                    ),
+                  ),
                   icon: SvgPicture.asset(
                     e.iconPath,
                     colorFilter: ColorFilter.mode(
-                      currentTab.index == index
-                          ? AppColor.of.primaryGreen
-                          : AppColor.of.gray50,
+                      AppColor.of.gray50,
                       BlendMode.srcIn,
                     ),
                   ),

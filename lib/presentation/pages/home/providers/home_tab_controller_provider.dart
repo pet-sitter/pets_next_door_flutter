@@ -1,17 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'home_home_tab_controller_provider.g.dart';
+part 'home_tab_controller_provider.g.dart';
+
+enum HomeTabType {
+  petSos('돌봄급구'),
+  petMate('돌봄메이트');
+
+  const HomeTabType(this.label);
+
+  final String label;
+}
 
 @riverpod
-class HomeHomeTabController extends _$HomeHomeTabController {
+class HomeTabController extends _$HomeTabController {
   final _pagingDuration = const Duration(milliseconds: 500);
   final _pagingCurve = Curves.easeOutExpo;
 
   @override
-  Raw<TabController> build(TickerProvider tickerProvider, int tabLength) {
+  Raw<TabController> build(TickerProvider tickerProvider) {
     final controller = TabController(
-      length: tabLength,
+      length: HomeTabType.values.length,
       vsync: tickerProvider,
     );
 

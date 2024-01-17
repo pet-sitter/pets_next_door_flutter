@@ -1,27 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:pets_next_door_flutter/core/enums/home_home_tab_type.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:pets_next_door_flutter/core/constants/colors.dart';
 import 'package:pets_next_door_flutter/core/constants/sizes.dart';
-import 'package:pets_next_door_flutter/presentation/pages/home/providers/home_home_tab_controller_provider.dart';
+import 'package:pets_next_door_flutter/presentation/pages/home/providers/home_tab_controller_provider.dart';
 import 'package:pets_next_door_flutter/presentation/pages/home/providers/show_search_bar_provider.dart';
 import 'package:pets_next_door_flutter/presentation/pages/pet_mate/pet_sitting_mate_view.dart';
 import 'package:pets_next_door_flutter/presentation/pages/pet_sos/pet_sitting_sos_view.dart';
 
-class HomeView extends ConsumerStatefulWidget {
+class HomeView extends HookConsumerWidget {
   const HomeView({super.key});
 
   @override
-  ConsumerState<HomeView> createState() => _HomeViewState();
-}
-
-class _HomeViewState extends ConsumerState<HomeView>
-    with SingleTickerProviderStateMixin {
-  static const _tabBar = HomeHomeTabType.values;
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final tabController =
-        ref.watch(homeHomeTabControllerProvider(this, _tabBar.length));
+        ref.watch(homeTabControllerProvider(useSingleTickerProvider()));
 
     return DefaultTabController(
       length: 2,
@@ -117,12 +110,12 @@ class _HomeTabBar extends StatelessWidget {
         labelPadding: const EdgeInsets.only(right: 16),
         indicatorColor: Colors.transparent,
         dividerColor: Colors.transparent,
-        unselectedLabelColor: Colors.grey,
+        unselectedLabelColor: AppColor.of.gray90,
         labelColor: Colors.red,
         overlayColor: const MaterialStatePropertyAll(Colors.transparent),
         indicator: const UnderlineTabIndicator(borderRadius: BorderRadius.zero),
         tabs: [
-          ...HomeHomeTabType.values.map(
+          ...HomeTabType.values.map(
             (tab) => Text(
               tab.label,
               style: const TextStyle(fontSize: 20),
@@ -149,30 +142,28 @@ class _HomeSearchBar extends ConsumerWidget {
       decoration: BoxDecoration(
         border: Border(
           bottom: showSearchBar
-              ? const BorderSide(width: 15, color: Colors.grey)
+              ? BorderSide(width: 15, color: AppColor.of.gray20)
               : BorderSide.none,
         ),
       ),
       child: Container(
         height: 40,
         width: double.infinity,
-        child: Expanded(
-          child: TextField(
-            decoration: InputDecoration(
-              contentPadding: EdgeInsets.symmetric(horizontal: 12),
-              filled: true,
-              fillColor: Colors.grey,
-              focusColor: Colors.grey,
-              prefixIcon: Padding(
-                padding: const EdgeInsets.only(left: 12, right: 8),
-                child: Icon(Icons.search),
-              ),
-              prefixIconConstraints: BoxConstraints(maxHeight: 40),
-              border: OutlineInputBorder(
-                  borderSide: BorderSide.none,
-                  borderRadius: BorderRadius.circular(4),
-                  gapPadding: 0),
+        child: TextField(
+          decoration: InputDecoration(
+            contentPadding: EdgeInsets.symmetric(horizontal: 12),
+            filled: true,
+            fillColor: AppColor.of.gray20,
+            focusColor: AppColor.of.gray20,
+            prefixIcon: Padding(
+              padding: const EdgeInsets.only(left: 12, right: 8),
+              child: Icon(Icons.search),
             ),
+            prefixIconConstraints: BoxConstraints(maxHeight: 40),
+            border: OutlineInputBorder(
+                borderSide: BorderSide.none,
+                borderRadius: BorderRadius.circular(4),
+                gapPadding: 0),
           ),
         ),
       ),
