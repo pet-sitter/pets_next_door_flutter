@@ -7,12 +7,16 @@ import 'package:pets_next_door_flutter/core/constants/svgs.dart';
 import 'package:pets_next_door_flutter/presentation/pages/sign_in/widgets/start_with_apple_button.dart';
 import 'package:pets_next_door_flutter/presentation/pages/sign_in/widgets/start_with_google_button.dart';
 import 'package:pets_next_door_flutter/presentation/pages/sign_in/widgets/start_with_kakao_button.dart';
+import 'package:pets_next_door_flutter/presentation/widgets/base/base_statless_page.dart';
 
-class SignInPage extends StatelessWidget {
+class SignInPage extends BaseStatelessWidget {
   const SignInPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  bool get preventAutoUnfocus => false;
+
+  @override
+  Widget buildPage(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Consumer(
