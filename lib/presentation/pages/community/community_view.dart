@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class GatherView extends StatelessWidget {
-  const GatherView({super.key});
+class CommunityView extends StatelessWidget {
+  const CommunityView({super.key});
 
   @override
   Widget build(BuildContext context) {
