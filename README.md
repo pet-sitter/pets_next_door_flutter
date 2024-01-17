@@ -65,6 +65,6 @@ pets_next_door_flutter
 │        ├─ text_field
 │        └─ toast
 ├─ pubspec.yaml
-└─ web
+└─ .env
 
 ```
