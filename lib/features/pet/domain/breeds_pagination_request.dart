@@ -1,5 +1,5 @@
 import 'package:pets_next_door_flutter/core/enums/pet_type.dart';
-import 'package:pets_next_door_flutter/features/pet/domain/pagination_request.dart';
+import 'package:pets_next_door_flutter/core/pagination/pagination_request.dart';
 
 /// Metadata used when fetching movies with the paginated search API.
 class BreedsPaginationRequest implements PaginationRequest {

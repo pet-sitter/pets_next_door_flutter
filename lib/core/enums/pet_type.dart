@@ -7,6 +7,12 @@ enum PetType {
   dog(displayName: '강아지', code: 'dog');
 
   const PetType({required this.displayName, required this.code});
+
   final String displayName;
   final String code;
+
+  factory PetType.getByCode(String code) {
+    return PetType.values
+        .firstWhere((value) => value.code == code, orElse: () => PetType.cat);
+  }
 }
