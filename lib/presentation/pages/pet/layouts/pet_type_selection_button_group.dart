@@ -12,8 +12,6 @@ class PetTypeSelectionButtonGroup extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final selectedPetType = ref.watch(petStateProvider).petType;
-
     return Row(
       children: [
         Expanded(
@@ -22,7 +20,7 @@ class PetTypeSelectionButtonGroup extends ConsumerWidget {
             onTap: () => ref.read(petStateProvider.notifier).update(
                   (state) => state.copyWith(petType: PetType.cat),
                 ),
-            active: selectedPetType == PetType.cat,
+            active: ref.read(petStateProvider.notifier).state.petType == PetType.cat,
           ),
         ),
         gapW12,
@@ -32,7 +30,7 @@ class PetTypeSelectionButtonGroup extends ConsumerWidget {
             onTap: () => ref.read(petStateProvider.notifier).update(
                   (state) => state.copyWith(petType: PetType.dog),
                 ),
-            active: selectedPetType == PetType.dog,
+            active: ref.read(petStateProvider.notifier).state.petType == PetType.dog,
           ),
         ),
       ],

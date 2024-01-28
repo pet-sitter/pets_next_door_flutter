@@ -30,11 +30,13 @@ const ColorFilter greyscale = ColorFilter.matrix(<double>[
 ]);
 
 class RegisterPetInitialView extends StatelessWidget with RegisterPetEvent {
-  const RegisterPetInitialView({super.key});
+  const RegisterPetInitialView({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: PNDSizes.p24),
         child: Column(
@@ -45,7 +47,7 @@ class RegisterPetInitialView extends StatelessWidget with RegisterPetEvent {
                 children: [
                   Text('함께하는 반려동물을 선택해주세요.'),
                   gapH32,
-                  PetTypeSelectionButtonGroup()
+                  PetTypeSelectionButtonGroup(),
                 ],
               ),
             ),
@@ -67,7 +69,7 @@ class RegisterPetInitialNextButton extends ConsumerWidget
   Widget build(BuildContext context, WidgetRef ref) {
     return ActivationButton(
       text: '다음으로',
-      isActive: ref.watch(petStateProvider) != null,
+      isActive: ref.read(petStateProvider.notifier).state.petType != null,
       onTap: () => onTapRegisterPetDetailNext(ref),
     );
   }
