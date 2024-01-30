@@ -52,7 +52,8 @@ class _UserAPI implements UserAPI {
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{r'requiresToken': false};
     _headers.removeWhere((k, v) => v == null);
-    final _data = signUpData;
+    final _data = <String, dynamic>{};
+    _data.addAll(signUpData.toJson());
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<UserDataDto>(Options(
       method: 'POST',
