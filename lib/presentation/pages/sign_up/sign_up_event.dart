@@ -45,7 +45,7 @@ mixin class SignUpEvent implements _SignUpEvent {
   Future<void> onTapAddPetButton(WidgetRef ref) async {
     // TODO: 반려동물 추가 기능 구현 필요
 
-    // final newPet = await ref.context.pushNamed(AppRoute.registerPet.name);
+    final newPet = await ref.context.pushNamed(AppRoute.registerPet.name);
 
     // if (newPet == null) return;
 
