@@ -6,8 +6,8 @@ part of 'sign_up_data_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_SignUpDataDto _$$_SignUpDataDtoFromJson(Map<String, dynamic> json) =>
-    _$_SignUpDataDto(
+SignUpDataDto _$SignUpDataDtoFromJson(Map<String, dynamic> json) =>
+    SignUpDataDto(
       email: json['email'] as String,
       firebaseProviderType: json['fbProviderType'] as String,
       firebaseUid: json['fbUid'] as String,
@@ -16,7 +16,7 @@ _$_SignUpDataDto _$$_SignUpDataDtoFromJson(Map<String, dynamic> json) =>
       profileImageId: json['profileImageId'] as int,
     );
 
-Map<String, dynamic> _$$_SignUpDataDtoToJson(_$_SignUpDataDto instance) =>
+Map<String, dynamic> _$SignUpDataDtoToJson(SignUpDataDto instance) =>
     <String, dynamic>{
       'email': instance.email,
       'fbProviderType': instance.firebaseProviderType,
