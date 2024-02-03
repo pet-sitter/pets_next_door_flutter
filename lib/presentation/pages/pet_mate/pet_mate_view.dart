@@ -5,9 +5,14 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pets_next_door_flutter/app/router/app_router.dart';
 import 'package:pets_next_door_flutter/core/constants/sizes.dart';
+import 'package:pets_next_door_flutter/core/constants/text_style.dart';
+import 'package:pets_next_door_flutter/core/enums/pet_type_filter.enum.dart';
+import 'package:pets_next_door_flutter/core/enums/sort_type_filter.enum.dart';
+import 'package:pets_next_door_flutter/presentation/pages/pet_mate/pet_mate_event.dart';
+import 'package:pets_next_door_flutter/presentation/pages/pet_mate/providers/pet_mate_filter_provider.dart';
 
-class PetSittingMateView extends HookConsumerWidget {
-  PetSittingMateView({
+class PetMateView extends HookConsumerWidget {
+  PetMateView({
     super.key,
     this.onScrollDirectionChanged,
   });
@@ -16,6 +21,8 @@ class PetSittingMateView extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    useAutomaticKeepAlive();
+
     final _scrollController = useScrollController();
 
     useEffect(() {
@@ -35,20 +42,10 @@ class PetSittingMateView extends HookConsumerWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24),
           child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              DropdownMenu(
-                initialSelection: 0,
-                inputDecorationTheme: InputDecorationTheme(
-                    constraints: BoxConstraints(maxWidth: 100),
-                    border: InputBorder.none,
-                    contentPadding: EdgeInsets.all(0)),
-                dropdownMenuEntries: [
-                  DropdownMenuEntry(
-                    value: 0,
-                    label: 'asdf',
-                  )
-                ],
-              ),
+              const _SortFilter(),
+              const _PetFilter(),
             ],
           ),
         ),
@@ -103,6 +100,84 @@ class PetSittingMateView extends HookConsumerWidget {
               separatorBuilder: (context, index) => Divider(),
               itemCount: 10),
         )
+      ],
+    );
+  }
+}
+
+class _SortFilter extends ConsumerWidget with PetMateEvent {
+  const _SortFilter();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return PopupMenuButton(
+      surfaceTintColor: Colors.white,
+      constraints: const BoxConstraints.tightFor(width: 90),
+      position: PopupMenuPosition.under,
+      child: Container(
+          height: 45,
+          child: Row(
+            children: [
+              Text(ref
+                  .watch(petMateSearchFilterProvider)
+                  .sortFilter
+                  .displayName),
+              Icon(Icons.keyboard_arrow_down_rounded)
+            ],
+          )),
+      onSelected: (sort) => onSortChanged(ref, sort),
+      itemBuilder: (context) => SortTypeFilter.values
+          .map((e) => PopupMenuItem(
+                height: 40,
+                padding: EdgeInsets.all(0),
+                value: e,
+                child: Container(
+                    padding: EdgeInsets.only(left: 10),
+                    child: Text(
+                      e.displayName,
+                    )),
+              ))
+          .toList(),
+    );
+  }
+}
+
+class _PetFilter extends ConsumerWidget with PetMateEvent {
+  const _PetFilter();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return Wrap(
+      spacing: 8,
+      children: [
+        ...PetTypeFilter.values
+            .map((petType) => GestureDetector(
+                  onTap: () => onPetTypeChanged(ref, petType),
+                  child: Container(
+                    color: Colors.transparent,
+                    height: 30,
+                    child: Row(
+                      children: [
+                        (ref.watch(petMateSearchFilterProvider).petTypeFilter ==
+                                petType)
+                            ? Icon(
+                                Icons.check_box_sharp,
+                                size: 20,
+                              )
+                            : Icon(
+                                Icons.check_box_outline_blank_outlined,
+                                size: 20,
+                              ),
+                        gapW4,
+                        Text(
+                          petType.displayName,
+                          style: AppTextStyle.bodyRegular3,
+                        ),
+                      ],
+                    ),
+                  ),
+                ))
+            .toList()
       ],
     );
   }
