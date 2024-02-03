@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:pets_next_door_flutter/features/pet/domain/pet.dart';
 import 'package:pets_next_door_flutter/presentation/pages/pet/providers/register_pet_step_controller_provider.dart';
 import 'package:pets_next_door_flutter/presentation/pages/pet/register_pet_event.dart';
 import 'package:pets_next_door_flutter/presentation/pages/pet/steps/register_pet_detail_view.dart';
@@ -63,12 +64,13 @@ class _Body extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final pageController = ref.watch(registerPetStepControllerProvider);
+    ref.watch(petStateProvider);
 
     return SafeArea(
       child: PageView(
         controller: pageController,
         physics: const NeverScrollableScrollPhysics(),
-        children: const [
+        children: [
           RegisterPetInitialView(),
           RegisterPetDetailView(),
         ],

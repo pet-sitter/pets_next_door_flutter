@@ -10,13 +10,13 @@ typedef PetMateFilters = ({
 });
 
 /// 돌봄메이트 필터 프로바이더
-@Riverpod(keepAlive: true)
-class PetMateSearchFilter extends _$PetMateSearchFilter {
+@Riverpod()
+class PetMateFilter extends _$PetMateFilter {
   @override
   PetMateFilters build() {
     return (
       sortFilter: SortTypeFilter.newest,
-      petTypeFilter: PetTypeFilter.dog
+      petTypeFilter: PetTypeFilter.cat
     );
   }
 

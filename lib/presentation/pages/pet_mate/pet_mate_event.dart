@@ -11,11 +11,11 @@ abstract interface class _PetMateEvent {
 mixin class PetMateEvent implements _PetMateEvent {
   @override
   void onSortChanged(WidgetRef ref, SortTypeFilter sortType) {
-    ref.read(petMateSearchFilterProvider.notifier).setSortingFilter(sortType);
+    ref.read(petMateFilterProvider.notifier).setSortingFilter(sortType);
   }
 
   @override
   void onPetTypeChanged(WidgetRef ref, PetTypeFilter petType) {
-    ref.read(petMateSearchFilterProvider.notifier).setPetFilter(petType);
+    ref.read(petMateFilterProvider.notifier).setPetFilter(petType);
   }
 }

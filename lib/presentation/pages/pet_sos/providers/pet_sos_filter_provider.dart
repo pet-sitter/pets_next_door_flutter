@@ -10,23 +10,21 @@ typedef PetSosFilters = ({
 });
 
 /// 돌봄급구 필터 프로바이더
-@Riverpod(keepAlive: true)
-class PetSosSearchFilter extends _$PetSosSearchFilter {
+@Riverpod()
+class PetSosFilter extends _$PetSosFilter {
   @override
   PetSosFilters build() {
     return (
       sortFilter: SortTypeFilter.newest,
-      petTypeFilter: PetTypeFilter.dog
+      petTypeFilter: PetTypeFilter.cat
     );
   }
 
-  void setSortingFilter(SortTypeFilter? filter) {
-    if (filter == null) return;
+  void setSortingFilter(SortTypeFilter filter) {
     state = (sortFilter: filter, petTypeFilter: state.petTypeFilter);
   }
 
-  void setPetFilter(PetTypeFilter? filter) {
-    if (filter == null) return;
+  void setPetFilter(PetTypeFilter filter) {
     state = (sortFilter: state.sortFilter, petTypeFilter: filter);
   }
 }

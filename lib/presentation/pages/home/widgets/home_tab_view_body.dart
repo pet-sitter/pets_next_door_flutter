@@ -9,13 +9,14 @@ class _HomeTabViewBody extends HookConsumerWidget with HomeEvent {
         initialLength: HomeTabType.values.length, initialIndex: 0);
 
     useEffect(() {
-      tabController.addListener(() {
-        // addListener를 통해 탭 변경 감지
+      void _listener() {
         ref.read(currentTabTypeProvider.notifier).tabType =
             HomeTabType.values[tabController.index];
-      });
-      // useEffect 내부에서 dispose 함수를 반환하여 리소스 정리
-      return () => tabController.dispose();
+      }
+
+      tabController.addListener(_listener);
+
+      return () => tabController.removeListener(_listener);
     }, [tabController]);
 
     return Expanded(

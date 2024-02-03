@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'user_api.dart';
+part of 'pet_api.dart';
 
 // **************************************************************************
 // RetrofitGenerator
@@ -8,8 +8,8 @@ part of 'user_api.dart';
 
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers
 
-class _UserAPI implements UserAPI {
-  _UserAPI(
+class _PetAPI implements PetAPI {
+  _PetAPI(
     this._dio, {
     this.baseUrl,
   });
@@ -19,21 +19,23 @@ class _UserAPI implements UserAPI {
   String? baseUrl;
 
   @override
-  Future<UserDataDto> getUser() async {
+  Future<BreedsPaginationResponse> getBreed(
+      BreedsPaginationRequest breedsPaginationRequest) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{r'requiresToken': true};
+    queryParameters.addAll(breedsPaginationRequest.toJson());
+    final _headers = <String, dynamic>{r'requiresToken': false};
     _headers.removeWhere((k, v) => v == null);
     final Map<String, dynamic>? _data = null;
-    final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<UserDataDto>(Options(
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<BreedsPaginationResponse>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
             .compose(
               _dio.options,
-              '/users/me',
+              '/breeds',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -42,36 +44,7 @@ class _UserAPI implements UserAPI {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = UserDataDto.fromJson(_result.data!);
-    return value;
-  }
-
-  @override
-  Future<UserDataDto> createUser(SignUpDataDto signUpData) async {
-    const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{r'requiresToken': false};
-    _headers.removeWhere((k, v) => v == null);
-    final _data = <String, dynamic>{};
-    _data.addAll(signUpData.toJson());
-    final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<UserDataDto>(Options(
-      method: 'POST',
-      headers: _headers,
-      extra: _extra,
-    )
-            .compose(
-              _dio.options,
-              '/users',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(
-                baseUrl: _combineBaseUrls(
-              _dio.options.baseUrl,
-              baseUrl,
-            ))));
-    final value = UserDataDto.fromJson(_result.data!);
+    final value = BreedsPaginationResponse.fromJson(_result.data!);
     return value;
   }
 

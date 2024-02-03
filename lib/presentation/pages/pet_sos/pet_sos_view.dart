@@ -127,8 +127,7 @@ class _SortFilter extends ConsumerWidget with PetSosEvent {
           height: 45,
           child: Row(
             children: [
-              Text(
-                  ref.watch(petSosSearchFilterProvider).sortFilter.displayName),
+              Text(ref.watch(petSosFilterProvider).sortFilter.displayName),
               Icon(Icons.keyboard_arrow_down_rounded)
             ],
           )),
@@ -154,7 +153,7 @@ class _PetFilter extends ConsumerWidget with PetSosEvent {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final filter = ref.watch(petSosSearchFilterProvider);
+    final filter = ref.watch(petSosFilterProvider);
     return Wrap(
       spacing: 8,
       children: [

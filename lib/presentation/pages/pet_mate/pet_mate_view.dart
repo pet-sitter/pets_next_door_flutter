@@ -118,10 +118,7 @@ class _SortFilter extends ConsumerWidget with PetMateEvent {
           height: 45,
           child: Row(
             children: [
-              Text(ref
-                  .watch(petMateSearchFilterProvider)
-                  .sortFilter
-                  .displayName),
+              Text(ref.watch(petMateFilterProvider).sortFilter.displayName),
               Icon(Icons.keyboard_arrow_down_rounded)
             ],
           )),
@@ -158,7 +155,7 @@ class _PetFilter extends ConsumerWidget with PetMateEvent {
                     height: 30,
                     child: Row(
                       children: [
-                        (ref.watch(petMateSearchFilterProvider).petTypeFilter ==
+                        (ref.watch(petMateFilterProvider).petTypeFilter ==
                                 petType)
                             ? Icon(
                                 Icons.check_box_sharp,

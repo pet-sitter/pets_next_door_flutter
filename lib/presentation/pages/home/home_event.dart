@@ -29,8 +29,8 @@ mixin class HomeEvent implements _HomeEvent {
   void onSearchTextSubmitted(WidgetRef ref, String text) {
     final tabType = ref.read(currentTabTypeProvider);
     final filter = switch (tabType) {
-      HomeTabType.petMate => ref.read(petMateSearchFilterProvider),
-      HomeTabType.petSos => ref.read(petSosSearchFilterProvider),
+      HomeTabType.petMate => ref.read(petMateFilterProvider),
+      HomeTabType.petSos => ref.read(petSosFilterProvider),
     };
     // TODO: 필터 정보 가지고 게시물 불러오기 기능 구현 필요
 
