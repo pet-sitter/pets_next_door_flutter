@@ -11,5 +11,8 @@ abstract class PNDImages {
   static const String chat = _homePath + 'icon_chat.png';
   static const String user = _homePath + 'icon_user.png';
 
-  static const String locationPin = _homePath + 'icon_pin.png';
+  static const String _commonPath = _basePath + 'common/';
+  static const String location = _commonPath + 'icon_pin.png';
+  static const String payment = _commonPath + 'icon_pay.png';
+  static const String calander = _commonPath + 'icon_cal.png';
 }

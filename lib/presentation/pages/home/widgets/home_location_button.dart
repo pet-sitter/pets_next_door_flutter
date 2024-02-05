@@ -1,5 +1,8 @@
 part of '../home_view.dart';
 
+const double _kLocationIconSize = 24;
+const double _kHighlightBoxHeight = 10;
+
 class _HomeLocationButton extends StatelessWidget {
   const _HomeLocationButton();
 
@@ -12,7 +15,12 @@ class _HomeLocationButton extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Icon(Icons.location_on_sharp),
+            Image.asset(
+              PNDImages.location,
+              width: _kLocationIconSize,
+              height: _kLocationIconSize,
+              isAntiAlias: true,
+            ),
             gapW4,
             Row(
               children: [
@@ -22,8 +30,8 @@ class _HomeLocationButton extends StatelessWidget {
                     children: [
                       Positioned(
                           child: Container(
-                        height: 10,
-                        color: Colors.amber.withOpacity(0.2),
+                        height: _kHighlightBoxHeight,
+                        color: AppColor.of.primaryGreen.withOpacity(0.2),
                       )),
                       Text('용답동', style: AppTextStyle.headlineBold1),
                     ],
