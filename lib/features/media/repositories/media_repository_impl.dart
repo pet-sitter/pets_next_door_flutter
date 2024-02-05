@@ -20,4 +20,14 @@ final class MediaRepositoryImpl implements MediaRepository {
       return Result.failure(e);
     }
   }
+
+  @override
+  Future<Result<MediaImageEntity>> getImage({required int imageId}) async {
+    try {
+      final uploadedImage = await _dataSource.getImage(imageId);
+      return Result.success(MediaImageEntity.fromDto(dto: uploadedImage));
+    } on Exception catch (e) {
+      return Result.failure(e);
+    }
+  }
 }

@@ -21,11 +21,10 @@ class _HomeTabViewBody extends HookConsumerWidget with HomeEvent {
 
     return Expanded(
       child: Column(
-        mainAxisSize: MainAxisSize.min,
         children: [
           _buildTabBarIndicator(tabController),
           const _SearchBar(),
-          _buildTabViewList(tabController),
+          _buildTabView(tabController),
         ],
       ),
     );
@@ -33,6 +32,7 @@ class _HomeTabViewBody extends HookConsumerWidget with HomeEvent {
 
   Container _buildTabBarIndicator(TabController tabController) {
     return Container(
+      height: 50,
       padding: const EdgeInsets.only(left: 24, top: 8),
       alignment: Alignment.centerLeft,
       child: TabBar(
@@ -57,13 +57,13 @@ class _HomeTabViewBody extends HookConsumerWidget with HomeEvent {
     );
   }
 
-  Expanded _buildTabViewList(TabController tabController) {
+  Expanded _buildTabView(TabController tabController) {
     return Expanded(
       child: Consumer(
         builder: (context, ref, child) => TabBarView(
           controller: tabController,
           children: [
-            PetSosView(
+            SosPostView(
               onScrollDirectionChanged: (direction) =>
                   onScrollDirectionChanged(ref, direction),
             ),

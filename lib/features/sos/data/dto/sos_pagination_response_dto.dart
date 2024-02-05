@@ -1,20 +1,20 @@
 import 'package:pets_next_door_flutter/core/pagination/pagination_response.dart';
-import 'package:pets_next_door_flutter/features/pet/domain/breed.dart';
+import 'package:pets_next_door_flutter/features/sos/data/dto/sos_post_dto.dart';
 
 /// Metadata used when fetching movies with the paginated search API.
-class BreedsPaginationResponse implements PaginationResponse<Breed> {
-  BreedsPaginationResponse({
+class SosPostPaginationResponseDto implements PaginationResponse<SosPostDto> {
+  SosPostPaginationResponseDto({
     required this.page,
     required this.size,
     required this.items,
   });
 
-  BreedsPaginationResponse.fromJson(
+  SosPostPaginationResponseDto.fromJson(
     Map<String, dynamic> json,
   )   : page = json['page'] as int,
         size = json['size'] as int,
         items = (json['items'] as List<dynamic>)
-            .map((e) => Breed.fromJson(e))
+            .map((e) => SosPostDto.fromJson(e))
             .toList();
 
   @override
@@ -24,13 +24,13 @@ class BreedsPaginationResponse implements PaginationResponse<Breed> {
   final int size;
 
   @override
-  final List<Breed> items;
+  final List<SosPostDto> items;
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
 
-    return other is BreedsPaginationResponse &&
+    return other is SosPostPaginationResponseDto &&
         other.page == page &&
         other.size == size;
   }
@@ -40,7 +40,6 @@ class BreedsPaginationResponse implements PaginationResponse<Breed> {
 
   @override
   Map<String, dynamic> toJson() {
-    // TODO: implement toJson
     throw UnimplementedError();
   }
 }
