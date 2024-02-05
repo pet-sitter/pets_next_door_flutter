@@ -12,7 +12,11 @@ class _HomeLocationButton extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Icon(Icons.location_on_sharp),
+            Image.asset(
+              PNDImages.location,
+              width: 24,
+              height: 24,
+            ),
             gapW4,
             Row(
               children: [
