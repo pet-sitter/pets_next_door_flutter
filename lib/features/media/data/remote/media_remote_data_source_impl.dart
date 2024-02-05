@@ -14,4 +14,9 @@ final class MediaRemoteDataSourceImpl implements MediaRemoteDataSource {
   Future<MediaImageDto> uploadImage(File imageFile, ImageFormat imageFormat) {
     return _api.uploadImage(imageFile, imageFormat.name);
   }
+
+  @override
+  Future<MediaImageDto> getImage(int imageId) {
+    return _api.getImage(imageId);
+  }
 }
