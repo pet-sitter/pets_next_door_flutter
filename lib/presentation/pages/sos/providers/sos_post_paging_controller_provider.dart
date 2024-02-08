@@ -6,7 +6,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'sos_post_paging_controller_provider.g.dart';
 
-const _pagingSize = 20;
+const _pagingSize = 10;
 
 @riverpod
 class SosPagingController extends _$SosPagingController {

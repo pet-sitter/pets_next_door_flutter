@@ -14,6 +14,7 @@ import 'package:pets_next_door_flutter/presentation/pages/sos/sos_post_event.dar
 import 'package:pets_next_door_flutter/presentation/widgets/button/radio_button.dart';
 import 'package:pets_next_door_flutter/presentation/widgets/dropdown/dropdown_button.dart';
 import 'package:pets_next_door_flutter/presentation/widgets/dropdown/dropdown_item.dart';
+import 'package:pets_next_door_flutter/presentation/widgets/indicator/loading_indicator.dart';
 import 'package:pets_next_door_flutter/presentation/widgets/list_tile/post_list_tile.dart';
 
 part 'layouts/pet_filter.dart';
@@ -38,9 +39,8 @@ class SosPostView extends StatelessWidget {
     );
   }
 
-  Container _buildFilters() {
-    return Container(
-      height: 50,
+  Padding _buildFilters() {
+    return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
