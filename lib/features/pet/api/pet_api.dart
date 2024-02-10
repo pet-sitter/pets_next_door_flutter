@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart' hide Headers;
+import 'package:pets_next_door_flutter/features/pet/data/dto/pet_data_dto.dart';
 import 'package:pets_next_door_flutter/features/pet/domain/breeds_pagination_request.dart';
 import 'package:pets_next_door_flutter/features/pet/domain/breeds_pagination_response.dart';
 import 'package:retrofit/http.dart';
@@ -14,4 +15,8 @@ abstract class PetAPI {
   Future<BreedsPaginationResponse> getBreed(
     @Queries() BreedsPaginationRequest breedsPaginationRequest,
   );
+
+  @GET("/users/me/pets")
+  @Headers({"requiresToken": true})
+  Future<PetDataListDto> getMyPets();
 }
