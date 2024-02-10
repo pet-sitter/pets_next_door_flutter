@@ -5,7 +5,7 @@ import 'package:pets_next_door_flutter/presentation/pages/home/home_view.dart';
 import 'package:pets_next_door_flutter/presentation/pages/home/providers/current_tab_type_provider.dart';
 import 'package:pets_next_door_flutter/presentation/pages/home/providers/show_search_bar_provider.dart';
 import 'package:pets_next_door_flutter/presentation/pages/pet_mate/providers/pet_mate_filter_provider.dart';
-import 'package:pets_next_door_flutter/presentation/pages/pet_sos/providers/pet_sos_filter_provider.dart';
+import 'package:pets_next_door_flutter/presentation/pages/sos/providers/sos_post_filter_provider.dart';
 import 'package:pets_next_door_flutter/presentation/widgets/toast/app_toast.dart';
 
 abstract interface class _HomeEvent {
@@ -30,7 +30,7 @@ mixin class HomeEvent implements _HomeEvent {
     final tabType = ref.read(currentTabTypeProvider);
     final filter = switch (tabType) {
       HomeTabType.petMate => ref.read(petMateFilterProvider),
-      HomeTabType.petSos => ref.read(petSosFilterProvider),
+      HomeTabType.petSos => ref.read(sosPostFilterProvider),
     };
     // TODO: 필터 정보 가지고 게시물 불러오기 기능 구현 필요
 
