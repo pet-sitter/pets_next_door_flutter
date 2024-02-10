@@ -20,8 +20,7 @@ class PNDInfinitePagedList extends StatelessWidget {
       child: PagedListView.separated(
         pagingController: pagingController,
         builderDelegate: builderDelegate,
-        separatorBuilder:
-            separatorBuilder ?? (context, index) => gapH16,
+        separatorBuilder: separatorBuilder ?? (context, index) => gapH16,
       ),
       onRefresh: () => Future.sync(
         () => pagingController.refresh(),

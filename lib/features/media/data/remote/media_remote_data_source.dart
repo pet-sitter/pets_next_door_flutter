@@ -5,4 +5,6 @@ import 'package:pets_next_door_flutter/features/media/data/dto/media_image_dto.d
 
 abstract interface class MediaRemoteDataSource {
   Future<MediaImageDto> uploadImage(File imageFile, ImageFormat imageFormat);
+
+  Future<MediaImageDto> getImage(int imageId);
 }

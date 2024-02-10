@@ -1,19 +1,15 @@
-import 'dart:io';
+// GENERATED CODE - DO NOT MODIFY BY HAND
 
-import 'package:dio/dio.dart' hide Headers;
-import 'package:http_parser/http_parser.dart' as http;
-import 'package:pets_next_door_flutter/core/enums/media_type.enum.dart';
-import 'package:pets_next_door_flutter/features/media/data/dto/media_image_dto.dart';
+part of 'sos_post_api.dart';
 
-abstract class MediaAPI {
-  factory MediaAPI(Dio dio, {String baseUrl}) = _MediaAPI;
+// **************************************************************************
+// RetrofitGenerator
+// **************************************************************************
 
-  Future<MediaImageDto> uploadImage(File file, String imageFormat);
-  Future<MediaImageDto> getImage(int imageId);
-}
+// ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers
 
-class _MediaAPI implements MediaAPI {
-  _MediaAPI(
+class _SosPostAPI implements SosPostAPI {
+  _SosPostAPI(
     this._dio, {
     this.baseUrl,
   });
@@ -23,37 +19,23 @@ class _MediaAPI implements MediaAPI {
   String? baseUrl;
 
   @override
-  Future<MediaImageDto> getImage(int imageId) {
-    // TODO: implement getImage
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<MediaImageDto> uploadImage(File file, String imageFormat) async {
+  Future<SosPostPaginationResponseDto> getSosPosts(
+      SosPostPaginationRequestDto sosPostsRequest) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.addAll(sosPostsRequest.toJson());
     final _headers = <String, dynamic>{r'requiresToken': false};
     _headers.removeWhere((k, v) => v == null);
-    final _data = FormData();
-    _data.files.add(MapEntry(
-      'file',
-      MultipartFile.fromFileSync(
-        file.path,
-        filename: file.path.split(Platform.pathSeparator).last,
-        contentType:
-            http.MediaType.parse('${AppMediaType.image.name}/$imageFormat'),
-      ),
-    ));
-    final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<MediaImageDto>(Options(
-      method: 'POST',
+    final Map<String, dynamic>? _data = null;
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<SosPostPaginationResponseDto>(Options(
+      method: 'GET',
       headers: _headers,
       extra: _extra,
-      contentType: 'multipart/form-data',
     )
             .compose(
               _dio.options,
-              '/media/images',
+              '/posts/sos',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -62,7 +44,7 @@ class _MediaAPI implements MediaAPI {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = MediaImageDto.fromJson(_result.data!);
+    final value = SosPostPaginationResponseDto.fromJson(_result.data!);
     return value;
   }
 
