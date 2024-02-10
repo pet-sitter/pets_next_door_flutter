@@ -6,6 +6,7 @@ import 'package:pets_next_door_flutter/features/pet/pet.dart';
 import 'package:pets_next_door_flutter/features/pet/repository/pet_repository.dart';
 import 'package:pets_next_door_flutter/features/pet/repository/pet_repository_impl.dart';
 import 'package:pets_next_door_flutter/features/pet/usecases/get_breeds_use_case.dart';
+import 'package:pets_next_door_flutter/features/pet/usecases/get_my_pet_list_use_case.dart';
 
 final class PetDependencyInjection extends FeatureDependencyInjection {
   @override
@@ -29,6 +30,11 @@ final class PetDependencyInjection extends FeatureDependencyInjection {
     GetIt.I
       ..registerFactory<GetBreedsUseCase>(
         () => GetBreedsUseCase(
+          petRepository: petRepository,
+        ),
+      )
+      ..registerFactory<GetMyPetListUseCase>(
+        () => GetMyPetListUseCase(
           petRepository: petRepository,
         ),
       );
