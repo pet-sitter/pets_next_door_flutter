@@ -24,6 +24,6 @@ mixin class SosPostViewEvent implements _SosPostViewEvent {
 
   @override
   Future<void> onListRefresh(WidgetRef ref) async {
-    ref.watch(sosPagingControllerProvider).refresh();
+    ref.read(sosPagingControllerProvider).refresh();
   }
 }
