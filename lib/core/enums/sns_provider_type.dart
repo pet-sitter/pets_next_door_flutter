@@ -2,7 +2,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 enum SnsProviderType {
   @JsonValue('kakao')
-  kakao(providerId: 'kakao.com'),
+  kakao(providerId: 'oidc.kakao'),
   @JsonValue('google')
   google(providerId: 'google.com'),
   @JsonValue('apple')
