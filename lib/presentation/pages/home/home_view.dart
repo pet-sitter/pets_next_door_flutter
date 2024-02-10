@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pets_next_door_flutter/core/constants/colors.dart';
+import 'package:pets_next_door_flutter/core/constants/images.dart';
 import 'package:pets_next_door_flutter/core/constants/sizes.dart';
 import 'package:pets_next_door_flutter/core/constants/text_style.dart';
 import 'package:pets_next_door_flutter/presentation/pages/home/home_event.dart';

@@ -79,6 +79,8 @@ flutter:
     - assets/imgs/
     - assets/imgs/pet/
     - assets/imgs/launch/
+    - assets/imgs/home/
+    - assets/imgs/common/
     - assets/svgs/
     - assets/svgs/common/
     - assets/svgs/login/
