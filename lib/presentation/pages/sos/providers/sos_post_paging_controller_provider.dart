@@ -23,20 +23,21 @@ class SosPagingController extends _$SosPagingController {
 
   Future<void> fetchPage(int pageKey) async {
     try {
-      final newPosts = await getSosPostUseCase.call(
+      final newPage = await getSosPostUseCase.call(
         size: _pagingSize,
         page: pageKey,
         sortType: ref.read(sosPostFilterProvider).sortFilter,
       );
 
-      newPosts.fold(
-        onSuccess: (breeds) {
-          final isLastPage = breeds.length < _pagingSize;
-
-          if (isLastPage) {
-            state.appendLastPage(breeds);
+      newPage.fold(
+        onSuccess: (page) {
+          final sosPostList = page.items
+              .map((sosPost) => SosPostEntity.fromDto(sosPost))
+              .toList();
+          if (page.isLastPage) {
+            state.appendLastPage(sosPostList);
           } else {
-            state.appendPage(breeds, pageKey + 1);
+            state.appendPage(sosPostList, pageKey + 1);
           }
         },
         onFailure: (e) => print('::: Fold Error ::: $e'),
