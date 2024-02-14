@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:kakao_flutter_sdk_auth/src/model/oauth_token.dart';
 import 'package:pets_next_door_flutter/core/enums/sns_provider_type.dart';
 import 'package:pets_next_door_flutter/core/utils/result.dart';
 import 'package:pets_next_door_flutter/features/auth/data/remote/auth_remote_data_source.dart';
@@ -38,11 +37,5 @@ final class AuthRepositoryImpl implements AuthRepository {
     } on Exception catch (e) {
       return Result.failure(e);
     }
-  }
-
-  @override
-  Future<Result<String>> customToken(OAuthToken oAuthToken) {
-    // TODO: implement customToken
-    throw UnimplementedError();
   }
 }

@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart';
 import 'package:pets_next_door_flutter/app/env/flavors.dart';
+import 'package:pets_next_door_flutter/core/enums/sns_provider_type.dart';
 import 'package:pets_next_door_flutter/core/network_handling/app_dio.dart';
 import 'package:pets_next_door_flutter/core/network_handling/exceptions/custom_exception.dart';
 import 'package:pets_next_door_flutter/features/auth/api/auth_api.dart';
@@ -41,14 +42,11 @@ final class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
 
   @override
   Future<UserCredential> signInWithKakao() async {
-    String customToken;
+    OAuthToken oAuthToken;
 
     if (await isKakaoTalkInstalled()) {
       try {
-        customToken = await UserApi.instance
-            .loginWithKakaoAccount()
-            .then((oAuthToken) => _getFirebaseAuthToken(oAuthToken))
-            .then((customToken) => customToken);
+        oAuthToken = await UserApi.instance.loginWithKakaoTalk();
       } catch (error) {
         // 사용자가 카카오톡 설치 후 디바이스 권한 요청 화면에서 로그인을 취소한 경우,
         // 의도적인 로그인 취소로 보고 카카오계정으로 로그인 시도 없이 로그인 취소로 처리 (예: 뒤로 가기)
@@ -58,37 +56,32 @@ final class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
 
         // 카카오톡에 연결된 카카오계정이 없는 경우, 카카오계정으로 로그인
         try {
-          customToken = await UserApi.instance
-              .loginWithKakaoAccount()
-              .then((oAuthToken) => _getFirebaseAuthToken(oAuthToken))
-              .then((customToken) => customToken);
+          oAuthToken = await UserApi.instance.loginWithKakaoAccount();
         } catch (error) {
-          // print('카카오계정으로 로그인 실패 $error');
+          // TODO: 에러 핸들링 좀 더 꼼꼼하게 필요
           throw error;
         }
       }
     } else {
       try {
-        // print('카카오계정으로 로그인 성공');
-        customToken = await UserApi.instance
-            .loginWithKakaoAccount()
-            .then((oAuthToken) => _getFirebaseAuthToken(oAuthToken))
-            .then((customToken) => customToken);
-        return _firebaseAuth.signInWithCustomToken(customToken);
+        oAuthToken = await UserApi.instance.loginWithKakaoAccount();
       } catch (error) {
         throw error;
       }
     }
-    return _firebaseAuth.signInWithCustomToken(customToken);
+
+    final credential =
+        OAuthProvider(SnsProviderType.kakao.providerId).credential(
+      idToken: oAuthToken.idToken,
+    );
+
+    final userCredential = await _firebaseAuth.signInWithCredential(credential);
+
+    return userCredential;
   }
 
   @override
   Future<void> signOut() {
     return _firebaseAuth.signOut();
-  }
-
-  Future<String> _getFirebaseAuthToken(OAuthToken oAuthToken) async {
-    final customToken = await _authAPI.customToken(oAuthToken.accessToken);
-    return customToken;
   }
 }

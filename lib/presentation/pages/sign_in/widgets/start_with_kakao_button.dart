@@ -16,9 +16,7 @@ class StartWithKakaoButton extends ConsumerWidget with SignInEvent {
   Widget build(BuildContext context, WidgetRef ref) {
     return GestureDetector(
       onTap: () async {
-        // TODO: 아직 CustomToken 발급 API가 나오지 않아서 불가능
-        ToastService.show(NormalToast(message: '현재 카카오 로그인이 불가합니다.'));
-        // await onTapSignInWithKakao(ref);
+        await onTapSignInWithKakao(ref);
       },
       child: SvgPicture.asset(PNDSvgs.kakao),
     );

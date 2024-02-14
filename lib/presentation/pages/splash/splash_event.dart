@@ -20,7 +20,7 @@ mixin class SplashEvent implements _SplashEvent {
 
     final userData =
         await ref.read(userDataProvider.future).onError((error, stackTrace) {
-      ref.context.goNamed(AppRoute.signIn.name);
+      return null;
     });
 
     if (userData != null) {
