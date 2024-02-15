@@ -1,26 +1,42 @@
 import 'package:flutter/material.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
-import 'package:pets_next_door_flutter/core/constants/sizes.dart';
+import 'package:pets_next_door_flutter/core/constants/colors.dart';
+import 'package:pets_next_door_flutter/presentation/widgets/indicator/loading_indicator.dart';
 
-class PNDInfinitePagedList extends StatelessWidget {
+class PNDInfinitePagedList<T> extends StatelessWidget {
   PNDInfinitePagedList({
     super.key,
     required this.pagingController,
-    required this.builderDelegate,
+    this.scrollController,
+    required this.itemBuilder,
     this.separatorBuilder,
   });
 
-  final PagingController pagingController;
-  final PagedChildBuilderDelegate builderDelegate;
+  final PagingController<int, T> pagingController;
+  final ScrollController? scrollController;
+  final ItemWidgetBuilder<T> itemBuilder;
   final IndexedWidgetBuilder? separatorBuilder;
 
   @override
   Widget build(BuildContext context) {
     return RefreshIndicator(
-      child: PagedListView.separated(
+      color: AppColor.of.primaryGreen,
+      displacement: 0.0,
+      child: PagedListView<int, T>.separated(
         pagingController: pagingController,
-        builderDelegate: builderDelegate,
-        separatorBuilder: separatorBuilder ?? (context, index) => gapH16,
+        scrollController: scrollController,
+        physics: AlwaysScrollableScrollPhysics(),
+        builderDelegate: PagedChildBuilderDelegate<T>(
+          itemBuilder: itemBuilder,
+          firstPageProgressIndicatorBuilder: (context) => PndLoadingIndicator(),
+          newPageProgressIndicatorBuilder: (context) => PndLoadingIndicator(),
+        ),
+        separatorBuilder: separatorBuilder ??
+            (context, index) => Divider(
+                  height: 1,
+                  thickness: 1,
+                  color: AppColor.of.gray20,
+                ),
       ),
       onRefresh: () => Future.sync(
         () => pagingController.refresh(),

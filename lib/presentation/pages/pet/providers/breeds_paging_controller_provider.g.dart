@@ -7,12 +7,12 @@ part of 'breeds_paging_controller_provider.dart';
 // **************************************************************************
 
 String _$breedsPagingControllerHash() =>
-    r'e3aed41da943c0dd2e40af94cc2ac47627812e9b';
+    r'4706be72771ba7f6bbb72422b3dd6a4bf7361148';
 
 /// See also [BreedsPagingController].
 @ProviderFor(BreedsPagingController)
 final breedsPagingControllerProvider = AutoDisposeNotifierProvider<
-    BreedsPagingController, PagingController<dynamic, dynamic>>.internal(
+    BreedsPagingController, PagingController<int, Breed>>.internal(
   BreedsPagingController.new,
   name: r'breedsPagingControllerProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -23,6 +23,6 @@ final breedsPagingControllerProvider = AutoDisposeNotifierProvider<
 );
 
 typedef _$BreedsPagingController
-    = AutoDisposeNotifier<PagingController<dynamic, dynamic>>;
+    = AutoDisposeNotifier<PagingController<int, Breed>>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member
