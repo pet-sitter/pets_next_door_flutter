@@ -25,7 +25,7 @@ class PaginationResponse<T> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is PaginationResponse &&
+      other is PaginationResponse<T> &&
           runtimeType == other.runtimeType &&
           page == other.page &&
           size == other.size &&
