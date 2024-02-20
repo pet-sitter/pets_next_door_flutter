@@ -1,7 +1,7 @@
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:pets_next_door_flutter/features/sos/entities/sos_post_entity.dart';
 import 'package:pets_next_door_flutter/features/sos/sos.dart';
-import 'package:pets_next_door_flutter/presentation/pages/sos/providers/sos_post_filter_provider.dart';
+import 'package:pets_next_door_flutter/presentation/pages/sos/list/providers/sos_post_filter_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'sos_post_paging_controller_provider.g.dart';

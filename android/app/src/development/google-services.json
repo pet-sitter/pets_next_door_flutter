@@ -14,7 +14,31 @@
       },
       "oauth_client": [
         {
-          "client_id": "231574029969-5chgj3uaqlh2fg9pr9qpc0diuhdhbook.apps.googleusercontent.com",
+          "client_id": "231574029969-17e6o5jt8pkcjvbudocmqt1pj01804a2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "co.yellowtoast.pets_next_door_flutter.dev",
+            "certificate_hash": "d8d5bd779560ccae8f343662db21ac302aa8cdad"
+          }
+        },
+        {
+          "client_id": "231574029969-9oaog3g1361tvs2mj0pj22n8ijgp4tr4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "co.yellowtoast.pets_next_door_flutter.dev",
+            "certificate_hash": "1c575dfabec64a99466b5f1ddb60018e1c41fdf9"
+          }
+        },
+        {
+          "client_id": "231574029969-c7hhgbk0ek9nmqb7raa7altguk0skgtu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "co.yellowtoast.pets_next_door_flutter.dev",
+            "certificate_hash": "55528df627e83bc7126601995ef79f67f11f2a8d"
+          }
+        },
+        {
+          "client_id": "231574029969-hjvfj85727ar4jpbt4iemi0i6nf545bj.apps.googleusercontent.com",
           "client_type": 3
         }
       ],

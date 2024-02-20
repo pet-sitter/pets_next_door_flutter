@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:pets_next_door_flutter/features/media/entities/media_image_entity.dart';
+import 'package:pets_next_door_flutter/features/sos/data/dto/author_dto.dart';
 import 'package:pets_next_door_flutter/features/sos/data/dto/sos_post_dto.dart';
 import 'package:pets_next_door_flutter/features/sos/entities/sos_condition_entity.dart';
 
@@ -9,6 +10,8 @@ part 'sos_post_entity.freezed.dart';
 class SosPostEntity with _$SosPostEntity {
   const SosPostEntity._();
   const factory SosPostEntity({
+    required AuthorDto author,
+    required int postId,
     required String title,
     required String thumbnailUrl,
     required List<MediaImageEntity> mediaList,
@@ -30,6 +33,8 @@ class SosPostEntity with _$SosPostEntity {
     }
 
     return SosPostEntity(
+      author: dto.author,
+      postId: dto.id,
       title: dto.title,
       thumbnailUrl: thumbnailUrl,
       mediaList:

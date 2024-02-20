@@ -17,24 +17,30 @@ const double _kContentSpacing = PNDSizes.p4;
 class PndPostListTile extends StatelessWidget {
   const PndPostListTile({
     super.key,
+    required this.postId,
     required this.title,
     required this.imageUrl,
     required this.contentsList,
+    this.onTapPost,
     this.imageHeight = _kImageHeight,
     this.imageWidth = _kImageWidth,
     this.contentsSpacing = _kContentSpacing,
   });
+  final String postId;
   final String title;
   final String imageUrl;
   final double imageWidth;
   final double imageHeight;
   final List<_TextWithIconImgUrl> contentsList;
   final double contentsSpacing;
+  final void Function(String postId)? onTapPost;
 
   /// 돌봄급구에서 보여주는 ListTile
   /// 나중에 돌봄급구와 메이트 디자인 변경될 수 있을 것 같아서 빼놓음
   factory PndPostListTile.sosPage({
     Key? key,
+    required void Function(String postId) onTapSosPost,
+    required String postId,
     required String? imageUrl,
     required String title,
     required String dateInfo,
@@ -42,6 +48,8 @@ class PndPostListTile extends StatelessWidget {
     required String pay,
   }) {
     return PndPostListTile(
+      postId: postId,
+      onTapPost: onTapSosPost,
       key: key,
       imageUrl: imageUrl ?? '',
       title: title,
@@ -56,6 +64,8 @@ class PndPostListTile extends StatelessWidget {
   /// 돌봄메이트에서 보여주는 ListTile
   factory PndPostListTile.matePage({
     Key? key,
+    required void Function(String postId) onTapMatePost,
+    required String postId,
     required String? imageUrl,
     required String title,
     required String dateInfo,
@@ -63,6 +73,8 @@ class PndPostListTile extends StatelessWidget {
     required String pay,
   }) {
     return PndPostListTile(
+      postId: postId,
+      onTapPost: onTapMatePost,
       key: key,
       imageUrl: imageUrl ?? '',
       title: title,
@@ -78,76 +90,79 @@ class PndPostListTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 112,
-      child: GestureDetector(
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(4),
-                child: Container(
-                    height: imageHeight,
-                    width: imageWidth,
-                    decoration: BoxDecoration(
-                      color: AppColor.of.gray20,
-                    ),
-                    child: CachedNetworkImage(
-                      imageUrl: imageUrl,
-                      fit: BoxFit.cover,
-                      errorWidget: (context, url, error) => Center(
-                        child: Icon(
-                          Icons.image,
-                          size: 25,
-                          color: AppColor.of.gray30,
-                        ),
+      child: InkWell(
+        onTap: () => onTapPost?.call(postId),
+        child: Container(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(4),
+                  child: Container(
+                      height: imageHeight,
+                      width: imageWidth,
+                      decoration: BoxDecoration(
+                        color: AppColor.of.gray20,
                       ),
-                    )),
-              ),
-              gapW8,
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      title,
-                      softWrap: false,
-                      overflow: TextOverflow.ellipsis,
-                      style: AppTextStyle.bodyBold1,
-                    ),
-                    gapH8,
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: contentsList.indexed
-                          .map(
-                            (contents) => Container(
-                              margin: contents.$1 != contentsList.length - 1
-                                  ? EdgeInsets.only(bottom: contentsSpacing)
-                                  : null,
-                              child: Row(
-                                children: [
-                                  Image.asset(
-                                    contents.$2.imgIconUrl,
-                                    width: _kContentIconSize,
-                                    height: _kContentIconSize,
-                                    color: AppColor.of.gray90,
-                                  ),
-                                  gapW4,
-                                  Text(
-                                    contents.$2.text,
-                                    style: AppTextStyle.bodyRegular3,
-                                    softWrap: false,
-                                  ),
-                                ],
-                              ),
-                            ),
-                          )
-                          .toList(),
-                    )
-                  ],
+                      child: CachedNetworkImage(
+                        imageUrl: imageUrl,
+                        fit: BoxFit.cover,
+                        errorWidget: (context, url, error) => Center(
+                          child: Icon(
+                            Icons.image,
+                            size: 25,
+                            color: AppColor.of.gray30,
+                          ),
+                        ),
+                      )),
                 ),
-              )
-            ],
+                gapW8,
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        title,
+                        softWrap: false,
+                        overflow: TextOverflow.ellipsis,
+                        style: AppTextStyle.bodyBold1,
+                      ),
+                      gapH8,
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: contentsList.indexed
+                            .map(
+                              (contents) => Container(
+                                margin: contents.$1 != contentsList.length - 1
+                                    ? EdgeInsets.only(bottom: contentsSpacing)
+                                    : null,
+                                child: Row(
+                                  children: [
+                                    Image.asset(
+                                      contents.$2.imgIconUrl,
+                                      width: _kContentIconSize,
+                                      height: _kContentIconSize,
+                                      color: AppColor.of.gray90,
+                                    ),
+                                    gapW4,
+                                    Text(
+                                      contents.$2.text,
+                                      style: AppTextStyle.bodyRegular3,
+                                      softWrap: false,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            )
+                            .toList(),
+                      )
+                    ],
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       ),

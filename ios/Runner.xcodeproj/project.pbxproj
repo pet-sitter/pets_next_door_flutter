@@ -445,6 +445,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
 				DEVELOPMENT_TEAM = KVC7U6W6Z2;
 				ENABLE_BITCODE = NO;
@@ -459,6 +461,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "co.yellowtoast.pets-next-door-flutter";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -580,6 +583,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
 				DEVELOPMENT_TEAM = KVC7U6W6Z2;
 				ENABLE_BITCODE = NO;
@@ -594,6 +599,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "co.yellowtoast.pets-next-door-flutter";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -607,6 +613,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
 				DEVELOPMENT_TEAM = KVC7U6W6Z2;
 				ENABLE_BITCODE = NO;
@@ -621,6 +629,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "co.yellowtoast.pets-next-door-flutter";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -689,6 +698,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-dev";
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
 				DEVELOPMENT_TEAM = KVC7U6W6Z2;
 				ENABLE_BITCODE = NO;
@@ -703,6 +714,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "co.yellowtoast.pets-next-door-flutter.dev";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -769,6 +781,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-dev";
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
 				DEVELOPMENT_TEAM = KVC7U6W6Z2;
 				ENABLE_BITCODE = NO;
@@ -783,6 +797,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "co.yellowtoast.pets-next-door-flutter.dev";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -846,6 +861,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-dev";
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
 				DEVELOPMENT_TEAM = KVC7U6W6Z2;
 				ENABLE_BITCODE = NO;
@@ -860,6 +877,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "co.yellowtoast.pets-next-door-flutter.dev";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -928,8 +946,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-stg";
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = KVC7U6W6Z2;
+				DEVELOPMENT_TEAM = 36XAF3AY63;
 				ENABLE_BITCODE = NO;
 				FLAVOR_APP_NAME = "[STG] Pets Next Door Flutter";
 				GOOGLE_SCHEME = "com.googleusercontent.apps.424678055013-lqikhot4d87ifooit42092ukp8uo1e4g";
@@ -942,6 +962,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "co.yellowtoast.pets-next-door-flutter.stg";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -1008,8 +1029,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-stg";
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = KVC7U6W6Z2;
+				DEVELOPMENT_TEAM = 36XAF3AY63;
 				ENABLE_BITCODE = NO;
 				FLAVOR_APP_NAME = "[STG] Pets Next Door Flutter";
 				GOOGLE_SCHEME = "com.googleusercontent.apps.424678055013-lqikhot4d87ifooit42092ukp8uo1e4g";
@@ -1022,6 +1045,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "co.yellowtoast.pets-next-door-flutter.stg";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1085,8 +1109,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-stg";
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = KVC7U6W6Z2;
+				DEVELOPMENT_TEAM = 36XAF3AY63;
 				ENABLE_BITCODE = NO;
 				FLAVOR_APP_NAME = "[STG] Pets Next Door Flutter";
 				GOOGLE_SCHEME = "com.googleusercontent.apps.424678055013-lqikhot4d87ifooit42092ukp8uo1e4g";
@@ -1099,6 +1125,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "co.yellowtoast.pets-next-door-flutter.stg";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";

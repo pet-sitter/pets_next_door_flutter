@@ -33,6 +33,8 @@ class _SosPostListView extends HookConsumerWidget with SosPostViewEvent {
         physics: AlwaysScrollableScrollPhysics(),
         builderDelegate: PagedChildBuilderDelegate(
           itemBuilder: (context, sosPost, index) => PndPostListTile.sosPage(
+              postId: sosPost.hashCode.toString(),
+              onTapSosPost: (postId) => onTapSosPost(ref, sosPost),
               imageUrl: sosPost.thumbnailUrl,
               title: sosPost.title,
               dateInfo:

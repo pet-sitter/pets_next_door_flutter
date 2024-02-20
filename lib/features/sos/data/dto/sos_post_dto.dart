@@ -10,8 +10,8 @@ part 'sos_post_dto.g.dart';
 /// 급구의 돌봄조건 dto
 @JsonSerializable()
 class SosPostDto {
-  @JsonKey(name: 'author_id')
-  final int authorId;
+  final int id;
+  final AuthorDto author;
   final String title;
   final String content;
   @JsonKey(name: 'date_start_at')
@@ -28,6 +28,7 @@ class SosPostDto {
   final List<PetDataDto> pets;
 
   SosPostDto({
+    required this.id,
     required this.conditions,
     required this.content,
     required this.media,

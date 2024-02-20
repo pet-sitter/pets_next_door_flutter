@@ -7,6 +7,7 @@ part of 'sos_post_dto.dart';
 // **************************************************************************
 
 SosPostDto _$SosPostDtoFromJson(Map<String, dynamic> json) => SosPostDto(
+      id: json['id'] as int,
       conditions: (json['conditions'] as List<dynamic>)
           .map((e) => SosConditionDto.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -28,7 +29,8 @@ SosPostDto _$SosPostDtoFromJson(Map<String, dynamic> json) => SosPostDto(
 
 Map<String, dynamic> _$SosPostDtoToJson(SosPostDto instance) =>
     <String, dynamic>{
-      'author_id': instance.authorId,
+      'id': instance.id,
+      'author': instance.author,
       'title': instance.title,
       'content': instance.content,
       'date_start_at': instance.dateStartAt,

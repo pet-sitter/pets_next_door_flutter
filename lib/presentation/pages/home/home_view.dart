@@ -9,7 +9,7 @@ import 'package:pets_next_door_flutter/presentation/pages/home/home_event.dart';
 import 'package:pets_next_door_flutter/presentation/pages/home/providers/current_tab_type_provider.dart';
 import 'package:pets_next_door_flutter/presentation/pages/home/providers/show_search_bar_provider.dart';
 import 'package:pets_next_door_flutter/presentation/pages/pet_mate/pet_mate_view.dart';
-import 'package:pets_next_door_flutter/presentation/pages/sos/sos_post_view.dart';
+import 'package:pets_next_door_flutter/presentation/pages/sos/list/sos_post_view.dart';
 import 'package:pets_next_door_flutter/presentation/widgets/search_bar/animated_search_bar.dart';
 
 part 'widgets/home_location_button.dart';

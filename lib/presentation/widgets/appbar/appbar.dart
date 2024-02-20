@@ -7,18 +7,26 @@ class PNDAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.title = '',
     this.onTapBackbutton,
     this.leading,
+    this.backgroundColor = Colors.white,
+    this.leadingIconColor = Colors.black,
   });
 
   final String title;
   final void Function()? onTapBackbutton;
   final Widget? leading;
+  final Color backgroundColor;
+  final Color leadingIconColor;
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: Colors.white,
+      backgroundColor: backgroundColor,
       centerTitle: false,
-      leading: leading ?? PNDBackButton(onTapBackbutton: onTapBackbutton),
+      leading: leading ??
+          PNDBackButton(
+            onTapBackbutton: onTapBackbutton,
+            color: leadingIconColor,
+          ),
       titleSpacing: 0,
       title: Text(
         title,
@@ -34,10 +42,12 @@ class PNDAppBar extends StatelessWidget implements PreferredSizeWidget {
 class PNDBackButton extends StatelessWidget {
   const PNDBackButton({
     required this.onTapBackbutton,
+    this.color = Colors.white,
     super.key,
   });
 
   final void Function()? onTapBackbutton;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +55,10 @@ class PNDBackButton extends StatelessWidget {
       borderRadius: BorderRadius.circular(100),
       radius: 18,
       onTap: onTapBackbutton ?? () => context.pop(),
-      child: const Icon(Icons.arrow_back_ios_rounded),
+      child: Icon(
+        Icons.arrow_back_ios_rounded,
+        color: color,
+      ),
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:pets_next_door_flutter/features/sos/entities/sos_post_entity.dart';
 import 'package:pets_next_door_flutter/presentation/main/main_page.dart';
 import 'package:pets_next_door_flutter/presentation/pages/chat/chat_view.dart';
 import 'package:pets_next_door_flutter/presentation/pages/community/community_view.dart';
@@ -8,6 +9,7 @@ import 'package:pets_next_door_flutter/presentation/pages/my_info/profile_view.d
 import 'package:pets_next_door_flutter/presentation/pages/pet/register_pet_page.dart';
 import 'package:pets_next_door_flutter/presentation/pages/sign_in/sign_in_page.dart';
 import 'package:pets_next_door_flutter/presentation/pages/sign_up/sign_up_page.dart';
+import 'package:pets_next_door_flutter/presentation/pages/sos/detail/sos_post_detail_view.dart';
 import 'package:pets_next_door_flutter/presentation/pages/splash/splash_page.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -30,11 +32,13 @@ enum AppRoute {
   chat,
   myInfo,
   profile,
-  registerPet;
+  registerPet,
+  sosPostDetail;
 
   const AppRoute();
 
   String get path => '/${this.name}';
+  String get chileRoutePath => '${this.name}';
 }
 
 @riverpod
@@ -88,13 +92,35 @@ GoRouter goRouter(GoRouterRef ref) {
             navigatorKey: _homeNavigatorKey,
             routes: [
               GoRoute(
-                path: AppRoute.home.path,
-                name: AppRoute.home.name,
-                pageBuilder: (context, state) => NoTransitionPage(
-                  key: state.pageKey,
-                  child: const HomeView(),
-                ),
-              ),
+                  path: AppRoute.home.path,
+                  name: AppRoute.home.name,
+                  pageBuilder: (context, state) => NoTransitionPage(
+                        key: state.pageKey,
+                        child: const HomeView(),
+                      ),
+                  routes: [
+                    GoRoute(
+                        path: AppRoute.sosPostDetail.chileRoutePath,
+                        name: AppRoute.sosPostDetail.name,
+                        pageBuilder: (context, state) {
+                          final postEntity = state.extra as SosPostEntity?;
+                          final postId = (postEntity != null)
+                              ? postEntity.postId
+                              : int.parse(
+                                  state.pathParameters['postId'] ?? '-1');
+
+                          if (postId <= 0) {
+                            print('올바른 sos postId가 아닙니다.');
+                          }
+
+                          return MaterialPage(
+                            child: SosPostDetailView(
+                              postId: postId,
+                              sosPostEntity: postEntity,
+                            ),
+                          );
+                        })
+                  ]),
             ],
           ),
           StatefulShellBranch(

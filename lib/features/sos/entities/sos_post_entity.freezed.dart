@@ -16,6 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$SosPostEntity {
+  AuthorDto get author => throw _privateConstructorUsedError;
+  int get postId => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get thumbnailUrl => throw _privateConstructorUsedError;
   List<MediaImageEntity> get mediaList => throw _privateConstructorUsedError;
@@ -38,7 +40,9 @@ abstract class $SosPostEntityCopyWith<$Res> {
       _$SosPostEntityCopyWithImpl<$Res, SosPostEntity>;
   @useResult
   $Res call(
-      {String title,
+      {AuthorDto author,
+      int postId,
+      String title,
       String thumbnailUrl,
       List<MediaImageEntity> mediaList,
       List<SosConditionEntity> conditionList,
@@ -61,6 +65,8 @@ class _$SosPostEntityCopyWithImpl<$Res, $Val extends SosPostEntity>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? author = null,
+    Object? postId = null,
     Object? title = null,
     Object? thumbnailUrl = null,
     Object? mediaList = null,
@@ -71,6 +77,14 @@ class _$SosPostEntityCopyWithImpl<$Res, $Val extends SosPostEntity>
     Object? rewardPer = null,
   }) {
     return _then(_value.copyWith(
+      author: null == author
+          ? _value.author
+          : author // ignore: cast_nullable_to_non_nullable
+              as AuthorDto,
+      postId: null == postId
+          ? _value.postId
+          : postId // ignore: cast_nullable_to_non_nullable
+              as int,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -116,7 +130,9 @@ abstract class _$$_SosPostEntityCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String title,
+      {AuthorDto author,
+      int postId,
+      String title,
       String thumbnailUrl,
       List<MediaImageEntity> mediaList,
       List<SosConditionEntity> conditionList,
@@ -137,6 +153,8 @@ class __$$_SosPostEntityCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? author = null,
+    Object? postId = null,
     Object? title = null,
     Object? thumbnailUrl = null,
     Object? mediaList = null,
@@ -147,6 +165,14 @@ class __$$_SosPostEntityCopyWithImpl<$Res>
     Object? rewardPer = null,
   }) {
     return _then(_$_SosPostEntity(
+      author: null == author
+          ? _value.author
+          : author // ignore: cast_nullable_to_non_nullable
+              as AuthorDto,
+      postId: null == postId
+          ? _value.postId
+          : postId // ignore: cast_nullable_to_non_nullable
+              as int,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -187,7 +213,9 @@ class __$$_SosPostEntityCopyWithImpl<$Res>
 
 class _$_SosPostEntity extends _SosPostEntity {
   const _$_SosPostEntity(
-      {required this.title,
+      {required this.author,
+      required this.postId,
+      required this.title,
       required this.thumbnailUrl,
       required final List<MediaImageEntity> mediaList,
       required final List<SosConditionEntity> conditionList,
@@ -199,6 +227,10 @@ class _$_SosPostEntity extends _SosPostEntity {
         _conditionList = conditionList,
         super._();
 
+  @override
+  final AuthorDto author;
+  @override
+  final int postId;
   @override
   final String title;
   @override
@@ -230,7 +262,7 @@ class _$_SosPostEntity extends _SosPostEntity {
 
   @override
   String toString() {
-    return 'SosPostEntity(title: $title, thumbnailUrl: $thumbnailUrl, mediaList: $mediaList, conditionList: $conditionList, careStartAt: $careStartAt, careEndAt: $careEndAt, reward: $reward, rewardPer: $rewardPer)';
+    return 'SosPostEntity(author: $author, postId: $postId, title: $title, thumbnailUrl: $thumbnailUrl, mediaList: $mediaList, conditionList: $conditionList, careStartAt: $careStartAt, careEndAt: $careEndAt, reward: $reward, rewardPer: $rewardPer)';
   }
 
   @override
@@ -238,6 +270,8 @@ class _$_SosPostEntity extends _SosPostEntity {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_SosPostEntity &&
+            (identical(other.author, author) || other.author == author) &&
+            (identical(other.postId, postId) || other.postId == postId) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.thumbnailUrl, thumbnailUrl) ||
                 other.thumbnailUrl == thumbnailUrl) &&
@@ -257,6 +291,8 @@ class _$_SosPostEntity extends _SosPostEntity {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      author,
+      postId,
       title,
       thumbnailUrl,
       const DeepCollectionEquality().hash(_mediaList),
@@ -275,7 +311,9 @@ class _$_SosPostEntity extends _SosPostEntity {
 
 abstract class _SosPostEntity extends SosPostEntity {
   const factory _SosPostEntity(
-      {required final String title,
+      {required final AuthorDto author,
+      required final int postId,
+      required final String title,
       required final String thumbnailUrl,
       required final List<MediaImageEntity> mediaList,
       required final List<SosConditionEntity> conditionList,
@@ -285,6 +323,10 @@ abstract class _SosPostEntity extends SosPostEntity {
       required final String rewardPer}) = _$_SosPostEntity;
   const _SosPostEntity._() : super._();
 
+  @override
+  AuthorDto get author;
+  @override
+  int get postId;
   @override
   String get title;
   @override
