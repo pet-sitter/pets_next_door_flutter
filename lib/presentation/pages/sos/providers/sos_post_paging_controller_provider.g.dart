@@ -7,7 +7,7 @@ part of 'sos_post_paging_controller_provider.dart';
 // **************************************************************************
 
 String _$sosPagingControllerHash() =>
-    r'6548bf58e58b7f337411a2f5ef7cc8325c6c0738';
+    r'd6261bcffde36ecb43f2ec1997d80a1bb0cc2575';
 
 /// See also [SosPagingController].
 @ProviderFor(SosPagingController)

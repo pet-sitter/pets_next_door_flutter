@@ -1,7 +1,7 @@
 import 'package:pets_next_door_flutter/core/enums/sort_type_filter.enum.dart';
 import 'package:pets_next_door_flutter/core/utils/result.dart';
 import 'package:pets_next_door_flutter/features/sos/data/dto/sos_pagination_request_dto.dart';
-import 'package:pets_next_door_flutter/features/sos/entities/sos_post_entity.dart';
+import 'package:pets_next_door_flutter/features/sos/data/dto/sos_pagination_response_dto.dart';
 import 'package:pets_next_door_flutter/features/sos/repositories/sos_post_repository.dart';
 
 final class GetSosPostsUseCase {
@@ -11,7 +11,7 @@ final class GetSosPostsUseCase {
 
   final SosPostRepository _sosPostRepository;
 
-  Future<Result<List<SosPostEntity>>> call({
+  Future<Result<SosPostPaginationResponseDto>> call({
     required int size,
     required int page,
     required SortTypeFilter sortType,

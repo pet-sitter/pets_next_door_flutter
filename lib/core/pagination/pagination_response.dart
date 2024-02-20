@@ -4,6 +4,7 @@ class PaginationResponse<T> {
     required this.page,
     required this.size,
     required this.items,
+    required this.isLastPage,
   });
 
   PaginationResponse.fromJson(
@@ -13,27 +14,25 @@ class PaginationResponse<T> {
         size = json['size'] as int,
         items = (json['items'] as List<dynamic>)
             .map((e) => fromJson.call(e))
-            .toList();
+            .toList(),
+        isLastPage = json['is_last_page'] as bool;
 
   final int page;
   final int size;
   final List<T> items;
+  final bool isLastPage;
 
   @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-
-    return other is PaginationResponse &&
-        other.items == items &&
-        other.page == page &&
-        other.size == size;
-  }
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is PaginationResponse<T> &&
+          runtimeType == other.runtimeType &&
+          page == other.page &&
+          size == other.size &&
+          items == other.items &&
+          isLastPage == other.isLastPage;
 
   @override
-  int get hashCode => items.hashCode ^ page.hashCode ^ size.hashCode;
-
-  Map<String, dynamic> toJson() => {
-        'page': page,
-        'size': size,
-      };
+  int get hashCode =>
+      page.hashCode ^ size.hashCode ^ items.hashCode ^ isLastPage.hashCode;
 }
