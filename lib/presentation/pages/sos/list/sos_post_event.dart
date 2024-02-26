@@ -36,7 +36,7 @@ mixin class SosPostViewEvent implements _SosPostViewEvent {
     ref.context.pushNamed(
       AppRoute.sosPostDetail.name,
       extra: sosPost,
-      pathParameters: {
+      queryParameters: {
         'postId': sosPost.postId.toString(),
       },
     );

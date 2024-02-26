@@ -38,7 +38,7 @@ enum AppRoute {
   const AppRoute();
 
   String get path => '/${this.name}';
-  String get chileRoutePath => '${this.name}';
+  String get childRoutePath => '${this.name}';
 }
 
 @riverpod
@@ -48,7 +48,23 @@ GoRouter goRouter(GoRouterRef ref) {
     initialLocation: AppRoute.splash.path,
     navigatorKey: rootNavigatorKey,
     debugLogDiagnostics: true,
-    redirect: (context, state) {
+    redirect: (context, state) async {
+      // final isLoggedIn = ref.read(isUserAuthorizedProvider);
+
+      // if (!isLoggedIn) {
+      //   return AppRoute.signIn.name;
+      // }
+
+      // final userData =
+      //     await ref.read(userDataProvider.future).onError((error, stackTrace) {
+      //   return null;
+      // });
+
+      // if (userData != null) {
+      //   return AppRoute.home.name;
+      // } else {
+      //   return AppRoute.signIn.name;
+      // }
       return null;
     },
     routes: [
@@ -84,6 +100,26 @@ GoRouter goRouter(GoRouterRef ref) {
           child: const RegisterPetPage(),
         ),
       ),
+      GoRoute(
+          path: AppRoute.sosPostDetail.path,
+          name: AppRoute.sosPostDetail.name,
+          pageBuilder: (context, state) {
+            final postEntity = state.extra as SosPostEntity?;
+            final postId = (postEntity != null)
+                ? postEntity.postId
+                : int.parse(state.pathParameters['postId'] ?? '-1');
+
+            if (postId <= 0) {
+              print('올바른 sos postId가 아닙니다.');
+            }
+
+            return MaterialPage(
+              child: SosPostDetailView(
+                postId: postId,
+                sosPostEntity: postEntity,
+              ),
+            );
+          }),
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) =>
             MainPage(navigationShell: navigationShell),
@@ -92,35 +128,13 @@ GoRouter goRouter(GoRouterRef ref) {
             navigatorKey: _homeNavigatorKey,
             routes: [
               GoRoute(
-                  path: AppRoute.home.path,
-                  name: AppRoute.home.name,
-                  pageBuilder: (context, state) => NoTransitionPage(
-                        key: state.pageKey,
-                        child: const HomeView(),
-                      ),
-                  routes: [
-                    GoRoute(
-                        path: AppRoute.sosPostDetail.chileRoutePath,
-                        name: AppRoute.sosPostDetail.name,
-                        pageBuilder: (context, state) {
-                          final postEntity = state.extra as SosPostEntity?;
-                          final postId = (postEntity != null)
-                              ? postEntity.postId
-                              : int.parse(
-                                  state.pathParameters['postId'] ?? '-1');
-
-                          if (postId <= 0) {
-                            print('올바른 sos postId가 아닙니다.');
-                          }
-
-                          return MaterialPage(
-                            child: SosPostDetailView(
-                              postId: postId,
-                              sosPostEntity: postEntity,
-                            ),
-                          );
-                        })
-                  ]),
+                path: AppRoute.home.path,
+                name: AppRoute.home.name,
+                pageBuilder: (context, state) => NoTransitionPage(
+                  key: state.pageKey,
+                  child: const HomeView(),
+                ),
+              ),
             ],
           ),
           StatefulShellBranch(

@@ -22,24 +22,28 @@ class _SosPostDetailTabView extends HookConsumerWidget with HomeEvent {
         children: [
           gapH16,
           _buildTabBarIndicator(tabController),
-          Expanded(
-            child: TabBarView(
-              controller: tabController,
-              children: [
-                _SosDetailConditionsTab(),
-                Container(
-                  color: Colors.red,
-                  width: 100,
-                  height: 100,
-                ),
-                Container(
-                  color: Colors.green,
-                  width: 100,
-                  height: 100,
-                )
-              ],
-            ),
+          _buildTabView(tabController),
+        ],
+      ),
+    );
+  }
+
+  Expanded _buildTabView(TabController tabController) {
+    return Expanded(
+      child: TabBarView(
+        controller: tabController,
+        children: [
+          _SosDetailConditionsTab(),
+          Container(
+            color: Colors.red,
+            width: 100,
+            height: 100,
           ),
+          Container(
+            color: Colors.green,
+            width: 100,
+            height: 100,
+          )
         ],
       ),
     );
@@ -51,6 +55,7 @@ class _SosPostDetailTabView extends HookConsumerWidget with HomeEvent {
       padding: const EdgeInsets.only(left: 24),
       alignment: Alignment.centerLeft,
       child: TabBar(
+        tabAlignment: TabAlignment.start,
         isScrollable: true,
         controller: tabController,
         labelPadding: const EdgeInsets.only(right: 16),
@@ -100,19 +105,28 @@ class _SosDetailConditionsTab extends StatelessWidget {
                 Wrap(
                   spacing: 20,
                   children: conditionBadgeList
-                      .map((e) => Container(
-                            height: 56,
-                            width: 56,
-                            decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: AppColor.of.white,
-                                boxShadow: [
-                                  BoxShadow(
-                                      offset: Offset(2, 3),
-                                      blurRadius: 9,
-                                      color:
-                                          AppColor.of.gray30.withOpacity(0.3))
-                                ]),
+                      .map((e) => Column(
+                            children: [
+                              Container(
+                                height: 56,
+                                width: 56,
+                                decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: AppColor.of.white,
+                                    boxShadow: [
+                                      BoxShadow(
+                                          offset: Offset(2, 3),
+                                          blurRadius: 9,
+                                          color: AppColor.of.gray30
+                                              .withOpacity(0.3))
+                                    ]),
+                              ),
+                              gapH12,
+                              Text(
+                                'condition',
+                                style: AppTextStyle.bodyRegular3,
+                              ),
+                            ],
                           ))
                       .toList(),
                 )
@@ -125,29 +139,56 @@ class _SosDetailConditionsTab extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('data'),
-                  Text('data'),
+                  Text(
+                    'data',
+                    style: AppTextStyle.headlineMedium2,
+                  ),
+                  Text(
+                    'data',
+                    style: AppTextStyle.headlineRegular3,
+                  ),
                 ],
               ),
+              gapH8,
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('data'),
-                  Text('data'),
+                  Text(
+                    'data',
+                    style: AppTextStyle.headlineMedium2,
+                  ),
+                  Text(
+                    'data',
+                    style: AppTextStyle.headlineRegular3,
+                  ),
                 ],
               ),
+              gapH8,
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('data'),
-                  Text('data'),
+                  Text(
+                    'data',
+                    style: AppTextStyle.headlineMedium2,
+                  ),
+                  Text(
+                    'data',
+                    style: AppTextStyle.headlineRegular3,
+                  ),
                 ],
               ),
+              gapH8,
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('data'),
-                  Text('data'),
+                  Text(
+                    'data',
+                    style: AppTextStyle.headlineMedium2,
+                  ),
+                  Text(
+                    'data',
+                    style: AppTextStyle.headlineRegular3,
+                  ),
                 ],
               )
             ],

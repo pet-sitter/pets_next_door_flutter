@@ -31,6 +31,7 @@ class SosPostDetailView extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 24),
         child: ActivationButton(
           text: '채팅하기',
+          buttonColor: AppColor.of.primaryGreen,
           isActive: true,
           onTap: () {},
         ),

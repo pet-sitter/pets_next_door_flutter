@@ -73,6 +73,7 @@ class _BottomNavigationBar extends ConsumerWidget {
       child: Wrap(
         children: [
           BottomNavigationBar(
+            elevation: 0,
             currentIndex: currentTab.index,
             backgroundColor: Colors.white,
             type: BottomNavigationBarType.fixed,
