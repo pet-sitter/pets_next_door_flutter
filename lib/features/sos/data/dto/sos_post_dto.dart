@@ -3,6 +3,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:pets_next_door_flutter/features/media/data/dto/media_image_dto.dart';
 import 'package:pets_next_door_flutter/features/pet/data/dto/pet_data_dto.dart';
+import 'package:pets_next_door_flutter/features/sos/data/dto/author_dto.dart';
 import 'package:pets_next_door_flutter/features/sos/data/dto/sos_condition_dto.dart';
 
 part 'sos_post_dto.g.dart';
@@ -10,8 +11,7 @@ part 'sos_post_dto.g.dart';
 /// 급구의 돌봄조건 dto
 @JsonSerializable()
 class SosPostDto {
-  @JsonKey(name: 'author_id')
-  final int authorId;
+  final AuthorDto author;
   final String title;
   final String content;
   @JsonKey(name: 'date_start_at')
@@ -32,7 +32,7 @@ class SosPostDto {
     required this.content,
     required this.media,
     required this.title,
-    required this.authorId,
+    required this.author,
     required this.dateStartAt,
     required this.dateEndAt,
     required this.thumbnailId,
