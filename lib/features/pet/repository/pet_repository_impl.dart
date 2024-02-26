@@ -1,7 +1,7 @@
 import 'package:pets_next_door_flutter/core/utils/result.dart';
 import 'package:pets_next_door_flutter/features/pet/data/remote/pet_remote_data_source.dart';
-import 'package:pets_next_door_flutter/features/pet/domain/breed.dart';
 import 'package:pets_next_door_flutter/features/pet/domain/breeds_pagination_request.dart';
+import 'package:pets_next_door_flutter/features/pet/domain/breeds_pagination_response.dart';
 import 'package:pets_next_door_flutter/features/pet/entities/pet_data_entity.dart';
 import 'package:pets_next_door_flutter/features/pet/repository/pet_repository.dart';
 
@@ -13,12 +13,12 @@ final class PetRepositoryImpl implements PetRepository {
   final PetRemoteDataSource _petRemoteDataSource;
 
   @override
-  Future<Result<List<Breed>>> getBreeds(
+  Future<Result<BreedsPaginationResponse>> getBreeds(
       {required BreedsPaginationRequest breedsPaginationRequest}) async {
     try {
       final breedsData = await _petRemoteDataSource.getBreeds(
           breedsPaginationRequest: breedsPaginationRequest);
-      return Result.success(breedsData.items);
+      return Result.success(breedsData);
     } on Exception catch (e) {
       return Result.failure(e);
     }

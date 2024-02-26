@@ -7,7 +7,7 @@ part of 'breeds_paging_controller_provider.dart';
 // **************************************************************************
 
 String _$breedsPagingControllerHash() =>
-    r'f14f38dc38e0a32b977387e5ee90d9aaae12cd88';
+    r'e3aed41da943c0dd2e40af94cc2ac47627812e9b';
 
 /// See also [BreedsPagingController].
 @ProviderFor(BreedsPagingController)

@@ -1,6 +1,6 @@
 import 'package:pets_next_door_flutter/core/utils/result.dart';
-import 'package:pets_next_door_flutter/features/pet/domain/breed.dart';
 import 'package:pets_next_door_flutter/features/pet/domain/breeds_pagination_request.dart';
+import 'package:pets_next_door_flutter/features/pet/domain/breeds_pagination_response.dart';
 import 'package:pets_next_door_flutter/features/pet/repository/pet_repository.dart';
 
 final class GetBreedsUseCase {
@@ -10,9 +10,10 @@ final class GetBreedsUseCase {
 
   final PetRepository _petRepository;
 
-  Future<Result<List<Breed>>> call({
+  Future<Result<BreedsPaginationResponse>> call({
     required BreedsPaginationRequest breedsPaginationRequest,
   }) async {
-    return _petRepository.getBreeds(breedsPaginationRequest: breedsPaginationRequest);
+    return _petRepository.getBreeds(
+        breedsPaginationRequest: breedsPaginationRequest);
   }
 }

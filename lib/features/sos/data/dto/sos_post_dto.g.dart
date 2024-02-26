@@ -8,6 +8,7 @@ part of 'sos_post_dto.dart';
 
 SosPostDto _$SosPostDtoFromJson(Map<String, dynamic> json) => SosPostDto(
       id: json['id'] as int,
+      author: AuthorDto.fromJson(json['author'] as Map<String, dynamic>),
       conditions: (json['conditions'] as List<dynamic>)
           .map((e) => SosConditionDto.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -16,7 +17,6 @@ SosPostDto _$SosPostDtoFromJson(Map<String, dynamic> json) => SosPostDto(
           .map((e) => MediaImageDto.fromJson(e as Map<String, dynamic>))
           .toList(),
       title: json['title'] as String,
-      authorId: json['author_id'] as int,
       dateStartAt: json['date_start_at'] as String,
       dateEndAt: json['date_end_at'] as String,
       thumbnailId: json['thumbnail_id'] as int,

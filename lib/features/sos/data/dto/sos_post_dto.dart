@@ -3,6 +3,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:pets_next_door_flutter/features/media/data/dto/media_image_dto.dart';
 import 'package:pets_next_door_flutter/features/pet/data/dto/pet_data_dto.dart';
+import 'package:pets_next_door_flutter/features/sos/data/dto/author_dto.dart';
 import 'package:pets_next_door_flutter/features/sos/data/dto/sos_condition_dto.dart';
 
 part 'sos_post_dto.g.dart';
@@ -29,11 +30,11 @@ class SosPostDto {
 
   SosPostDto({
     required this.id,
+    required this.author,
     required this.conditions,
     required this.content,
     required this.media,
     required this.title,
-    required this.authorId,
     required this.dateStartAt,
     required this.dateEndAt,
     required this.thumbnailId,
