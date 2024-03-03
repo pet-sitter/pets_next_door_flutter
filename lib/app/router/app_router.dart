@@ -1,144 +1,111 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:pets_next_door_flutter/app/router/scaffold_with_nested_navigation.dart';
-import 'package:pets_next_door_flutter/features/user/domain/user_profile_view_state.dart';
+import 'package:pets_next_door_flutter/presentation/main/main_page.dart';
 import 'package:pets_next_door_flutter/presentation/pages/chat/chat_view.dart';
-import 'package:pets_next_door_flutter/presentation/pages/gather/gather_view.dart';
+import 'package:pets_next_door_flutter/presentation/pages/community/community_view.dart';
 import 'package:pets_next_door_flutter/presentation/pages/home/home_view.dart';
+import 'package:pets_next_door_flutter/presentation/pages/my_info/profile_view.dart';
 import 'package:pets_next_door_flutter/presentation/pages/pet/register_pet_page.dart';
-import 'package:pets_next_door_flutter/presentation/pages/pet/steps/breed_search_view.dart';
-import 'package:pets_next_door_flutter/presentation/pages/sign_in/sign_in_view.dart';
-import 'package:pets_next_door_flutter/presentation/pages/sign_up/phone_auth_view.dart';
-import 'package:pets_next_door_flutter/presentation/pages/user/user_profile_view.dart';
-import 'package:pets_next_door_flutter/presentation/pages/user/user_view.dart';
+import 'package:pets_next_door_flutter/presentation/pages/sign_in/sign_in_page.dart';
+import 'package:pets_next_door_flutter/presentation/pages/sign_up/sign_up_page.dart';
+import 'package:pets_next_door_flutter/presentation/pages/splash/splash_page.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'app_router.g.dart';
 
 // private navigators
-final _rootNavigatorKey = GlobalKey<NavigatorState>();
+final rootNavigatorKey = GlobalKey<NavigatorState>();
 final _homeNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'home');
 final _gatherNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'gather');
 final _chatNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'chat');
-final _userNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'user');
+final _myInfoNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'my');
 
 enum AppRoute {
+  splash,
   signIn,
+  signUp,
   phoneAuth,
   home,
-  gather,
+  community,
   chat,
-  user,
+  myInfo,
   profile,
-  breedSearch,
-  registerPet,
+  registerPet;
+
+  const AppRoute();
+
+  String get path => '/${this.name}';
 }
 
 @riverpod
 // ignore: unsupported_provider_value
 GoRouter goRouter(GoRouterRef ref) {
   return GoRouter(
-    initialLocation: '/home',
-    navigatorKey: _rootNavigatorKey,
+    initialLocation: AppRoute.splash.path,
+    navigatorKey: rootNavigatorKey,
     debugLogDiagnostics: true,
     redirect: (context, state) {
       return null;
     },
     routes: [
       GoRoute(
-        path: '/signIn',
+        path: AppRoute.splash.path,
+        name: AppRoute.splash.name,
+        pageBuilder: (context, state) => MaterialPage(
+          key: state.pageKey,
+          child: SplashView(),
+        ),
+      ),
+      GoRoute(
+        path: AppRoute.signIn.path,
         name: AppRoute.signIn.name,
         pageBuilder: (context, state) => MaterialPage(
           key: state.pageKey,
-          child: SignInView(),
+          child: SignInPage(),
         ),
       ),
       GoRoute(
-        path: '/phoneAuth',
-        name: AppRoute.phoneAuth.name,
+        path: AppRoute.signUp.path,
+        name: AppRoute.signUp.name,
         pageBuilder: (context, state) => MaterialPage(
           key: state.pageKey,
-          child: PhoneAuthView(),
+          child: SignUpPage(),
         ),
       ),
-
       GoRoute(
-        path: '/profile',
-        name: AppRoute.profile.name,
-        pageBuilder: (context, state) => MaterialPage(
-          key: state.pageKey,
-          child: UserProfileView(
-            profileViewState: state.extra! as UserProfileViewState,
-          ),
-        ),
-      ),
-
-      GoRoute(
-        path: '/breedSearch',
-        name: AppRoute.breedSearch.name,
-        pageBuilder: (context, state) => MaterialPage(
-          key: state.pageKey,
-          child: const BreedSearchView(),
-        ),
-      ),
-
-      GoRoute(
-        path: '/${AppRoute.registerPet.name}',
+        path: AppRoute.registerPet.path,
         name: AppRoute.registerPet.name,
         pageBuilder: (context, state) => MaterialPage(
           key: state.pageKey,
           child: const RegisterPetPage(),
         ),
       ),
-
-      // GoRoute(
-      //   path: '/${AppRoute.registerPetDetail.name}',
-      //   name: AppRoute.registerPetDetail.name,
-      //   pageBuilder: (context, state) => MaterialPage(
-      //     key: state.pageKey,
-      //     child: const RegisterPetInitialView(),
-      //   ),
-      // ),
-
       StatefulShellRoute.indexedStack(
-        builder: (context, state, navigationShell) {
-          return ScaffoldWithNestedNavigation(navigationShell: navigationShell);
-        },
+        builder: (context, state, navigationShell) =>
+            MainPage(navigationShell: navigationShell),
         branches: [
           StatefulShellBranch(
             navigatorKey: _homeNavigatorKey,
             routes: [
-              // Products
               GoRoute(
-                path: '/home',
+                path: AppRoute.home.path,
                 name: AppRoute.home.name,
                 pageBuilder: (context, state) => NoTransitionPage(
                   key: state.pageKey,
                   child: const HomeView(),
                 ),
-                // routes: [
-                //   GoRoute(
-                //     path: 'login',
-                //     name: AppRoute.login.name,
-                //     pageBuilder: (context, state) => NoTransitionPage(
-                //       key: state.pageKey,
-                //       child: LoginView(),
-                //     ),
-                //   )
-                // ],
               ),
             ],
           ),
           StatefulShellBranch(
             navigatorKey: _gatherNavigatorKey,
             routes: [
-              // Shopping Cart
               GoRoute(
-                path: '/gather',
-                name: AppRoute.gather.name,
+                path: AppRoute.community.path,
+                name: AppRoute.community.name,
                 pageBuilder: (context, state) => NoTransitionPage(
                   key: state.pageKey,
-                  child: GatherView(),
+                  child: CommunityView(),
                 ),
               ),
             ],
@@ -146,9 +113,8 @@ GoRouter goRouter(GoRouterRef ref) {
           StatefulShellBranch(
             navigatorKey: _chatNavigatorKey,
             routes: [
-              // Shopping Cart
               GoRoute(
-                path: '/chat',
+                path: AppRoute.chat.path,
                 name: AppRoute.chat.name,
                 pageBuilder: (context, state) => NoTransitionPage(
                   key: state.pageKey,
@@ -158,42 +124,20 @@ GoRouter goRouter(GoRouterRef ref) {
             ],
           ),
           StatefulShellBranch(
-            navigatorKey: _userNavigatorKey,
+            navigatorKey: _myInfoNavigatorKey,
             routes: [
-              // Shopping Cart
               GoRoute(
-                path: '/user',
-                name: AppRoute.user.name,
+                path: AppRoute.myInfo.path,
+                name: AppRoute.myInfo.name,
                 pageBuilder: (context, state) => NoTransitionPage(
                   key: state.pageKey,
-                  child: UserView(),
+                  child: MyInfoView(),
                 ),
               ),
             ],
           ),
         ],
       ),
-      // GoRoute(
-      //   path: '/login',
-      //   name: AppRoute.login.name,
-      //   pageBuilder: (context, state) => const NoTransitionPage(
-      //     child: LoginView(),
-      //   ),
-      // ),
-      // GoRoute(
-      //   path: '/phone_auth',
-      //   name: AppRoute.phoneAuth.name,
-      //   pageBuilder: (context, state) => const NoTransitionPage(
-      //     child: PhoneAuthView(),
-      //   ),
-      // ),
-      // GoRoute(
-      //   path: '/home',
-      //   name: AppRoute.home.name,
-      //   pageBuilder: (context, state) => const NoTransitionPage(
-      //     child: HomeView(),
-      //   ),
-      // ),
     ],
   );
 }

@@ -1,14 +1,16 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:pets_next_door_flutter/core/constants/enums.dart';
+// ignore_for_file: invalid_annotation_target
 
-part 'breed.g.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:pets_next_door_flutter/core/enums/pet_type.dart';
+
 part 'breed.freezed.dart';
+part 'breed.g.dart';
 
 @freezed
 class Breed with _$Breed {
   factory Breed({
     required int id,
-    @JsonKey(name: 'pet_type') required PetType petType,
+    required PetType petType,
     required String name,
   }) = _Breed;
 

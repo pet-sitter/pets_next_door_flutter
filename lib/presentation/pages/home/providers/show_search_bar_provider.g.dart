@@ -6,9 +6,11 @@ part of 'show_search_bar_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$showSearchBarHash() => r'b075c2cb1e1d138e7e4b5df3910c7f97be2108e8';
+String _$showSearchBarHash() => r'c630e19bbf1689aa5ad9067e4985ba353bba7329';
 
-/// See also [ShowSearchBar].
+/// 홈 검색 바의 표시여부
+///
+/// Copied from [ShowSearchBar].
 @ProviderFor(ShowSearchBar)
 final showSearchBarProvider =
     AutoDisposeNotifierProvider<ShowSearchBar, bool>.internal(

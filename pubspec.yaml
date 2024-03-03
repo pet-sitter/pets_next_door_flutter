@@ -7,63 +7,82 @@ environment:
   sdk: ">=3.0.0 <4.0.0"
 
 dependencies:
-  bloc: ^8.1.2
-  change_app_package_name: ^1.1.0
-  cupertino_icons: ^1.0.2
   flutter:
     sdk: flutter
 
+  # Firebase
   firebase_core: ^2.15.0
   firebase_auth: ^4.7.2
   sign_in_with_apple: ^5.0.0
   google_sign_in: ^6.1.4
   kakao_flutter_sdk_auth: ^1.5.0
   kakao_flutter_sdk_user: ^1.4.1
-  go_router: ^10.0.0
-  intl: ^0.18.1
-  dio: ^5.2.1+1
-  freezed_annotation: ^2.4.1
-  google_maps_flutter: ^2.4.0
-  retrofit: ^4.0.3
-  infinite_scroll_pagination: ^4.0.0
 
   # UI
   cupertino_will_pop_scope: ^1.2.1 #pop scope (스와이프 백 제스쳐 지원)
   fluttertoast: ^8.2.2
   flutter_svg: ^2.0.7
   flutter_easyloading: ^3.0.5
+  cupertino_icons: ^1.0.2
+  flutter_hooks: ^0.20.1
 
   # 상태관리
-  flutter_riverpod: ^2.3.6
+  hooks_riverpod: ^2.4.9
   riverpod_annotation: ^2.1.1
 
+  # 네트워크
+  retrofit: ^4.0.3
+  dio: ^5.2.1+1
+
+  # DI
+  get_it: ^7.2.0
+
+  # 라우팅
+  go_router: ^10.0.0
+
+  # Utils
+  intl: ^0.18.1
+  freezed_annotation: ^2.4.1
+  flutter_dotenv: ^5.1.0 # 환경변수 설정
+  shared_preferences: ^2.2.2 # 로컬 캐싱
+  image_picker: ^1.0.7
+
+  # 앱 정보
+  change_app_package_name: ^1.1.0
+  cached_network_image: ^3.3.1
+  image: ^4.1.4
+  flutter_image_compress: ^2.1.0
+  path_provider: ^2.1.2
+  mime: ^1.0.4
+
+  # 페이지네이션
+  infinite_scroll_pagination: ^4.0.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   mocktail: ^0.3.0
-  # a tool for running code generators
   build_runner: ^2.4.6
-  # the code generator
   riverpod_generator: ^2.2.3
-  # riverpod_lint makes it easier to work with Riverpod
   riverpod_lint: ^1.3.2
-  # import custom_lint too as riverpod_lint depends on it
   custom_lint: ^0.4.0
-
   flutter_flavorizr: ^2.2.1
-
   flutter_lints: ^2.0.0
   freezed: ^2.4.1
   json_serializable: ^6.7.1
+  retrofit_generator: ^7.0.2 # 네트워크 API Generator
 
 flutter:
   assets:
+    - .env
     - assets/fonts/
     - assets/imgs/
     - assets/imgs/pet/
     - assets/imgs/launch/
+    - assets/imgs/home/
+    - assets/imgs/common/
     - assets/svgs/
+    - assets/svgs/common/
     - assets/svgs/login/
     - assets/svgs/home/
     - assets/svgs/pet/

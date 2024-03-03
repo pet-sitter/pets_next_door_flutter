@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:pets_next_door_flutter/core/constants/enums.dart';
+import 'package:pets_next_door_flutter/core/enums/pet_type.dart';
 import 'package:pets_next_door_flutter/core/constants/sizes.dart';
 import 'package:pets_next_door_flutter/features/pet/domain/pet.dart';
 import 'package:pets_next_door_flutter/presentation/pages/pet/widgets/pet_type_selection_button.dart';
@@ -12,8 +12,6 @@ class PetTypeSelectionButtonGroup extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final selectedPetType = ref.watch(petStateProvider).petType;
-
     return Row(
       children: [
         Expanded(
@@ -22,7 +20,7 @@ class PetTypeSelectionButtonGroup extends ConsumerWidget {
             onTap: () => ref.read(petStateProvider.notifier).update(
                   (state) => state.copyWith(petType: PetType.cat),
                 ),
-            active: selectedPetType == PetType.cat,
+            active: ref.read(petStateProvider.notifier).state.petType == PetType.cat,
           ),
         ),
         gapW12,
@@ -32,7 +30,7 @@ class PetTypeSelectionButtonGroup extends ConsumerWidget {
             onTap: () => ref.read(petStateProvider.notifier).update(
                   (state) => state.copyWith(petType: PetType.dog),
                 ),
-            active: selectedPetType == PetType.dog,
+            active: ref.read(petStateProvider.notifier).state.petType == PetType.dog,
           ),
         ),
       ],

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:pets_next_door_flutter/core/constants/colors.dart';
 import 'package:pets_next_door_flutter/core/constants/text_style.dart';
-import 'package:pets_next_door_flutter/core/theme/extension/app_color.dart';
 
 part 'components/app_bar_theme.dart';
 

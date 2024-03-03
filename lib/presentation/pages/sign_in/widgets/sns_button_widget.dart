@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:pets_next_door_flutter/core/constants/enums.dart';
 import 'package:pets_next_door_flutter/core/constants/svgs.dart';
+import 'package:pets_next_door_flutter/core/enums/sns_provider_type.dart';
 
 /// 터치할 수 있는 원형 sns 버튼 위젯
 /// - [onTap] : 선택한 sns provider type을 리턴합니다.
