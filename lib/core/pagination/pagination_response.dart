@@ -15,7 +15,7 @@ class PaginationResponse<T> {
         items = (json['items'] as List<dynamic>)
             .map((e) => fromJson.call(e))
             .toList(),
-        isLastPage = json['is_last_page'] as bool;
+        isLastPage = json['isLastPage'] as bool;
 
   final int page;
   final int size;

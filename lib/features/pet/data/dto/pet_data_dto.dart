@@ -16,16 +16,13 @@ class PetDataListDto {
 @JsonSerializable()
 class PetDataDto {
   final int id;
-  @JsonKey(name: 'birth_date')
   final String birthDate;
   final String breed;
   final String name;
   final bool neutered;
-  @JsonKey(name: 'pet_type')
   final String petType;
   final String sex;
-  @JsonKey(name: 'weight_in_kg')
-  final int weightKg;
+  final int weightInKg;
 
   PetDataDto({
     required this.id,
@@ -35,7 +32,7 @@ class PetDataDto {
     required this.neutered,
     required this.petType,
     required this.sex,
-    required this.weightKg,
+    required this.weightInKg,
   });
 
   factory PetDataDto.fromJson(Map<String, dynamic> json) =>
