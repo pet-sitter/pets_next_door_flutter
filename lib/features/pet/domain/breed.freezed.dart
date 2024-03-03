@@ -21,7 +21,6 @@ Breed _$BreedFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Breed {
   int get id => throw _privateConstructorUsedError;
-  @JsonKey(name: 'pet_type')
   PetType get petType => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
 
@@ -35,7 +34,7 @@ abstract class $BreedCopyWith<$Res> {
   factory $BreedCopyWith(Breed value, $Res Function(Breed) then) =
       _$BreedCopyWithImpl<$Res, Breed>;
   @useResult
-  $Res call({int id, @JsonKey(name: 'pet_type') PetType petType, String name});
+  $Res call({int id, PetType petType, String name});
 }
 
 /// @nodoc
@@ -78,7 +77,7 @@ abstract class _$$_BreedCopyWith<$Res> implements $BreedCopyWith<$Res> {
       __$$_BreedCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, @JsonKey(name: 'pet_type') PetType petType, String name});
+  $Res call({int id, PetType petType, String name});
 }
 
 /// @nodoc
@@ -114,10 +113,7 @@ class __$$_BreedCopyWithImpl<$Res> extends _$BreedCopyWithImpl<$Res, _$_Breed>
 /// @nodoc
 @JsonSerializable()
 class _$_Breed implements _Breed {
-  _$_Breed(
-      {required this.id,
-      @JsonKey(name: 'pet_type') required this.petType,
-      required this.name});
+  _$_Breed({required this.id, required this.petType, required this.name});
 
   factory _$_Breed.fromJson(Map<String, dynamic> json) =>
       _$$_BreedFromJson(json);
@@ -125,7 +121,6 @@ class _$_Breed implements _Breed {
   @override
   final int id;
   @override
-  @JsonKey(name: 'pet_type')
   final PetType petType;
   @override
   final String name;
@@ -166,7 +161,7 @@ class _$_Breed implements _Breed {
 abstract class _Breed implements Breed {
   factory _Breed(
       {required final int id,
-      @JsonKey(name: 'pet_type') required final PetType petType,
+      required final PetType petType,
       required final String name}) = _$_Breed;
 
   factory _Breed.fromJson(Map<String, dynamic> json) = _$_Breed.fromJson;
@@ -174,7 +169,6 @@ abstract class _Breed implements Breed {
   @override
   int get id;
   @override
-  @JsonKey(name: 'pet_type')
   PetType get petType;
   @override
   String get name;

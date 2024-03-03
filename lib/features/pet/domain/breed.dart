@@ -10,7 +10,7 @@ part 'breed.g.dart';
 class Breed with _$Breed {
   factory Breed({
     required int id,
-    @JsonKey(name: 'pet_type') required PetType petType,
+    required PetType petType,
     required String name,
   }) = _Breed;
 

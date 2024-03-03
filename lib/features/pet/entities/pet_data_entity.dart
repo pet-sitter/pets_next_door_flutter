@@ -28,7 +28,7 @@ class PetDataEntity with _$PetDataEntity {
         neutered: dto.neutered,
         petType: PetType.getByCode(dto.petType),
         sexType: SexType.getByCode(dto.sex),
-        weightKg: dto.weightKg,
+        weightKg: dto.weightInKg,
         breed: dto.breed);
   }
 }

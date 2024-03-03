@@ -21,6 +21,7 @@ mixin _$PetDataEntity {
   String get name => throw _privateConstructorUsedError;
   bool get neutered => throw _privateConstructorUsedError;
   PetType get petType => throw _privateConstructorUsedError;
+  @JsonKey(name: 'sex')
   SexType get sexType => throw _privateConstructorUsedError;
   int get weightKg => throw _privateConstructorUsedError;
   String get breed => throw _privateConstructorUsedError;
@@ -42,7 +43,7 @@ abstract class $PetDataEntityCopyWith<$Res> {
       String name,
       bool neutered,
       PetType petType,
-      SexType sexType,
+      @JsonKey(name: 'sex') SexType sexType,
       int weightKg,
       String breed});
 }
@@ -120,7 +121,7 @@ abstract class _$$_PetDataEntityCopyWith<$Res>
       String name,
       bool neutered,
       PetType petType,
-      SexType sexType,
+      @JsonKey(name: 'sex') SexType sexType,
       int weightKg,
       String breed});
 }
@@ -191,7 +192,7 @@ class _$_PetDataEntity extends _PetDataEntity {
       required this.name,
       required this.neutered,
       required this.petType,
-      required this.sexType,
+      @JsonKey(name: 'sex') required this.sexType,
       required this.weightKg,
       required this.breed})
       : super._();
@@ -207,6 +208,7 @@ class _$_PetDataEntity extends _PetDataEntity {
   @override
   final PetType petType;
   @override
+  @JsonKey(name: 'sex')
   final SexType sexType;
   @override
   final int weightKg;
@@ -253,7 +255,7 @@ abstract class _PetDataEntity extends PetDataEntity {
       required final String name,
       required final bool neutered,
       required final PetType petType,
-      required final SexType sexType,
+      @JsonKey(name: 'sex') required final SexType sexType,
       required final int weightKg,
       required final String breed}) = _$_PetDataEntity;
   const _PetDataEntity._() : super._();
@@ -269,6 +271,7 @@ abstract class _PetDataEntity extends PetDataEntity {
   @override
   PetType get petType;
   @override
+  @JsonKey(name: 'sex')
   SexType get sexType;
   @override
   int get weightKg;

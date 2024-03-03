@@ -8,13 +8,13 @@ part of 'breed.dart';
 
 _$_Breed _$$_BreedFromJson(Map<String, dynamic> json) => _$_Breed(
       id: json['id'] as int,
-      petType: $enumDecode(_$PetTypeEnumMap, json['pet_type']),
+      petType: $enumDecode(_$PetTypeEnumMap, json['petType']),
       name: json['name'] as String,
     );
 
 Map<String, dynamic> _$$_BreedToJson(_$_Breed instance) => <String, dynamic>{
       'id': instance.id,
-      'pet_type': _$PetTypeEnumMap[instance.petType]!,
+      'petType': _$PetTypeEnumMap[instance.petType]!,
       'name': instance.name,
     };
 

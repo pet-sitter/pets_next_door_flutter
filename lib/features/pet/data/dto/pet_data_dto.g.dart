@@ -20,23 +20,23 @@ Map<String, dynamic> _$PetDataListDtoToJson(PetDataListDto instance) =>
 
 PetDataDto _$PetDataDtoFromJson(Map<String, dynamic> json) => PetDataDto(
       id: json['id'] as int,
-      birthDate: json['birth_date'] as String,
+      birthDate: json['birthDate'] as String,
       breed: json['breed'] as String,
       name: json['name'] as String,
       neutered: json['neutered'] as bool,
-      petType: json['pet_type'] as String,
+      petType: json['petType'] as String,
       sex: json['sex'] as String,
-      weightKg: json['weight_in_kg'] as int,
+      weightInKg: json['weightInKg'] as int,
     );
 
 Map<String, dynamic> _$PetDataDtoToJson(PetDataDto instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'birth_date': instance.birthDate,
+      'birthDate': instance.birthDate,
       'breed': instance.breed,
       'name': instance.name,
       'neutered': instance.neutered,
-      'pet_type': instance.petType,
+      'petType': instance.petType,
       'sex': instance.sex,
-      'weight_in_kg': instance.weightKg,
+      'weightInKg': instance.weightInKg,
     };

@@ -15,16 +15,12 @@ class SosPostDto {
   final AuthorDto author;
   final String title;
   final String content;
-  @JsonKey(name: 'date_start_at')
   final String dateStartAt;
-  @JsonKey(name: 'date_end_at')
   final String dateEndAt;
-  @JsonKey(name: 'thumbnail_id')
   final int thumbnailId;
   final List<SosConditionDto> conditions;
   final List<MediaImageDto> media;
   final String reward;
-  @JsonKey(name: 'reward_amount')
   final String rewardAmount;
   final List<PetDataDto> pets;
 
