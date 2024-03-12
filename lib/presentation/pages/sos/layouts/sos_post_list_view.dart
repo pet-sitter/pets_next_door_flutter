@@ -23,31 +23,17 @@ class _SosPostListView extends HookConsumerWidget with SosPostViewEvent {
       return () => _scrollController.removeListener(_callBack);
     }, [_scrollController]);
 
-    return RefreshIndicator(
-      color: AppColor.of.primaryGreen,
-      displacement: 0,
-      onRefresh: () => onListRefresh(ref),
-      child: PagedListView<int, SosPostEntity>.separated(
-        pagingController: ref.watch(sosPagingControllerProvider),
-        scrollController: _scrollController,
-        physics: AlwaysScrollableScrollPhysics(),
-        builderDelegate: PagedChildBuilderDelegate(
-          itemBuilder: (context, sosPost, index) => PndPostListTile.sosPage(
+    return PNDInfinitePagedList<SosPostEntity>(
+      pagingController: ref.watch(sosPagingControllerProvider),
+      scrollController: _scrollController,
+      itemBuilder: (context, sosPost, index) =>
+          PndPostListTile.sosPage(
               imageUrl: sosPost.thumbnailUrl,
               title: sosPost.title,
               dateInfo:
                   '${sosPost.careStartAt.formatyyMMdd} ~ ${sosPost.careEndAt.formatyyMMdd}',
               location: '용답동',
               pay: '${sosPost.rewardPer} ${sosPost.reward}'),
-          firstPageProgressIndicatorBuilder: (context) => PndLoadingIndicator(),
-          newPageProgressIndicatorBuilder: (context) => PndLoadingIndicator(),
-        ),
-        separatorBuilder: (context, index) => Divider(
-          height: 1,
-          thickness: 1,
-          color: AppColor.of.gray20,
-        ),
-      ),
     );
   }
 }

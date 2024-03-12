@@ -12,7 +12,7 @@ const pagingSize = 20;
 @riverpod
 class BreedsPagingController extends _$BreedsPagingController {
   @override
-  Raw<PagingController> build() {
+  Raw<PagingController<int, Breed>> build() {
     final controller = PagingController<int, Breed>(firstPageKey: 1);
 
     controller.addPageRequestListener((pageKey) => fetchPage(pageKey));
